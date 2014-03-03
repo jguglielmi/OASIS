@@ -1,0 +1,55 @@
+sed - Stream EDitor
+
+
+Usage: sed [OPTION]... {script-only-if-no-other-script} [input-file]...
+
+  -n, --quiet, --silent
+                 suppress automatic printing of pattern space
+  -e script, --expression=script
+                 add the script to the commands to be executed
+  -f script-file, --file=script-file
+                 add the contents of script-file to the commands to be executed
+  -i[suffix], --in-place[=suffix]
+                 edit files in place (makes backup if extension supplied)
+  -l N, --line-length=N
+                 specify the desired line-wrap length for the `l' command
+  -r, --regexp-extended
+                 use extended regular expressions in the script.
+  -s, --separate
+                 consider files as separate rather than as a single continuous
+                 long stream.
+  --text     switch to text mode
+  -u, --unbuffered
+                 load minimal amounts of data from the input files and flush
+                 the output buffers more often
+      --help     display this help and exit
+  -V, --version  output version information and exit
+
+If no -e, --expression, -f, or --file option is given, then the first
+non-option argument is taken as the sed script to interpret.  All
+remaining arguments are names of input files; if no input files are
+specified, then the standard input is read.
+
+
+EXAMPLES:
+
+sed -i "s#\(<libs.location.\)[^<]*#\1%ROOTPATH%libs#g" pom.xml
+
+sed -i "s#\(<localRepository.\)[^<]*#\1%ROOTPATH%.m2/repository#g" %ROOTPATH%apache-maven\conf\settings.xml
+
+
+
+A simple example is changing "day" in the "old" file to "night" in the "new" file:
+
+sed s/day/night/ <old >new
+
+Or another way (for UNIX beginners),
+
+sed s/day/night/ old >new
+
+and for those who want to test this:
+
+echo day | sed s/day/night/ 
+
+
+findstr /S/C:"testCase.js" *.java
