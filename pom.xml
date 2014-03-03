@@ -1,0 +1,298 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>org.thick</groupId>
+  <artifactId>thicknesse</artifactId>
+  <version>1.0</version>
+  <packaging>jar</packaging>
+
+  <name>ThickNesse</name>
+  <url></url>
+  
+  <properties>
+    <source.directory>fixtures/java</source.directory>
+    <source.test.directory>fixtures/test/java</source.test.directory>
+    <build.directory>build</build.directory>
+    <library.directory>lib</library.directory>
+    
+    <selenium.version>2.37.0</selenium.version>
+    <poi.version>3.10-FINAL</poi.version>
+  </properties>
+
+  <build>
+    <outputDirectory>build</outputDirectory>
+    <plugins>
+    
+      <plugin> <!-- this will copy all dependency jars to the lib directory -->
+        <artifactId>maven-dependency-plugin</artifactId>
+        <executions>
+          <execution>
+            <phase>compile</phase>
+            <goals>
+              <goal>copy-dependencies</goal>
+            </goals>
+            <configuration>
+              <outputDirectory>${library.directory}/mvn</outputDirectory>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+  
+      <plugin> <!-- this will compile and build fixture code -->
+        <artifactId>maven-antrun-plugin</artifactId>
+        <version>1.7</version>
+        <executions>
+          <execution>
+		    <id>compile</id>
+            <phase>compile</phase>
+            <configuration>
+              <target>
+
+                <!--Place any Ant task here. You can add anything
+                  you can add between <target> and </target> in a
+                  build.xml.-->
+                <property name="source.directory" value="${source.directory}"/>
+                <property name="source.test.directory" value="${source.test.directory}"/>
+                <property name="library.directory" value="${library.directory}"/>
+                <property name="build.directory" value="${build.directory}"/>
+                <property name="build.compiler" value="extJavac"/>
+
+                <!-- Create the time stamp -->
+                <tstamp/>
+                <!-- Create the build directory structure used by compile -->
+                <mkdir dir="${build.directory}"/>
+                <mkdir dir="${library.directory}"/>
+                <mkdir dir="${library.directory}/mvn"/>
+                
+                <!-- Compile the java code from ${source.directory} into ${build.directory} -->
+                <echo message="*** compiling source ${source.directory} into ${build.directory}"/>
+                <javac srcdir="${source.directory}" destdir="${build.directory}" includeantruntime="false">
+                    <classpath>
+                      <pathelement path="${classpath}"/>
+                      <fileset dir="${library.directory}">
+                        <include name="**/*.jar"/>
+                      </fileset>
+                      <fileset dir="plugins">
+                        <include name="**/*.jar"/>
+                      </fileset>
+                    </classpath>
+                </javac>
+
+              </target>
+            </configuration>
+            <goals>
+              <goal>run</goal>
+            </goals>
+          </execution>
+
+          <execution>
+		    <id>test</id>
+            <phase>test</phase>
+            <configuration>
+              <target>
+
+                <!--Place any Ant task here. You can add anything
+                  you can add between <target> and </target> in a
+                  build.xml.-->
+                <property name="source.directory" value="${source.directory}"/>
+                <property name="source.test.directory" value="${source.test.directory}"/>
+                <property name="library.directory" value="${library.directory}"/>
+                <property name="build.directory" value="${build.directory}"/>                  
+                <property name="build.compiler" value="extJavac"/>
+
+                <!-- Create the time stamp -->
+                <tstamp/>
+                <!-- Create the build directory structure used by compile -->
+                <mkdir dir="${build.directory}"/>
+                <mkdir dir="${library.directory}"/>
+                <mkdir dir="${library.directory}/mvn"/>
+                
+                <!-- Compile the java code from ${source.test.directory} into ${build.directory} -->
+                <echo message="*** compiling unit test source ${source.test.directory} into ${build.directory}"/>
+                <javac srcdir="${source.test.directory}" destdir="${build.directory}" includeantruntime="false">
+                    <classpath>
+					  <pathelement path="${build.directory}"/>
+                      <pathelement path="${classpath}"/>
+                      <fileset dir="${library.directory}">
+                        <include name="**/*.jar"/>
+                      </fileset>
+                      <fileset dir="plugins">
+                        <include name="**/*.jar"/>
+                      </fileset>
+                    </classpath>
+                </javac>
+
+				<!-- run junit test dump results into ${build}/unit_tests -->
+    <mkdir dir="${build.directory}/unit_tests" />
+    <junit forkmode="once" fork="yes" printsummary="yes" haltonfailure="no" haltonerror="no" dir="${basedir}">
+                    <classpath>
+					  <pathelement path="${build.directory}"/>
+                      <pathelement path="${classpath}"/>
+                      <fileset dir="${library.directory}">
+                        <include name="**/*.jar"/>
+                      </fileset>
+                      <fileset dir="plugins">
+                        <include name="**/*.jar"/>
+                      </fileset>
+                    </classpath>
+      <formatter type="xml" usefile="true" />
+      <formatter type="plain" usefile="false" />
+      <batchtest todir="${build.directory}/unit_tests">
+        <fileset dir="${source.test.directory}"><include name="**/*.java" /></fileset>
+      </batchtest>
+    </junit>
+
+              </target>
+            </configuration>
+            <goals>
+              <goal>run</goal>
+            </goals>
+          </execution>
+
+        </executions>
+      </plugin>
+      
+      <plugin>
+        <artifactId>maven-clean-plugin</artifactId>
+        <version>2.5</version>
+        <executions>
+          <execution>
+            <id>auto-clean</id>
+            <phase>compile</phase>
+            <goals>
+              <goal>clean</goal>
+            </goals>
+            <configuration>
+             <excludeDefaultDirectories>true</excludeDefaultDirectories>
+             <filesets>
+                <fileset>
+                  <directory>target</directory>
+                </fileset>
+              </filesets>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin> 
+	  
+    </plugins>
+  </build>
+  
+  <!-- list of all dependencies needed -->
+  <dependencies>
+      <dependency>
+      <groupId>org.apache.poi</groupId>
+      <artifactId>poi-scratchpad</artifactId>
+      <version>${poi.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.poi</groupId>
+      <artifactId>poi-ooxml-schemas</artifactId>
+      <version>${poi.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.poi</groupId>
+      <artifactId>poi-ooxml</artifactId>
+      <version>${poi.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.poi</groupId>
+      <artifactId>poi-excelant</artifactId>
+      <version>${poi.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.poi</groupId>
+      <artifactId>poi-examples</artifactId>
+      <version>${poi.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.poi</groupId>
+      <artifactId>poi</artifactId>
+      <version>${poi.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>commons-lang</groupId>
+      <artifactId>commons-lang</artifactId>
+      <version>2.6</version>
+    </dependency>
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-api</artifactId>
+      <version>1.6.4</version>
+    </dependency>
+      <dependency>
+       <groupId>com.jcraft</groupId>
+       <artifactId>jsch</artifactId>
+       <version>0.1.48</version>
+     </dependency>
+    <dependency>
+      <groupId>net.java.dev.jna</groupId>
+      <artifactId>jna</artifactId>
+      <version>3.4.0</version>
+    </dependency>
+    <dependency>
+      <groupId>org.seleniumhq.selenium</groupId>
+      <artifactId>selenium-server</artifactId>
+      <version>${selenium.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.seleniumhq.selenium</groupId>
+      <artifactId>selenium-api</artifactId>
+      <version>${selenium.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.seleniumhq.selenium</groupId>
+      <artifactId>selenium-remote-driver</artifactId>
+      <version>${selenium.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.seleniumhq.selenium</groupId>
+      <artifactId>selenium-java</artifactId>
+      <version>${selenium.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.opera</groupId>
+      <artifactId>operadriver</artifactId>
+      <version>1.1</version>
+    </dependency>
+    <dependency>
+      <groupId>com.github.detro.ghostdriver</groupId>
+      <artifactId>phantomjsdriver</artifactId>
+      <version>1.0.3</version>
+    </dependency>
+    <dependency>
+      <groupId>org.sikuli</groupId>
+      <artifactId>sikuli-slides-api</artifactId>
+      <version>1.4.0</version>
+    </dependency>
+    
+    <!-- unit test dependencies -->
+    
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.5</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>rhino</groupId>
+      <artifactId>js</artifactId>
+      <version>1.7R1</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.mockito</groupId>
+      <artifactId>mockito-all</artifactId>
+      <version>1.8.5</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.hamcrest</groupId>
+      <artifactId>hamcrest-all</artifactId>
+      <version>1.1</version>
+      <scope>test</scope>
+    </dependency>
+
+    
+  </dependencies>
+</project>

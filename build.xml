@@ -1,0 +1,82 @@
+<project name="FitnesseFixtures" default="dist" basedir="." xmlns:ivy="antlib:org.apache.ivy.ant">
+    <description>
+        Simple build file to compile all Fitnesse Fixtures
+    </description>
+  <!-- set global properties for this build -->
+  <property name="src" location="fixtures/java"/>
+  <property name="src.unit.test" location="fixtures/test/java"/>
+  <property name="build" location="build"/>
+  <property name="lib" location="lib"/>
+  <property name="dist"  location="dist"/>
+  
+  <path id="compile.classpath"> <!-- this classpath refid includes everything needed for compiling the source -->
+    <pathelement path="${classpath}"/>
+    <fileset dir="lib"><include name="**/*.jar"/></fileset>
+    <fileset dir="plugins"><include name="**/*.jar"/></fileset>
+  </path>
+  
+  <target name="bootstrap" description="Installs apache ivy">
+    <mkdir dir="${user.home}/.ant/lib"/>
+    <get dest="${user.home}/.ant/lib/ivy.jar" src="http://search.maven.org/remotecontent?filepath=org/apache/ivy/ivy/2.3.0/ivy-2.3.0.jar"/>
+  </target>
+
+  <target name="init">
+    <!-- Create the time stamp -->
+    <tstamp/>
+    <!-- Create the build directory structure used by compile -->
+    <mkdir dir="${build}"/>
+    <mkdir dir="${lib}"/>
+    <mkdir dir="${lib}/ivy"/>
+  </target>
+  
+  <!-- downloadable dependencies are listed in ivy.xml file and are downloaded to the lib/ivy directory. -->
+  <target name="resolve" depends="init" description="--> retreive dependencies with ivy">
+    <ivy:retrieve pattern="${lib}/ivy/[artifact]-[revision](-[classifier]).[ext]"/>
+	<ivy:report todir="${build}"/>
+  </target>
+
+  <target name="compile" depends="init" description="compile the source " >
+    <!-- Compile the java code from ${src} into ${build} -->
+    <javac srcdir="${src}" destdir="${build}" includeantruntime="false">
+		<classpath refid="compile.classpath" />
+	</javac>
+  </target>
+  
+  <target name="unit_test" depends="compile" description="run the unit tests">
+    <!-- Compile the java unit test code from ${src.unit.test} into ${build} -->
+    <javac srcdir="${src.unit.test}" destdir="${build}" includeantruntime="false">
+      <classpath>
+	    <path refid="compile.classpath"/>
+	    <pathelement location="${build}"/>
+      </classpath>
+	</javac>
+	<!-- run junit test dump results into ${build}/unit_tests -->
+    <mkdir dir="${build}/unit_tests" />
+    <junit forkmode="once" fork="yes" printsummary="yes" haltonfailure="no" haltonerror="no" dir="${basedir}">
+      <classpath>
+	    <path refid="compile.classpath"/>
+	    <pathelement location="${build}"/>
+      </classpath>
+      <formatter type="xml" usefile="true" />
+      <formatter type="plain" usefile="false" />
+      <batchtest todir="${build}/unit_tests">
+        <fileset dir="${src.unit.test}"><include name="**/*.java" /></fileset>
+      </batchtest>
+    </junit>
+  </target>
+
+  <target name="dist" depends="compile" description="generate the distribution" >
+    <!-- Create the distribution directory -->
+    <mkdir dir="${dist}"/>
+
+    <!-- Put everything in ${build} into the FitnesseFixtures-${DSTAMP}.jar file -->
+    <jar jarfile="${dist}/FitnesseFixtures-${DSTAMP}.jar" basedir="${build}"/>
+  </target>
+
+  <target name="clean" description="clean up" >
+    <!-- Delete the ${build} and ${dist} directory trees -->
+    <delete dir="${build}"/>
+    <delete dir="${dist}"/>
+	<!-- <delete dir="${lib}"/> -->
+  </target>
+</project>
