@@ -115,12 +115,18 @@ public class SikuliDriverFixture extends SikuliCommandProcessor{
 	
 	public DisplayTextRunnable displayTextFor(String text, int displayTime) {
 		//Rectangle rect = Screen.getBounds(0);
-		Rectangle rect = new DesktopScreen(0).getBounds();
-		DisplayTextRunnable dtr = new DisplayTextRunnable(text, rect.width/3, rect.height-50, displayTime);
-		Thread t = new Thread(dtr);
-		t.start();
+		try {
+			Rectangle rect = new DesktopScreen(0).getBounds();
+			DisplayTextRunnable dtr = new DisplayTextRunnable(text, rect.width/3, rect.height-50, displayTime);
+			Thread t = new Thread(dtr);
+			t.start();
+			return dtr;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
 		//new DisplayTextRunnable(text, rect.width/3, rect.height-50).run();
-		return dtr;
+		//return dtr;
 	}
 	
 	public class DisplayTextRunnable implements Runnable {

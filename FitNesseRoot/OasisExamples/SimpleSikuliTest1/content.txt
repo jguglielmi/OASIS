@@ -1,0 +1,17 @@
+!contents -R2 -g -p -f -h
+
+!define TEST_SYSTEM {slim} 
+!path build
+!path lib/ivy/*
+!path lib/mvn/*
+!path plugins/*
+
+| import | 
+| com.xebia.sikuli | 
+
+| script | sikuli driver fixture | 
+| click | !-<img src="OasisExamples?sik&img=startButton.png" />-! |
+| delay | 1000 | 
+| type | calculator |
+| keyDown | ENTER | 
+| keyUp | ENTER | 

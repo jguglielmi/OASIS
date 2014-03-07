@@ -1,6 +1,6 @@
-<project name="FitnesseFixtures" default="dist" basedir="." xmlns:ivy="antlib:org.apache.ivy.ant">
+<project name="OasisFitnesseFixtures" default="run" basedir="." xmlns:ivy="antlib:org.apache.ivy.ant">
     <description>
-        Simple build file to compile all Fitnesse Fixtures
+        This ant build file will download dependency jars, compile all FitNesse Fixtures and startup OASIS
     </description>
   <!-- set global properties for this build -->
   <property name="src" location="fixtures/java"/>
@@ -8,6 +8,7 @@
   <property name="build" location="build"/>
   <property name="lib" location="lib"/>
   <property name="dist"  location="dist"/>
+  <property file="oasis.properties"/> <!-- load properties from the oasis.properties file -->
   
   <path id="compile.classpath"> <!-- this classpath refid includes everything needed for compiling the source -->
     <pathelement path="${classpath}"/>
@@ -27,6 +28,13 @@
     <mkdir dir="${build}"/>
     <mkdir dir="${lib}"/>
     <mkdir dir="${lib}/ivy"/>
+	
+	<!-- echo properties from the oasis.properties file -->
+	<echo>
+	oasis_version: ${oasis_version}
+	fitnesse_port: ${fitnesse_port}
+	</echo>
+	
   </target>
   
   <!-- downloadable dependencies are listed in ivy.xml file and are downloaded to the lib/ivy directory. -->
@@ -63,14 +71,54 @@
         <fileset dir="${src.unit.test}"><include name="**/*.java" /></fileset>
       </batchtest>
     </junit>
-  </target>
 
+	<!-- generate report with junitreport -->
+    <junitreport todir="${build}">
+      <fileset dir="${build}/unit_tests" />
+      <report todir="${build}/report" />
+    </junitreport>
+
+  	<!-- parse the report through a filter chain to extract what you want -->
+    <loadfile property="reportSummary" srcfile="${build}/report/overview-summary.html">
+      <filterchain>
+        <linecontainsregexp>
+          <regexp pattern='title="Display all tests"' />
+        </linecontainsregexp>
+        <replaceregex pattern='.*"all-tests.html".(\d*).*?"alltests-fails.html".(\d*).*?"alltests-errors.html".(\d*).*?"alltests-skipped.html".(\d*).*' replace="Tests: \1, Fails: \2, Errors: \3, Skips: \4" />
+      </filterchain>
+    </loadfile> 
+	<echo>
+	*** Unit Test Summary ***
+	${reportSummary}
+    </echo>
+
+  </target>
+  
   <target name="dist" depends="compile" description="generate the distribution" >
     <!-- Create the distribution directory -->
     <mkdir dir="${dist}"/>
 
     <!-- Put everything in ${build} into the FitnesseFixtures-${DSTAMP}.jar file -->
     <jar jarfile="${dist}/FitnesseFixtures-${DSTAMP}.jar" basedir="${build}"/>
+  </target>
+  
+  <!-- Start up Oasis/FitNesse instance  -->
+  <target name="run" depends="unit_test" description="generate the distribution" >
+    <java jar="${fitnesse_jar}" fork="true" failonerror="true" maxmemory="1g">
+      <arg value="-p"/>
+	  <arg value="${fitnesse_port}"/>
+      <arg value="-o"/>
+      <arg value="-e"/>
+      <arg value="0"/>
+      <arg value="-d"/>
+      <arg value="."/>
+      <classpath>
+        <pathelement location="${fitnesse_jar}"/>
+        <pathelement path="${java.class.path}"/>
+	    <path refid="compile.classpath"/>
+	    <pathelement location="${build}"/>		   
+      </classpath>
+    </java>
   </target>
 
   <target name="clean" description="clean up" >

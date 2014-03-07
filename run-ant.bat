@@ -12,7 +12,7 @@ REM bootstrap can be used to download the apache ivy library if not already inst
 REM call ant bootstrap
 REM if you're offline and you already have all libraries don't call the resolve line below
 call ant resolve
-call ant compile
-call ant unit_test
 
-java -jar fitnesse-standalone.jar -p 8000 -o -e 0 -d .
+call ant run
+
+REM java -jar fitnesse-standalone.jar -p 8000 -o -e 0 -d .
