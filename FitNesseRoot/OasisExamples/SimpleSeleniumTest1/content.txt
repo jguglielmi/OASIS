@@ -1,0 +1,24 @@
+!contents -R2 -g -p -f -h
+
+!define TEST_SYSTEM {slim} 
+!path build
+!path lib/ivy/*
+!path lib/mvn/*
+!path plugins/*
+
+| import | 
+| com.xebia.incubator.xebium | 
+
+!| script | default web driver supplier |
+| set browser | firefox |
+| $webDriver1= | new web driver |
+
+!| script | selenium driver fixture |
+| start driver | $webDriver1 | on url | http://localhost:8000 |
+| do | open | on | /files/testHtml/iFrameTest1.html |
+| ensure | do | waitForVisible | on | //input[@id='topTxt'] |
+| ensure | do | click | on | !-//input[@value='fill city']-! |
+| ensure | do | click | on | !-//input[@value='fill phone']-! |
+| ensure | do | click | on | !-//input[@value='fill top']-! |
+| ensure | do | click | on | !-//input[@value='fill names']-! |
+| ensure | do | click | on | !-//input[@value='fill email']-! |

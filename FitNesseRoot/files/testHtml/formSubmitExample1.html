@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<script>
+function validateForm()
+{
+  var f=document.forms["testForm1"]["fname"].value;
+  var l=document.forms["testForm1"]["lname"].value;
+  if (f==null || f=="") {
+    alert("First name must be filled out");
+    return false;
+  }
+  alert("First name: " + f + ", Last name: " + l);
+  return false;
+}
+function fillNames()
+{
+  //alert('test');
+  document.getElementById("fname").value = "bob";
+  document.getElementById("lname").value = "test";
+}
+</script>
+</head>
+
+<body>
+
+<form name="testForm1" action="/" onsubmit="return validateForm()" method="post">
+  First name: <input type="text" name="fname" id="fname"><br />
+  Last name: <input type="text" name="lname" id="lname"><br />
+  <input type="button" value="fill names" onClick="fillNames();">
+  <input type="submit" value="Submit"><br />
+  <br /> <a id="testLink3" href="formJscriptExample1.html">formJscriptExample1.html</a>
+</form>
+
+</body>
+
+</html>

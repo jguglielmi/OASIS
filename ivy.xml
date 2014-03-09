@@ -17,6 +17,7 @@
 		<dependency org="org.seleniumhq.selenium" name="selenium-java" rev="2.37.0" conf="*->*,!sources,!javadoc"/>
 		<dependency org="com.opera" name="operadriver" rev="1.1" conf="*->*,!sources,!javadoc"/>
 		<dependency org="com.github.detro.ghostdriver" name="phantomjsdriver" rev="1.0.3" conf="*->*,!sources,!javadoc"/>
+		<dependency org="org.apache.httpcomponents" name="httpclient" rev="4.3.1" conf="*->*,!sources,!javadoc"/>
 		<dependency org="org.sikuli" name="sikuli-slides-api" rev="1.4.0" conf="*->*,!sources,!javadoc"/>
 		<!-- <dependency org="org.fitnesse" name="fitnesse" rev="20140201" conf="*->*,standalone,!sources,!javadoc"/> -->
 		

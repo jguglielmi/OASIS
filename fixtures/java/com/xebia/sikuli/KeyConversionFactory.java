@@ -1,16 +1,18 @@
 package com.xebia.sikuli;
 
-import java.awt.event.KeyEvent;
+//import java.awt.event.KeyEvent;
 import org.sikuli.script.*;
+import org.sikuli.api.robot.Keyboard;
+import org.sikuli.api.robot.desktop.*;
 import java.awt.AWTException;
 //import org.sikuli.api.robot.Keyboard;
 //import org.sikuli.api.robot.desktop.DesktopKeyboard;
 
 public class KeyConversionFactory  {
-	IRobot keyboard = null;
+	Keyboard keyboard = null;
 	
 	public KeyConversionFactory() throws AWTException {
-		keyboard = new RobotDesktop(Screen.getScreen(0));
+		keyboard = new DesktopKeyboard();
     }
 	
 	public void keyDown(String key) {

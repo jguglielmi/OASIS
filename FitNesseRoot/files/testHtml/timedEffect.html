@@ -1,0 +1,122 @@
+<!DOCTYPE HTML>
+<html>
+ <head>
+ 
+  <title>Timed Effect</title>
+  
+
+<script src="/files/fitnesse/javascript/jquery-1.7.2.min.js" type="text/javascript"></script>
+<link rel="stylesheet" href="/files/fitnesse/css/smoothness/jquery-ui-1.10.3.min.css" />
+<script src="/files/fitnesse/javascript/jquery-ui-1.10.3.min.js"></script>
+
+  <style type="text/css">
+	body{
+		margin: 0;
+		padding: 0;
+		overflow: hidden;
+		background: white;
+		color: black;
+		text-align: right;
+		font-family: Arial, Helvetica, sans-serif;
+		font-size: 0.8em;
+	}
+	.box {
+		width:300px;
+		height:300px;
+		background-color:#d9d9d9;
+		position:fixed;
+		margin-left:-150px; /* half of width */
+		margin-top:-150px;  /* half of height */
+		top:50%;
+		left:50%;
+	}
+  </style>
+ </head>
+
+ <body>
+  <table class="box" border="1px" id="effect">
+    <tr>
+        <td align="center">
+            <span style="font-weight:bold"><div id="contentDiv">this content will be updated</div></span>
+        </td>
+    </tr>
+  </table>
+  New content: <input type="text" id="newContentTxt" />  Update in (MS): <input type="text" id="updateTimeTxt" maxlength="6" size="6" value="1000"/> <input type="button" id="newContentBtn" value="Stop" />
+  <br /> <div id="effectType" style="margin-right: 20px"></div>
+  <br /> <a id="testLink1" href="formJscriptExample1.html">formJscriptExample1.html</a>
+  <script type="text/javascript">
+  var cars=new Array("Ford","BMW","Saab","aston martin","Audi","Bentley","Bugatti","Chrysler Group LLC","Ferrari","FOMOCO","GM","Honda","Hyundai","MAZDA","Volvo");
+  var effects=new Array("blind","bounce","clip","drop","explode","fade","fold","highlight","puff","pulsate","scale","shake","size","slide","transfer");
+  var newContentTxt = document.getElementById("newContentTxt");
+  var updateTimeTxt = document.getElementById("updateTimeTxt");
+  var newContentBtn = document.getElementById("newContentBtn");
+  var contentDiv = document.getElementById("contentDiv");
+  function randomContent() {
+	//var num = Math.round(Math.random() * (cars.length - 2) + 0);
+	var num = Math.round(Math.random() * (3 - 2) + 0);
+	//alert(num);
+	//return cars[num] + " (" + num + ")";
+	return cars[num];
+  }
+  function timedEvent() {
+    var intervals = updateTimeTxt.value;
+	if (intervals < 1000) { //set minimum interval to 1000
+	  intervals = 1000;
+	}
+    setTimeout(timedEvent, intervals);
+	updateContentDiv();
+  }
+  function updateContentDiv() {
+    if (newContentBtn.value == "Run") {
+	  return;
+	}
+    runEffect();
+  }
+  function clickNewContentBtn() {
+    if (newContentBtn.value == "Run"){
+	  newContentBtn.value = "Stop";
+	} else {
+	  newContentBtn.value = "Run";
+	}
+  }
+  function begin(){
+    newContentBtn.onclick = function(){clickNewContentBtn();};
+    newContentTxt.value = randomContent();
+	//updateTimeTxt.value = Math.round(Math.random() * (15 - 1) + 1)* 1000; //random time from 1 to 15 seconds
+	updateTimeTxt.value = "4000";
+	setTimeout(timedEvent, updateTimeTxt.value);
+  }
+  onLoad=begin();
+  
+  function runEffect() {
+  	var num = Math.round(Math.random() * (effects.length - 2) + 0);
+    // get effect type from
+    var selectedEffect = effects[num];
+	//alert(selectedEffect);
+
+    // most effect types need no options passed by default
+    var options = {};
+    // some effects have required parameters
+    if ( selectedEffect === "scale" ) {
+	  options = { percent: 0 };
+    } else if ( selectedEffect === "transfer" ) {
+	  options = { to: "#newContentBtn", className: "ui-effects-transfer" };
+    } else if ( selectedEffect === "size" ) {
+	  options = { to: { width: 200, height: 60 } };
+    }
+    $( "#effectType" ).html("effect: " + selectedEffect);
+    // run the effect
+    $( "#effect" ).effect( selectedEffect, options, 500, callback );
+  }
+  
+  // callback function to bring a hidden box back
+  function callback() {
+    $( "#effect" ).removeAttr( "style" ).show();
+    //setTimeout(function() { $( "#effect" ).removeAttr( "style" ).hide().fadeIn();}, 500 );
+	contentDiv.innerHTML = newContentTxt.value;
+	newContentTxt.value = randomContent();
+  }
+  </script>
+ </body>
+
+</html>

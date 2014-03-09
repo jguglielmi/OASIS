@@ -1,13 +1,13 @@
 
 // Name: WinApiDriverFixture
-// Author: Edward Jakubowski ejakubowski@qed-sys.com
-// Last update: 12/27/2013
-// Description: This Fixture add support to run Windows Api Functions in Fitnesse
+// Author: Edward Jakubowski ejakubowski7@gmail.com
+// Last update: 3/08/2014
+// Description: This Fixture adds support for running synthuse's commands from Fitnesse
 // Requirements: Jna library
 // Examples:
 //   
 
-package org.qedsys.fitnesse;
+package org.synthuse;
 
 import java.io.*;
 import java.util.ArrayList;

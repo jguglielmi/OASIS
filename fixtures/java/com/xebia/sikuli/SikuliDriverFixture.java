@@ -24,6 +24,7 @@ import com.xebia.sikuli.ExtendedSikuliCommands;
 
 import javax.crypto.*;
 import javax.crypto.spec.*;
+import org.synthuse.*; //for showing status window
 
 /**
  * This fixture uses the Sikuli API to perform UI automation.
@@ -97,70 +98,20 @@ public class SikuliDriverFixture extends SikuliCommandProcessor{
 		showStatusText = false;
 	}	
 
-	private DisplayTextRunnable statusText(String text) {
-		return statusText(text, 0);
+	private StatusWindow statusText(String text) {
+		return statusText(text, -1);
 	}
 	
-	private DisplayTextRunnable statusText(String text, int displayTime) {
+	private StatusWindow statusText(String text, int displayTime) {
 		if (!showStatusText)
-			return new DisplayTextRunnable();
+			return null;
 		//<img src="TestPage?sik&img=startButton.png" />
 		text = text.replaceAll("(<img src=\")([^\\?]*)(\\?sik&img=)([^\"]*)(\" />)", "$4"); // remove image html
-		return displayTextFor(text, displayTime);
+		return new StatusWindow(text, displayTime);
 	}
 	
-	public DisplayTextRunnable displayText(String text) {
-		return displayTextFor(text, 3);
-	}
-	
-	public DisplayTextRunnable displayTextFor(String text, int displayTime) {
-		//Rectangle rect = Screen.getBounds(0);
-		try {
-			Rectangle rect = new DesktopScreen(0).getBounds();
-			DisplayTextRunnable dtr = new DisplayTextRunnable(text, rect.width/3, rect.height-50, displayTime);
-			Thread t = new Thread(dtr);
-			t.start();
-			return dtr;
-		} catch (Exception e) {
-			e.printStackTrace();
-			return null;
-		}
-		//new DisplayTextRunnable(text, rect.width/3, rect.height-50).run();
-		//return dtr;
-	}
-	
-	public class DisplayTextRunnable implements Runnable {
-		String text = "";
-		int textLeft = 0;
-		int textTop = 0;
-		int displayTime = 5;
-		int fontSize = 20;
-		AtomicBoolean stopFlg = new AtomicBoolean(false);
-		public DisplayTextRunnable() {
-		}
-		public DisplayTextRunnable(String text, int left, int top, int displayTime) {
-			this.text = text;
-			this.textLeft = left;
-			this.textTop = top;
-			this.displayTime = displayTime;
-		}
-		public void run() {
-			Canvas canvas = new DesktopCanvas();
-			ScreenRegion r = new DesktopScreenRegion();
-			canvas.addLabel(r.getRelativeScreenLocation(textLeft, textTop), text).withFontSize(fontSize);
-			if (displayTime == 0){ //check if it should display text until thread is stopped
-				canvas.show();
-				while(stopFlg.get() == false) {
-					try {Thread.sleep(100);} catch (Exception e) {e.printStackTrace();}
-				}
-				canvas.hide();
-			}
-			else
-				canvas.display(displayTime);
-		}
-		public void stop(){
-			stopFlg.set(true);
-		}
+	public StatusWindow displayText(String text) {
+		return new StatusWindow(text, 3);
 	}
 
 	public void setWaitTimeTo(int milliseconds){
@@ -257,13 +208,13 @@ public class SikuliDriverFixture extends SikuliCommandProcessor{
 	}
 
 	public boolean click(String imgOrText) throws IOException, AWTException {
-		DisplayTextRunnable statusDtr = statusText("click " + imgOrText);
+		StatusWindow statusDtr = statusText("click " + imgOrText);
 		refreshDesktopMouseScreen();
 		target1=fuzzyTarget(imgOrText);
 		target1.setMinScore(matching);
 		screenRegion1 = currentRegion().find(target1);
 		if (screenRegion1==null){
-			statusDtr.stop();
+			statusDtr.dispose();
 			LOG.error("Cannot find object: " + target1);
 			LOG.error("Matching was set to " + matching);
 			LOG.error("Offset was set to " + xOffSet + " , " + yOffSet);
@@ -272,7 +223,7 @@ public class SikuliDriverFixture extends SikuliCommandProcessor{
 		else {
 			mouse.click(screenRegion1.getCenter().getRelativeScreenLocation(xOffSet, yOffSet));
 			LOG.info("Click performed on " + target1);
-			statusDtr.stop();
+			statusDtr.dispose();
 			return true;
 		}
 	}
@@ -298,20 +249,20 @@ public class SikuliDriverFixture extends SikuliCommandProcessor{
 	}
 
 	public boolean doubleClick(String imgOrText) throws IOException, AWTException {
-		DisplayTextRunnable statusDtr = statusText("doubleClick " + imgOrText);
+		StatusWindow statusDtr = statusText("doubleClick " + imgOrText);
 		refreshDesktopMouseScreen();
 		target1=fuzzyTarget(imgOrText);
 		target1.setMinScore(matching);
 		screenRegion1 = currentRegion().find(target1);
 		if (screenRegion1==null){
-			statusDtr.stop();
+			statusDtr.dispose();
 			LOG.error("Cannot find object: " + target1);
 			return false;
 		}
 		else {
 			mouse.doubleClick(screenRegion1.getCenter().getRelativeScreenLocation(xOffSet, yOffSet));
 			LOG.info("Double click performed on " + target1);
-			statusDtr.stop();
+			statusDtr.dispose();
 			return true;
 		}
 	}
@@ -321,20 +272,20 @@ public class SikuliDriverFixture extends SikuliCommandProcessor{
 	}
 
 	public boolean rightClick(String imgOrText) throws IOException, AWTException {
-		DisplayTextRunnable statusDtr = statusText("rightClick " + imgOrText);
+		StatusWindow statusDtr = statusText("rightClick " + imgOrText);
 		refreshDesktopMouseScreen();
 		target1=fuzzyTarget(imgOrText);
 		target1.setMinScore(matching);
 		screenRegion1 = currentRegion().find(target1);
 		if (screenRegion1==null) {
-			statusDtr.stop();
+			statusDtr.dispose();
 			LOG.error("Cannot find object: " + target1);
 			return false;
 		}
 		else {
 			mouse.rightClick(screenRegion1.getCenter().getRelativeScreenLocation(xOffSet, yOffSet));
 			LOG.info("Right click performed on " + target1);
-			statusDtr.stop();
+			statusDtr.dispose();
 			return true;
 		}
 	}
@@ -344,20 +295,20 @@ public class SikuliDriverFixture extends SikuliCommandProcessor{
 	}
 
 	public boolean hover(String imgOrText) throws IOException, AWTException {
-		DisplayTextRunnable statusDtr = statusText("hover " + imgOrText);
+		StatusWindow statusDtr = statusText("hover " + imgOrText);
 		refreshDesktopMouseScreen();
 		target1=fuzzyTarget(imgOrText);
 		target1.setMinScore(matching);
 		screenRegion1 = currentRegion().find(target1);
 		if (screenRegion1==null){
 			LOG.error("Cannot find object: " + target1);
-			statusDtr.stop();
+			statusDtr.dispose();
 			return false;
 		}
 		else {
 			mouse.drop(screenRegion1.getCenter().getRelativeScreenLocation(xOffSet, yOffSet));
 			LOG.info("Hover performed on " + target1);
-			statusDtr.stop();
+			statusDtr.dispose();
 			return true;
 		}
 	}
@@ -382,44 +333,44 @@ public class SikuliDriverFixture extends SikuliCommandProcessor{
 		return true;
 	}
 	public boolean drop(String imgOrText) throws IOException, AWTException {
-		DisplayTextRunnable statusDtr = statusText("drop " + imgOrText);
+		StatusWindow statusDtr = statusText("drop " + imgOrText);
 		target1=fuzzyTarget(imgOrText);
 		target1.setMinScore(matching);
 		screenRegion1 = currentRegion().find(target1);
 		if (screenRegion1==null){
-			statusDtr.stop();
+			statusDtr.dispose();
 			LOG.error("Cannot find object: " + target1);
 			return false;
 		}
 		else {
 			mouse.drop(screenRegion1.getCenter().getRelativeScreenLocation(xOffSet, yOffSet));
 			LOG.info("Drop performed on " + target1);
-			statusDtr.stop();
+			statusDtr.dispose();
 			return true;
 		}
 	}
 
 	public boolean drag(String imgOrText) throws IOException, AWTException {
-		DisplayTextRunnable statusDtr = statusText("drop " + imgOrText);
+		StatusWindow statusDtr = statusText("drop " + imgOrText);
 		refreshDesktopMouseScreen();
 		target1=fuzzyTarget(imgOrText);
 		target1.setMinScore(matching);
 		screenRegion1 = currentRegion().find(target1);
 		if (screenRegion1==null){
-			statusDtr.stop();
+			statusDtr.dispose();
 			LOG.error("Cannot find object: " + target1);
 			return false;
 		}
 		else {
 			mouse.drag(screenRegion1.getCenter().getRelativeScreenLocation(xOffSet, yOffSet));
 			LOG.info("Drag performed on " + target1);
-			statusDtr.stop();
+			statusDtr.dispose();
 			return true;
 		}
 	}
 
 	public boolean dragDrop(String imgOrText, String imgOrText2) throws IOException, AWTException{
-		DisplayTextRunnable statusDtr = statusText("dragDrop " + imgOrText + ", " + imgOrText2);
+		StatusWindow statusDtr = statusText("dragDrop " + imgOrText + ", " + imgOrText2);
 		refreshDesktopMouseScreen();
 		target1=fuzzyTarget(imgOrText);
 		target1.setMinScore(matching);
@@ -429,7 +380,7 @@ public class SikuliDriverFixture extends SikuliCommandProcessor{
 		screenRegion2 = currentRegion().find(target2);
 		if (screenRegion1==null || screenRegion2==null){
 			LOG.error("Cannot find either object: " + target1 + " or " + target2);
-			statusDtr.stop();
+			statusDtr.dispose();
 			return false;
 		}
 		else {
@@ -437,7 +388,7 @@ public class SikuliDriverFixture extends SikuliCommandProcessor{
 			mouse.drag(screenRegion1.getCenter());
 			mouse.drop(screenRegion2.getCenter());
 			LOG.info("Drag and Drop performed on " + target1 + " " + target2);
-			statusDtr.stop();
+			statusDtr.dispose();
 			return true;
 		}
 	}
@@ -466,12 +417,12 @@ public class SikuliDriverFixture extends SikuliCommandProcessor{
 	}
 
 	public boolean wait(String imgOrText)  {
-		DisplayTextRunnable statusDtr = statusText("wait (" + waitTimeMs + " ms) " + imgOrText);
+		StatusWindow statusDtr = statusText("wait (" + waitTimeMs + " ms) " + imgOrText);
 		refreshDesktopMouseScreen();
 		target1=fuzzyTarget(imgOrText);
 		target1.setMinScore(matching);
 		boolean result = maybeAddNewMatch(currentRegion().wait(target1,waitTimeMs));
-		statusDtr.stop();
+		statusDtr.dispose();
 		return result;
 	}
 	
@@ -582,7 +533,7 @@ public class SikuliDriverFixture extends SikuliCommandProcessor{
 
 
 	public boolean clickOr(String imgOrText1, String imgOrText2) throws IOException, AWTException{
-		DisplayTextRunnable statusDtr = statusText("clickOr " + imgOrText1 + ", " + imgOrText2);
+		StatusWindow statusDtr = statusText("clickOr " + imgOrText1 + ", " + imgOrText2);
 		refreshDesktopMouseScreen();
 		target1=fuzzyTarget(imgOrText1);
 		target1.setMinScore(matching);
@@ -592,27 +543,27 @@ public class SikuliDriverFixture extends SikuliCommandProcessor{
 		screenRegion2 = currentRegion().find(target2);
 		if (screenRegion1==null && screenRegion2==null){
 			LOG.error("Cannot find object: " + target1 + " or " + target2);
-			statusDtr.stop();
+			statusDtr.dispose();
 			return false;
 		}
 		else if(screenRegion1!=null && screenRegion2==null){
 			mouse.click(screenRegion1.getCenter().getRelativeScreenLocation(xOffSet, yOffSet));
 			LOG.info("Clicked on: " + target1);
-			statusDtr.stop();
+			statusDtr.dispose();
 			return true;
 		}
 		
 		else if(screenRegion2!=null && screenRegion1==null){
 			mouse.click(screenRegion2.getCenter().getRelativeScreenLocation(xOffSet, yOffSet));
 			LOG.info("Clicked on: " + target2);
-			statusDtr.stop();
+			statusDtr.dispose();
 			return true;
 		}
 		else {
 			mouse.click(screenRegion1.getCenter().getRelativeScreenLocation(xOffSet, yOffSet));
 			mouse.click(screenRegion2.getCenter().getRelativeScreenLocation(xOffSet, yOffSet));
 			LOG.info("Click performed on " + target1 + " and " + target2);
-			statusDtr.stop();
+			statusDtr.dispose();
 			return true;
 		}
 	}
@@ -680,10 +631,10 @@ public class SikuliDriverFixture extends SikuliCommandProcessor{
 	}
 	
 	public void delay(int delayMilliSec) {
-		DisplayTextRunnable statusDtr = statusText("delay " + delayMilliSec);
+		StatusWindow statusDtr = statusText("delay " + delayMilliSec);
 		LOG.info("Delaying for " + delayMilliSec + " milliseconds");
 		try { Thread.sleep(delayMilliSec); } catch ( Exception e) { e.printStackTrace(); }
-		statusDtr.stop();
+		statusDtr.dispose();
 	}
 	
 	
@@ -742,7 +693,7 @@ public class SikuliDriverFixture extends SikuliCommandProcessor{
 	}
 		
 	public boolean whileIsHiddenThenClick(String hiddenImg, String imgOrText2) {
-		DisplayTextRunnable statusDtr = statusText("whileIsHiddenThenClick (wait " + waitTimeMs +"ms) " + hiddenImg + "," + imgOrText2);
+		StatusWindow statusDtr = statusText("whileIsHiddenThenClick (wait " + waitTimeMs +"ms) " + hiddenImg + "," + imgOrText2);
 		boolean sf = this.showStatusText;//only show one status while this is running
 		this.showStatusText = false;
 		while (wait(hiddenImg) == false) {
@@ -753,12 +704,12 @@ public class SikuliDriverFixture extends SikuliCommandProcessor{
 				break;
 		}
 		this.showStatusText = sf;
-		statusDtr.stop();
+		statusDtr.dispose();
 		return true;
 	}
 	
 	public boolean whileIsHiddenThenKeypress(String hiddenImg, String imgOrText2) {
-		DisplayTextRunnable statusDtr = statusText("whileIsHiddenThenKeypress (wait " + waitTimeMs +"ms) " + hiddenImg + "," + imgOrText2);
+		StatusWindow statusDtr = statusText("whileIsHiddenThenKeypress (wait " + waitTimeMs +"ms) " + hiddenImg + "," + imgOrText2);
 		boolean sf = this.showStatusText;//only show one status while this is running
 		this.showStatusText = false;
 		while (wait(hiddenImg) == false) {
@@ -770,7 +721,7 @@ public class SikuliDriverFixture extends SikuliCommandProcessor{
 			//LOG.info("fitnesse.responders.SikuliResponder.isShutdownPressed(): " + fitnesse.responders.SikuliResponder.isShutdownPressed());
 		}
 		this.showStatusText = sf;
-		statusDtr.stop();
+		statusDtr.dispose();
 		return true;
 	}
 	
@@ -998,8 +949,8 @@ public class SikuliDriverFixture extends SikuliCommandProcessor{
 		SikuliDriverFixture sik = new SikuliDriverFixture(false);
 		
 		System.out.println("screen size: " + sik.getScreenSize());
-		sik.displayTextFor("this is a test", 3);
-		//DisplayTextRunnable x = sik.displayText("This document explains how you can use a Canvas object to draw graphical elements on the screen in order to visualize the results of Sikuli's find operations.");
+		//sik.displayTextFor("this is a test", 3);
+		//StatusWindow x = sik.displayText("This document explains how you can use a Canvas object to draw graphical elements on the screen in order to visualize the results of Sikuli's find operations.");
 		//try {Thread.sleep(2000);} catch (Exception e) {e.printStackTrace();}
 		//System.out.println("stopping.");
 		//x.stop();

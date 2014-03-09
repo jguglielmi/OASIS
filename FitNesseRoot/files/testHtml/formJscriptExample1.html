@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<script>
+function fillEmail()
+{
+  //alert('test');
+  var e=document.getElementById("email");  
+  e.value = "test@test.net";
+}
+function fillPhone()
+{
+  //alert('test');
+  var p=document.getElementById("pnumber");  
+  p.value = "410-555-5555";
+}
+function clearStuff()
+{
+  //alert('test');
+  var e=document.getElementById("email");  
+  var p=document.getElementById("pnumber");  
+  e.value = "";
+  p.value = "";
+}
+</script>
+</head>
+
+<body>
+
+<form name="testForm2" action="/" onsubmit="return validateForm()" method="post">
+  email address: <input type="text" id="email"><br />
+  phone number: <input type="text" id="pnumber"><br />
+  <input type="button" value="fill email" onClick="fillEmail();">
+  <input type="button" value="fill phone" onClick="fillPhone();">
+  <input type="button" value="clear" onClick="clearStuff();">
+  <br /> <a id="testLink2" href="formSubmitExample1.html">formSubmitExample1.html</a>
+</form>
+
+</body>
+
+</html>

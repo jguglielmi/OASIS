@@ -1,0 +1,21 @@
+!contents -R2 -g -p -f -h
+
+!define TEST_SYSTEM {slim} 
+!path build
+!path lib/ivy/*
+!path lib/mvn/*
+!path plugins/*
+
+| import | 
+| org.synthuse | 
+
+!| script | synthuse driver fixture | 
+| do | waitForVisible | on | //win[@class='Notepad'] | 
+| do | windowSwitchToThis | on | //win[@class='Notepad'] | 
+| do | pause | on | 1000  | 
+| do | sendKeys | on | this is a test! | 
+
+
+
+
+

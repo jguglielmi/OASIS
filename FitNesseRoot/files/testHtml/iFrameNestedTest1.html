@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<script>
+function fillCity()
+{
+  //alert('test');
+  var e=document.getElementById("city");  
+  e.value = "Aberdeen";
+}
+function fillCountry()
+{
+  //alert('test');
+  var p=document.getElementById("country");  
+  p.value = "USA";
+}
+function clearStuff()
+{
+  //alert('test');
+  var e=document.getElementById("city");  
+  var p=document.getElementById("country");  
+  e.value = "";
+  p.value = "";
+}
+</script>
+</head>
+
+<body>
+
+<div id="nestedDiv">
+<form name="testForm3" action="/" onsubmit="return validateForm()" method="post">
+  city: <input type="text" id="city"><br />
+  country: <input type="text" id="country"><br />
+  <input type="button" value="fill city" onClick="fillCity();">
+  <input type="button" value="fill country" onClick="fillCountry();">
+  <input type="button" value="clear" onClick="clearStuff();">
+</form>
+</div>
+
+<br />
+
+<iframe src="formJscriptExample1.html">
+  <p>Your browser does not support iframes.</p>
+</iframe>
+
+</body>
+
+</html>

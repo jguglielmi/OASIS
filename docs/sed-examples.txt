@@ -35,7 +35,6 @@ EXAMPLES:
 
 sed -i "s#\(<libs.location.\)[^<]*#\1%ROOTPATH%libs#g" pom.xml
 
-sed -i "s#\(<localRepository.\)[^<]*#\1%ROOTPATH%.m2/repository#g" %ROOTPATH%apache-maven\conf\settings.xml
 
 
 

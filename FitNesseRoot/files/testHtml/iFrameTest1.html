@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<script>
+function fillTop()
+{
+  //alert('test');
+  var e=document.getElementById("topTxt");  
+  e.value = "parent";
+}
+</script>
+</head>
+
+<body>
+
+  top name: <input type="text" id="topTxt"><br />
+  <input type="button" value="fill top" onClick="fillTop();"><br />
+
+<iframe src="formSubmitExample1.html">
+  <p>Your browser does not support iframes.</p>
+</iframe>
+<br />
+
+<iframe src="iFrameNestedTest1.html" width="500" height="500">
+  <p>Your browser does not support iframes.</p>
+</iframe>
+
+</body>
+</html>
