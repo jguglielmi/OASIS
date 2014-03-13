@@ -4,3 +4,4 @@ bin/
 build/
 lib/ivy/
 lib/mvn/
+dist/
