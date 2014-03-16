@@ -22,3 +22,4 @@
 | ensure | do | click | on | !-//input[@value='fill top']-! |
 | ensure | do | click | on | !-//input[@value='fill names']-! |
 | ensure | do | click | on | !-//input[@value='fill email']-! |
+| stop browser |
