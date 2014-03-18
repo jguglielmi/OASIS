@@ -5,6 +5,7 @@
 !path lib/ivy/*
 !path lib/mvn/*
 !path plugins/*
+!path fixtures/java
 
 | import | 
 | com.xebia.sikuli | 

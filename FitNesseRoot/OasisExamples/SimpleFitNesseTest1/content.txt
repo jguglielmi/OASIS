@@ -6,7 +6,7 @@
 !path lib/mvn/*
 !path plugins/*
 
-Simple Math FitNesse Fixture test
+Simple Math Fitnesse Fixture test
 
 !| script | eg.Division |
 | set numerator | 10 |

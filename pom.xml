@@ -1,303 +1,808 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
-  <groupId>org.thick</groupId>
-  <artifactId>thicknesse</artifactId>
-  <version>1.0</version>
-  <packaging>jar</packaging>
+	<parent>
+		<groupId>org.sonatype.oss</groupId>
+		<artifactId>oss-parent</artifactId>
+		<version>7</version>
+	</parent>
 
-  <name>ThickNesse</name>
-  <url></url>
-  
-  <properties>
-    <source.directory>fixtures/java</source.directory>
-    <source.test.directory>fixtures/test/java</source.test.directory>
-    <build.directory>build</build.directory>
-    <library.directory>lib</library.directory>
-    
-    <selenium.version>2.37.0</selenium.version>
-    <poi.version>3.10-FINAL</poi.version>
-  </properties>
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>org.oasis</groupId>
+	<artifactId>oasis</artifactId>
+	<version>1.0</version>
+	<packaging>jar</packaging>
 
-  <build>
-    <outputDirectory>build</outputDirectory>
-    <plugins>
-    
-      <plugin> <!-- this will copy all dependency jars to the lib directory -->
-        <artifactId>maven-dependency-plugin</artifactId>
-        <executions>
-          <execution>
-            <phase>compile</phase>
-            <goals>
-              <goal>copy-dependencies</goal>
-            </goals>
-            <configuration>
-              <outputDirectory>${library.directory}/mvn</outputDirectory>
-            </configuration>
-          </execution>
-        </executions>
-      </plugin>
-  
-      <plugin> <!-- this will compile and build fixture code -->
-        <artifactId>maven-antrun-plugin</artifactId>
-        <version>1.7</version>
-        <executions>
-          <execution>
-		    <id>compile</id>
-            <phase>compile</phase>
-            <configuration>
-              <target>
+	<name>OASIS</name>
+	<url>http://github.com/jguglielmi/OASIS</url>
 
-                <!--Place any Ant task here. You can add anything
-                  you can add between <target> and </target> in a
-                  build.xml.-->
-                <property name="source.directory" value="${source.directory}"/>
-                <property name="source.test.directory" value="${source.test.directory}"/>
-                <property name="library.directory" value="${library.directory}"/>
-                <property name="build.directory" value="${build.directory}"/>
-                <property name="build.compiler" value="extJavac"/>
+	<description>
+   Selenium, Sikuli, Synthuse, and JMeter Fixture.
+  </description>
 
-                <!-- Create the time stamp -->
-                <tstamp/>
-                <!-- Create the build directory structure used by compile -->
-                <mkdir dir="${build.directory}"/>
-                <mkdir dir="${library.directory}"/>
-                <mkdir dir="${library.directory}/mvn"/>
-                
-                <!-- Compile the java code from ${source.directory} into ${build.directory} -->
-                <echo message="*** compiling source ${source.directory} into ${build.directory}"/>
-                <javac srcdir="${source.directory}" destdir="${build.directory}" includeantruntime="false">
-                    <classpath>
-                      <pathelement path="${classpath}"/>
-                      <fileset dir="${library.directory}">
-                        <include name="**/*.jar"/>
-                      </fileset>
-                      <fileset dir="plugins">
-                        <include name="**/*.jar"/>
-                      </fileset>
-                    </classpath>
-                </javac>
+	<licenses>
+		<license>
+			<name>Apache License version 2.0</name>
+			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
 
-              </target>
-            </configuration>
-            <goals>
-              <goal>run</goal>
-            </goals>
-          </execution>
+	<properties>
+		<source.directory>fixtures/java</source.directory>
+		<source.test.directory>fixtures/test/java</source.test.directory>
+		<build.directory>build</build.directory>
+		<library.directory>lib</library.directory>
+		<fitnesse.port>8000</fitnesse.port>
+		<fitnesse.expiration>0</fitnesse.expiration>
+		<maven-classpath-plugin.version>1.7</maven-classpath-plugin.version>
+		<slf4j.version>1.6.4</slf4j.version>
+		<operadriver.version>1.1</operadriver.version>
+		<phantomjsdriver.version>1.0.3</phantomjsdriver.version>
+		<commons-lang.version>2.6</commons-lang.version>
+		<selenium.version>2.39.0</selenium.version>
+		<poi.version>3.10-FINAL</poi.version>
+		<ant.version>1.8.2</ant.version>
+		<bcp.version>1.48</bcp.version>
+		<jetty.version>8.1.12.v20130726</jetty.version>
+	</properties>
 
-          <execution>
-		    <id>test</id>
-            <phase>test</phase>
-            <configuration>
-              <target>
+	<scm>
+		<connection>scm:git:git://github.com/jguglielmi/OASIS.git</connection>
+		<developerConnection>scm:git:git://github.com/jguglielmi/OASIS.git</developerConnection>
+		<url>scm:git:git://github.com/jguglielmi/OASIS.git</url>
+	</scm>
 
-                <!--Place any Ant task here. You can add anything
-                  you can add between <target> and </target> in a
-                  build.xml.-->
-                <property name="source.directory" value="${source.directory}"/>
-                <property name="source.test.directory" value="${source.test.directory}"/>
-                <property name="library.directory" value="${library.directory}"/>
-                <property name="build.directory" value="${build.directory}"/>                  
-                <property name="build.compiler" value="extJavac"/>
+	<dependencies>
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-server</artifactId>
+			<version>${selenium.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-android-driver</artifactId>
+			<version>${selenium.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-chrome-driver</artifactId>
+			<version>${selenium.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-firefox-driver</artifactId>
+			<version>${selenium.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-api</artifactId>
+			<version>${selenium.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-htmlunit-driver</artifactId>
+			<version>${selenium.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-ie-driver</artifactId>
+			<version>${selenium.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-iphone-driver</artifactId>
+			<version>${selenium.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-safari-driver</artifactId>
+			<version>${selenium.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-support</artifactId>
+			<version>${selenium.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-remote-driver</artifactId>
+			<version>${selenium.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-java</artifactId>
+			<version>${selenium.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>${slf4j.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.opera</groupId>
+			<artifactId>operadriver</artifactId>
+			<version>${operadriver.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.github.detro.ghostdriver</groupId>
+			<artifactId>phantomjsdriver</artifactId>
+			<version>${phantomjsdriver.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-lang</groupId>
+			<artifactId>commons-lang</artifactId>
+			<version>${commons-lang.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>xalan</groupId>
+			<artifactId>serializer</artifactId>
+			<version>2.7.1</version>
+		</dependency>
 
-                <!-- Create the time stamp -->
-                <tstamp/>
-                <!-- Create the build directory structure used by compile -->
-                <mkdir dir="${build.directory}"/>
-                <mkdir dir="${library.directory}"/>
-                <mkdir dir="${library.directory}/mvn"/>
-                
-                <!-- Compile the java code from ${source.test.directory} into ${build.directory} -->
-                <echo message="*** compiling unit test source ${source.test.directory} into ${build.directory}"/>
-                <javac srcdir="${source.test.directory}" destdir="${build.directory}" includeantruntime="false">
-                    <classpath>
-					  <pathelement path="${build.directory}"/>
-                      <pathelement path="${classpath}"/>
-                      <fileset dir="${library.directory}">
-                        <include name="**/*.jar"/>
-                      </fileset>
-                      <fileset dir="plugins">
-                        <include name="**/*.jar"/>
-                      </fileset>
-                    </classpath>
-                </javac>
+		<!-- for some reason FitNesse appears to conflict with guava 15 from selenium -->
+		<dependency>
+			<groupId>com.google.guava</groupId>
+			<artifactId>guava</artifactId>
+			<version>14.0</version>
+		</dependency>
 
-				<!-- run junit test dump results into ${build}/unit_tests -->
-    <mkdir dir="${build.directory}/unit_tests" />
-    <junit forkmode="once" fork="yes" printsummary="yes" haltonfailure="no" haltonerror="no" dir="${basedir}">
-                    <classpath>
-					  <pathelement path="${build.directory}"/>
-                      <pathelement path="${classpath}"/>
-                      <fileset dir="${library.directory}">
-                        <include name="**/*.jar"/>
-                      </fileset>
-                      <fileset dir="plugins">
-                        <include name="**/*.jar"/>
-                      </fileset>
-                    </classpath>
-      <formatter type="xml" usefile="true" />
-      <formatter type="plain" usefile="false" />
-      <batchtest todir="${build.directory}/unit_tests">
-        <fileset dir="${source.test.directory}"><include name="**/*.java" /></fileset>
-      </batchtest>
-    </junit>
+		<!-- runtime dependencies -->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-simple</artifactId>
+			<version>${slf4j.version}</version>
+			<scope>runtime</scope>
+		</dependency>
 
-              </target>
-            </configuration>
-            <goals>
-              <goal>run</goal>
-            </goals>
-          </execution>
+		<!-- test dependencies -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.5</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>rhino</groupId>
+			<artifactId>js</artifactId>
+			<version>1.7R1</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-all</artifactId>
+			<version>1.8.5</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.hamcrest</groupId>
+			<artifactId>hamcrest-all</artifactId>
+			<version>1.1</version>
+			<scope>test</scope>
+		</dependency>
 
-        </executions>
-      </plugin>
-      
-      <plugin>
-        <artifactId>maven-clean-plugin</artifactId>
-        <version>2.5</version>
-        <executions>
-          <execution>
-            <id>auto-clean</id>
-            <phase>compile</phase>
-            <goals>
-              <goal>clean</goal>
-            </goals>
-            <configuration>
-             <excludeDefaultDirectories>true</excludeDefaultDirectories>
-             <filesets>
-                <fileset>
-                  <directory>target</directory>
-                </fileset>
-              </filesets>
-            </configuration>
-          </execution>
-        </executions>
-      </plugin> 
-	  
-    </plugins>
-  </build>
-  
-  <!-- list of all dependencies needed -->
-  <dependencies>
-      <dependency>
-      <groupId>org.apache.poi</groupId>
-      <artifactId>poi-scratchpad</artifactId>
-      <version>${poi.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>org.apache.poi</groupId>
-      <artifactId>poi-ooxml-schemas</artifactId>
-      <version>${poi.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>org.apache.poi</groupId>
-      <artifactId>poi-ooxml</artifactId>
-      <version>${poi.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>org.apache.poi</groupId>
-      <artifactId>poi-excelant</artifactId>
-      <version>${poi.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>org.apache.poi</groupId>
-      <artifactId>poi-examples</artifactId>
-      <version>${poi.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>org.apache.poi</groupId>
-      <artifactId>poi</artifactId>
-      <version>${poi.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>commons-lang</groupId>
-      <artifactId>commons-lang</artifactId>
-      <version>2.6</version>
-    </dependency>
-    <dependency>
-      <groupId>org.slf4j</groupId>
-      <artifactId>slf4j-api</artifactId>
-      <version>1.6.4</version>
-    </dependency>
-      <dependency>
-       <groupId>com.jcraft</groupId>
-       <artifactId>jsch</artifactId>
-       <version>0.1.48</version>
-     </dependency>
-    <dependency>
-      <groupId>net.java.dev.jna</groupId>
-      <artifactId>jna</artifactId>
-      <version>3.4.0</version>
-    </dependency>
-    <dependency>
-      <groupId>org.seleniumhq.selenium</groupId>
-      <artifactId>selenium-server</artifactId>
-      <version>${selenium.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>org.seleniumhq.selenium</groupId>
-      <artifactId>selenium-api</artifactId>
-      <version>${selenium.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>org.seleniumhq.selenium</groupId>
-      <artifactId>selenium-remote-driver</artifactId>
-      <version>${selenium.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>org.seleniumhq.selenium</groupId>
-      <artifactId>selenium-java</artifactId>
-      <version>${selenium.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>com.opera</groupId>
-      <artifactId>operadriver</artifactId>
-      <version>1.1</version>
-    </dependency>
-    <dependency>
-      <groupId>com.github.detro.ghostdriver</groupId>
-      <artifactId>phantomjsdriver</artifactId>
-      <version>1.0.3</version>
-    </dependency>
-	<dependency>
-	  <groupId>org.apache.httpcomponents</groupId>
-	  <artifactId>httpclient</artifactId>
-	  <version>4.3.1</version>
-    </dependency>
-    <dependency>
-      <groupId>org.sikuli</groupId>
-      <artifactId>sikuli-slides-api</artifactId>
-      <version>1.4.0</version>
-    </dependency>
-    
-    <!-- unit test dependencies -->
-    
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>4.5</version>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>rhino</groupId>
-      <artifactId>js</artifactId>
-      <version>1.7R1</version>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.mockito</groupId>
-      <artifactId>mockito-all</artifactId>
-      <version>1.8.5</version>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.hamcrest</groupId>
-      <artifactId>hamcrest-all</artifactId>
-      <version>1.1</version>
-      <scope>test</scope>
-    </dependency>
 
-    
-  </dependencies>
+		<!-- additional dependencies and plugins -->
+		<dependency>
+			<groupId>org.hamcrest</groupId>
+			<artifactId>hamcrest-all</artifactId>
+			<version>1.1</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi-scratchpad</artifactId>
+			<version>${poi.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi-ooxml-schemas</artifactId>
+			<version>${poi.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi-ooxml</artifactId>
+			<version>${poi.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi-excelant</artifactId>
+			<version>${poi.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi-examples</artifactId>
+			<version>${poi.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi</artifactId>
+			<version>${poi.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.jcraft</groupId>
+			<artifactId>jsch</artifactId>
+			<version>0.1.48</version>
+		</dependency>
+		<dependency>
+			<groupId>net.java.dev.jna</groupId>
+			<artifactId>jna</artifactId>
+			<version>3.4.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.fitnesse</groupId>
+			<artifactId>fitnesse.standalone</artifactId>
+			<version>1.0</version>
+			<scope>system</scope>
+			<systemPath>${basedir}/fitnesse-standalone.jar</systemPath>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.jmeter</groupId>
+			<artifactId>JmeterBundle</artifactId>
+			<version>1.0</version>
+			<scope>system</scope>
+			<systemPath>${basedir}/lib/JmeterBundle.jar</systemPath>
+		</dependency>
+		<dependency>
+			<groupId>org.qedsys</groupId>
+			<artifactId>sqljdbc</artifactId>
+			<version>4.0</version>
+			<scope>system</scope>
+			<systemPath>${basedir}/lib/sqljdbc4.jar</systemPath>
+		</dependency>
+		<dependency>
+			<groupId>org.sikuli</groupId>
+			<artifactId>sikuli-java</artifactId>
+			<version>1.0</version>
+			<scope>system</scope>
+			<systemPath>${basedir}/plugins/sikuli-java.jar</systemPath>
+		</dependency>
+		<dependency>
+			<groupId>org.synthuse</groupId>
+			<artifactId>synthuse</artifactId>
+			<version>1.0</version>
+			<scope>system</scope>
+			<systemPath>${basedir}/plugins/synthuse.jar</systemPath>
+		</dependency>
+		<dependency>
+			<groupId>org.oasis</groupId>
+			<artifactId>oasisplugin</artifactId>
+			<version>1.0</version>
+			<scope>system</scope>
+			<systemPath>${basedir}/plugins/oasisplugin.jar</systemPath>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.ant</groupId>
+			<artifactId>ant</artifactId>
+			<version>${ant.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.ant</groupId>
+			<artifactId>ant-launcher</artifactId>
+			<version>${ant.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.bouncycastle</groupId>
+			<artifactId>bcpkix-jdk15on</artifactId>
+			<version>${bcp.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.bouncycastle</groupId>
+			<artifactId>bcprov-jdk15on</artifactId>
+			<version>${bcp.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>cglib</groupId>
+			<artifactId>cglib-nodep</artifactId>
+			<version>3.1</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-codec</groupId>
+			<artifactId>commons-codec</artifactId>
+			<version>1.5</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-collections</groupId>
+			<artifactId>commons-collections</artifactId>
+			<version>3.2.1</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-jxpath</groupId>
+			<artifactId>commons-jxpath</artifactId>
+			<version>1.3</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>2.2</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-lang</groupId>
+			<artifactId>commons-lang</artifactId>
+			<version>2.6</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>3.1</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-logging</groupId>
+			<artifactId>commons-logging</artifactId>
+			<version>1.1.3</version>
+		</dependency>
+		<dependency>
+			<groupId>net.sourceforge.cssparser</groupId>
+			<artifactId>cssparser</artifactId>
+			<version>0.9.11</version>
+		</dependency>
+		<dependency>
+			<groupId>dom4j</groupId>
+			<artifactId>dom4j</artifactId>
+			<version>1.6.1</version>
+		</dependency>
+		<dependency>
+			<groupId>net.sourceforge.htmlunit</groupId>
+			<artifactId>htmlunit</artifactId>
+			<version>2.13</version>
+		</dependency>
+		<dependency>
+			<groupId>net.sourceforge.htmlunit</groupId>
+			<artifactId>htmlunit-core-js</artifactId>
+			<version>2.13</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpcore</artifactId>
+			<version>4.3</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpmime</artifactId>
+			<version>4.3.1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.ini4j</groupId>
+			<artifactId>ini4j</artifactId>
+			<version>0.5.2</version>
+		</dependency>
+		<dependency>
+			<groupId>net.jcip</groupId>
+			<artifactId>jcip-annotations</artifactId>
+			<version>1.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.jetty</groupId>
+			<artifactId>jetty-http</artifactId>
+			<version>${jetty.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.jetty</groupId>
+			<artifactId>jetty-io</artifactId>
+			<version>${jetty.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>jetty-repacked</artifactId>
+			<version>7.6.1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.jetty</groupId>
+			<artifactId>jetty-util</artifactId>
+			<version>${jetty.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.jetty</groupId>
+			<artifactId>jetty-websocket</artifactId>
+			<version>${jetty.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.mortbay.jetty</groupId>
+			<artifactId>servlet-api-2.5</artifactId>
+			<version>6.1.9</version>
+		</dependency>
+		<dependency>
+			<groupId>org.json</groupId>
+			<artifactId>json</artifactId>
+			<version>20080701</version>
+		</dependency>
+		<dependency>
+			<groupId>mx4j</groupId>
+			<artifactId>mx4j-tools</artifactId>
+			<version>3.0.1</version>
+		</dependency>
+		<dependency>
+			<groupId>net.sourceforge.nekohtml</groupId>
+			<artifactId>nekohtml</artifactId>
+			<version>1.9.19</version>
+		</dependency>
+		<dependency>
+			<groupId>io.netty</groupId>
+			<artifactId>netty</artifactId>
+			<version>3.5.2.Final</version>
+		</dependency>
+		<dependency>
+			<groupId>net.java.dev.jna</groupId>
+			<artifactId>platform</artifactId>
+			<version>3.4.0</version>
+		</dependency>
+		<dependency>
+			<groupId>com.google.protobuf</groupId>
+			<artifactId>protobuf-java</artifactId>
+			<version>2.4.1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.w3c.css</groupId>
+			<artifactId>sac</artifactId>
+			<version>1.3</version>
+		</dependency>
+		<dependency>
+			<groupId>org.w3c.css</groupId>
+			<artifactId>sac</artifactId>
+			<version>1.3</version>
+		</dependency>
+		<dependency>
+			<groupId>org.yaml</groupId>
+			<artifactId>snakeyaml</artifactId>
+			<version>1.8</version>
+		</dependency>
+		<dependency>
+			<groupId>stax</groupId>
+			<artifactId>stax-api</artifactId>
+			<version>1.0.1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.webbitserver</groupId>
+			<artifactId>webbit</artifactId>
+			<version>0.4.14</version>
+		</dependency>
+		<dependency>
+			<groupId>xalan</groupId>
+			<artifactId>xalan</artifactId>
+			<version>2.7.1</version>
+		</dependency>
+		<dependency>
+			<groupId>xerces</groupId>
+			<artifactId>xercesImpl</artifactId>
+			<version>2.11.0</version>
+		</dependency>
+		<dependency>
+			<groupId>xml-apis</groupId>
+			<artifactId>xml-apis</artifactId>
+			<version>1.0.b2</version>
+		</dependency>
+		<dependency>
+			<groupId>xmlbeans</groupId>
+			<artifactId>xmlbeans</artifactId>
+			<version>2.3.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi-scratchpad</artifactId>
+			<version>${poi.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi-ooxml-schemas</artifactId>
+			<version>${poi.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi-ooxml</artifactId>
+			<version>${poi.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi-excelant</artifactId>
+			<version>${poi.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi-examples</artifactId>
+			<version>${poi.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi</artifactId>
+			<version>${poi.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>1.6.4</version>
+		</dependency>
+		<dependency>
+			<groupId>com.jcraft</groupId>
+			<artifactId>jsch</artifactId>
+			<version>0.1.48</version>
+		</dependency>
+		<dependency>
+			<groupId>net.java.dev.jna</groupId>
+			<artifactId>jna</artifactId>
+			<version>3.4.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-server</artifactId>
+			<version>${selenium.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-api</artifactId>
+			<version>${selenium.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-remote-driver</artifactId>
+			<version>${selenium.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-java</artifactId>
+			<version>${selenium.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.opera</groupId>
+			<artifactId>operadriver</artifactId>
+			<version>1.1</version>
+		</dependency>
+		<dependency>
+			<groupId>com.opera</groupId>
+			<artifactId>operalaunchers</artifactId>
+			<version>1.1</version>
+		</dependency>
+		<dependency>
+			<groupId>com.github.detro.ghostdriver</groupId>
+			<artifactId>phantomjsdriver</artifactId>
+			<version>1.0.3</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpclient</artifactId>
+			<version>4.3.1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.sikuli</groupId>
+			<artifactId>sikuli-slides-api</artifactId>
+			<version>1.4.0</version>
+		</dependency>
+
+		<!-- unit test dependencies -->
+
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.5</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>rhino</groupId>
+			<artifactId>js</artifactId>
+			<version>1.7R1</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-all</artifactId>
+			<version>1.8.5</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.hamcrest</groupId>
+			<artifactId>hamcrest-all</artifactId>
+			<version>1.1</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+
+
+	<build>
+		<outputDirectory>build</outputDirectory>
+		<extensions>
+			<extension>
+				<groupId>org.apache.maven.wagon</groupId>
+				<artifactId>wagon-ssh</artifactId>
+				<version>1.0-beta-7</version>
+			</extension>
+		</extensions>
+
+
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.3.2</version>
+				<configuration>
+					<source>1.5</source>
+					<target>1.5</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-release-plugin</artifactId>
+				<version>2.1</version>
+				<configuration>
+					<pushChanges>false</pushChanges>
+					<preparationGoals>clean package</preparationGoals>
+					<localCheckout>true</localCheckout>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+	<profiles>
+		<profile>
+			<id>jar-with-dependencies</id>
+			<build>
+				<plugins>
+					<plugin>
+						<artifactId>maven-assembly-plugin</artifactId>
+						<version>2.2.1</version>
+						<configuration>
+							<descriptorRefs>
+								<descriptorRef>jar-with-dependencies</descriptorRef>
+							</descriptorRefs>
+						</configuration>
+						<executions>
+							<execution>
+								<id>make-jar</id>
+								<phase>package</phase>
+								<goals>
+									<goal>single</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+
+		<profile>
+			<id>ide</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<build>
+				<plugins>
+					<plugin>
+						<artifactId>maven-assembly-plugin</artifactId>
+						<version>2.2.1</version>
+						<configuration>
+							<descriptors>
+								<descriptor>src/assemble/ide.xml</descriptor>
+							</descriptors>
+						</configuration>
+						<executions>
+							<execution>
+								<id>make-jar</id>
+								<phase>package</phase>
+								<goals>
+									<goal>single</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+
+		<profile>
+			<id>fitnesse</id>
+			<build>
+				<plugins>
+					<plugin>
+						<artifactId>maven-antrun-plugin</artifactId>
+						<version>1.6</version>
+						<executions>
+							<execution>
+								<id>start-fitnesse</id>
+								<phase>test</phase>
+								<configuration>
+									<tasks>
+										<echo taskname="fitnesse"
+											message="Starting FitNesse... (Selenium ${selenium.version})" />
+										<echo taskname="responders"
+											message="Registering responders..." />
+										<property file="saucelabs.properties" />
+										<!-- "Sensible" defaults -->
+										<property name="sauce.user"
+											value="[provide user through saucelabs.properties]" />
+										<property name="sauce.accesskey"
+											value="[provide accesskey through saucelabs.properties]" />
+										<java jar="fitnesse-standalone.jar" classpathref="maven.runtime.classpath"
+											fork="true">
+											<arg line="-p ${fitnesse.port}" />
+											<arg line="-o" />
+											<arg line="-d ." />
+											<arg line="-e ${fitnesse.expiration}" />
+											<jvmarg value="-DBROWSER=firefox" />
+											<jvmarg value="-Dsauce.user=${sauce.user}" />
+											<jvmarg value="-Dsauce.accesskey=${sauce.accesskey}" />
+										</java>
+									</tasks>
+								</configuration>
+								<goals>
+									<goal>run</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+			<dependencies>
+				<dependency>
+					<groupId>org.fitnesse.plugins</groupId>
+					<artifactId>maven-classpath-plugin</artifactId>
+					<version>${maven-classpath-plugin.version}</version>
+					<scope>runtime</scope>
+				</dependency>
+			</dependencies>
+		</profile>
+
+		<profile>
+			<id>fitnesse-integration</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<build>
+				<plugins>
+					<plugin>
+						<artifactId>maven-antrun-plugin</artifactId>
+						<version>1.6</version>
+						<executions>
+							<execution>
+								<id>start-fitnesse-integration</id>
+								<phase>integration-test</phase>
+								<configuration>
+									<tasks>
+										<echo taskname="fitnesse" message="Starting FitNesse..." />
+										<java jar="fitnesse-standalone.jar" fork="true"
+											failonerror="true" maxmemory="1g">
+											<arg line="-p 8001" />
+											<arg
+												line="-c ProjectXebium?suite&amp;format=text&amp;excludeSuiteFilter=NotOnPhantomJS" />
+											<arg line="-d ." />
+											<jvmarg value="-DBROWSER=phantomjs" />
+										</java>
+									</tasks>
+								</configuration>
+								<goals>
+									<goal>run</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+			<dependencies>
+				<dependency>
+					<groupId>org.fitnesse.plugins</groupId>
+					<artifactId>maven-classpath-plugin</artifactId>
+					<version>${maven-classpath-plugin.version}</version>
+					<scope>runtime</scope>
+				</dependency>
+			</dependencies>
+		</profile>
+	</profiles>
+
+	<issueManagement>
+		<system>GitHub</system>
+		<url>https://github.com/jguglielmi/OASIS/issues</url>
+	</issueManagement>
+
+	<developers>
+		<developer>
+			<id>jguglielmi</id>
+			<email>jlgugli@gmail.com</email>
+			<name>Jaison Guglielmi</name>
+			<organization>NA</organization>
+		</developer>
+		<developer>
+			<id>ejakubowski</id>
+			<email>ejakubowski7@gmail.com</email>
+			<name>Ed Jakubowski</name>
+			<organization>NA</organization>
+		</developer>
+	</developers>
 </project>
