@@ -142,7 +142,28 @@
     <waitfor maxwait="80" maxwaitunit="second">
       <socket server="localhost" port="${fitnesse_port}"/>
     </waitfor>
-	<sleep seconds="1"/>
+    <sleep seconds="1"/>
   </target>
   
+  <!-- to execute a FitNesse test run this target and set fitnesse_test property like the following:
+  ant fitnesse_test -Dfitnesse_test=OasisExamples.SimpleSeleniumTest1
+  or
+  ant fitnesse_test -Dfitnesse_test=OasisExamples.SimpleFitNesseTest1
+  -->
+  <target name="fitnesse_test" depends="port_wait" description="wait for FitNesse and execute test" >
+    <echo message="Running FitNesse test ${fitnesse_test}"/>
+    <loadresource property="results_name">
+      <propertyresource name="fitnesse_test"/>
+      <filterchain>
+        <tokenfilter>
+          <filetokenizer/>
+          <replacestring from="/" to="_"/>
+          <replacestring from="." to="_"/>
+        </tokenfilter>
+      </filterchain>
+    </loadresource>
+
+    <get dest="TestResult-${results_name}.xml" src="http://localhost:${fitnesse_port}/${fitnesse_test}?test&amp;format=xml&amp;includehtml"/>
+  </target>
+
 </project>
