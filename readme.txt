@@ -15,4 +15,4 @@ OASIS pulls from the open source tools:
 For examples of how to use OASIS, please visit the wiki page Youtube videos.
 
 
-To start using Oasis simply run the "run-ant.bat" file.
+To start using Oasis simply run the "run-ant.bat" or the "run-mvn.bat" file.

@@ -86,8 +86,6 @@
 	<classpathentry kind="lib" path="lib/ivy/hamcrest-core-1.3.jar"/>
 	<classpathentry kind="lib" path="lib/ivy/htmlunit-2.13.jar"/>
 	<classpathentry kind="lib" path="lib/ivy/htmlunit-core-js-2.13.jar"/>
-	<classpathentry kind="lib" path="lib/ivy/httpclient-4.3.jar"/>
-	<classpathentry kind="lib" path="lib/ivy/httpcore-4.2.1.jar"/>
 	<classpathentry kind="lib" path="lib/ivy/httpmime-4.3.1.jar"/>
 	<classpathentry kind="lib" path="lib/ivy/ini4j-0.5.2.jar"/>
 	<classpathentry kind="lib" path="lib/ivy/jcip-annotations-1.0.jar"/>
@@ -151,6 +149,22 @@
 	<classpathentry kind="lib" path="plugins/oasisplugin.jar"/>
 	<classpathentry kind="lib" path="plugins/sikuli-java.jar"/>
 	<classpathentry kind="lib" path="plugins/synthuse.jar"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="output" path="bin"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/J2SE-1.5">
+		<attributes>
+			<attribute name="maven.pomderived" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="con" path="org.eclipse.m2e.MAVEN2_CLASSPATH_CONTAINER">
+		<attributes>
+			<attribute name="maven.pomderived" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry excluding="**" kind="src" output="target/test-classes" path="src/test/resources">
+		<attributes>
+			<attribute name="maven.pomderived" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/Jaison&apos;s/workspace/OASIS/lib/ivy/httpclient-4.3.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Jaison&apos;s/workspace/OASIS/lib/ivy/httpcore-4.3.jar"/>
+	<classpathentry kind="output" path="build"/>
 </classpath>
