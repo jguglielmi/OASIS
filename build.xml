@@ -136,4 +136,13 @@
     <delete dir="${dist}"/>
 	<!-- <delete dir="${lib}"/> -->
   </target>
+
+  <target name="port_wait" description="wait for FitNesse port to be accessible" >
+    <echo message="Waiting a maximum of 80 seconds for port ${fitnesse_port}"/>
+    <waitfor maxwait="80" maxwaitunit="second">
+      <socket server="localhost" port="${fitnesse_port}"/>
+    </waitfor>
+	<sleep seconds="1"/>
+  </target>
+  
 </project>
