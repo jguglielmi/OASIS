@@ -166,4 +166,17 @@
     <get dest="TestResult-${results_name}.xml" src="http://localhost:${fitnesse_port}/${fitnesse_test}?test&amp;format=xml&amp;includehtml"/>
   </target>
 
+  <target name="shutdown" description="shutdown fitnesse and browser" >
+    <get dest="out.tmp" src="http://localhost:${fitnesse_port}/?sik&amp;shutdown" ignoreerrors="true"/>
+    <exec executable="taskkill" osfamily="winnt">
+      <arg value="/F"/>
+      <arg value="/IM"/>
+      <arg value="firefox.exe"/>
+    </exec>
+    <exec executable="bash" osfamily="unix">
+      <arg value="-c"/>
+      <arg line='"kill $(ps aux | grep firefox | grep -v grep | awk &apos;{print $2}&apos;)"'/>
+    </exec>
+  </target>
+
 </project>
