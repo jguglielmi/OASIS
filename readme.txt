@@ -1,5 +1,5 @@
 OASIS
-(Open Agile Source Integrated Suite)
+(Open Automated Source Integrated Suite)
 
 OASIS is an open source, Java based, and platform independent FitNesse plugin that allows testers and developers the ability to automate tests using a variety of different tools quickly and with ease. Built around the Xebium framework, OASIS seeks to increase the capabilities of testing by adding in thick client and load testing support.
 

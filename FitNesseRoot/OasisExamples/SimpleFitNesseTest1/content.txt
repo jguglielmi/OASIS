@@ -5,6 +5,7 @@
 !path lib/ivy/*
 !path lib/mvn/*
 !path plugins/*
+!path fixtures/java
 
 Simple Math Fitnesse Fixture test
 

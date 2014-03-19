@@ -166,5 +166,17 @@
 	</classpathentry>
 	<classpathentry kind="lib" path="C:/Users/Jaison&apos;s/workspace/OASIS/lib/ivy/httpclient-4.3.1.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Jaison&apos;s/workspace/OASIS/lib/ivy/httpcore-4.3.jar"/>
+	<classpathentry kind="src" output="build" path="src/main/java">
+		<attributes>
+			<attribute name="optional" value="true"/>
+			<attribute name="maven.pomderived" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="src" output="target/test-classes" path="src/test/java">
+		<attributes>
+			<attribute name="optional" value="true"/>
+			<attribute name="maven.pomderived" value="true"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="output" path="build"/>
 </classpath>
