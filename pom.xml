@@ -1,4 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi=
+"http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
 	<parent>
@@ -165,7 +166,8 @@
 			<artifactId>JMeterBundle</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 			<scope>runtime</scope>
-		</dependency>		<dependency>
+		</dependency>	
+		<dependency>
 			<groupId>sqljdbc4</groupId>
 			<artifactId>sqljdbc4</artifactId>
 			<version>1.0</version>
@@ -175,7 +177,8 @@
 			<artifactId>synthuse</artifactId>
 			<version>1.0</version>
 			<scope>runtime</scope>
-		</dependency>		<dependency>
+		</dependency>		
+		<dependency>
 			<groupId>org.sikuli</groupId>
 			<artifactId>sikuli-java</artifactId>
 			<version>1.0</version>
@@ -570,7 +573,8 @@
 								<configuration>
 									<tasks>
 										<echo taskname="fitnesse"
-											message="Starting FitNesse... (Selenium ${selenium.version})" />
+											message="Starting FitNesse... (Selenium 
+${selenium.version})" />
 										<echo taskname="responders"
 											message="Registering responders..." />
 										<property file="saucelabs.properties" />
@@ -579,7 +583,8 @@
 											value="[provide user through saucelabs.properties]" />
 										<property name="sauce.accesskey"
 											value="[provide accesskey through saucelabs.properties]" />
-										<java jar="fitnesse-standalone.jar" classpathref="maven.runtime.classpath"
+										<java jar="fitnesse-standalone.jar" classpathref=
+"maven.runtime.classpath"
 											fork="true">
 											<arg line="-p ${fitnesse.port}" />
 											<arg line="-o" />
@@ -630,7 +635,9 @@
 											failonerror="true" maxmemory="1g">
 											<arg line="-p 8001" />
 											<arg
-												line="-c ProjectXebium?suite&amp;format=text&amp;excludeSuiteFilter=NotOnPhantomJS" />
+												line="-c 
+ProjectXebium?suite&amp;format=text&amp;excludeSuiteFil
+ter=NotOnPhantomJS" />
 											<arg line="-d ." />
 											<jvmarg value="-DBROWSER=phantomjs" />
 										</java>

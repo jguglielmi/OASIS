@@ -13,7 +13,7 @@
 | com.xebia.sikuli | 
 
 | script | sikuli driver fixture | 
-| click | !-<img src="OasisExamples?sik&img=startButton.png" />-! |
+| click | !-<img src="SimpleSikuliTest1?sik&img=startButton.png" />-! |
 | delay | 1000 | 
 | type | calculator |
 | keyDown | ENTER | 
