@@ -10,5 +10,6 @@ export ANT_HOME=builders/apache-ant
 #below will startup the oasis framework
 #ant run
 
+echo "executing the following ant command(s): ant $@"
 ant "$@"
 

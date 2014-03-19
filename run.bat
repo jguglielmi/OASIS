@@ -1,2 +1,2 @@
 cd %~dp0
-local-ant.bat resolve run
+call local-ant.bat resolve run
