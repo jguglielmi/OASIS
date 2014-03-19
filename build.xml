@@ -111,9 +111,11 @@
     </zip>
   </target>
   
-  <!-- Start up Oasis/FitNesse instance  -->
+  <!-- Start up Oasis/FitNesse instance 
+       To spawn a new process add -Drun_spawn=true
+   -->
   <target name="run" depends="unit_test" description="generate the distribution" >
-    <java jar="${fitnesse_jar}" fork="true" failonerror="true" maxmemory="1g">
+    <java jar="${fitnesse_jar}" fork="true" spawn="${run_spawn}" failonerror="false" maxmemory="1g">
       <arg value="-p"/>
 	  <arg value="${fitnesse_port}"/>
       <arg value="-o"/>
