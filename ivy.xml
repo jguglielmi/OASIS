@@ -1,33 +1,38 @@
 <ivy-module version="2.0" xmlns:e="http://ant.apache.org/ivy/extra">
-    <info organisation="org.autoplug" module="autoplug"/>
-    <dependencies>
-		<dependency org="org.apache.poi" name="poi-scratchpad" rev="3.10-FINAL" conf="*->*,!sources,!javadoc"/>
-		<dependency org="org.apache.poi" name="poi-ooxml-schemas" rev="3.10-FINAL" conf="*->*,!sources,!javadoc"/>
-		<dependency org="org.apache.poi" name="poi-ooxml" rev="3.10-FINAL" conf="*->*,!sources,!javadoc"/>
-		<dependency org="org.apache.poi" name="poi-excelant" rev="3.10-FINAL" conf="*->*,!sources,!javadoc"/>
-		<dependency org="org.apache.poi" name="poi-examples" rev="3.10-FINAL" conf="*->*,!sources,!javadoc"/>
-		<dependency org="org.apache.poi" name="poi" rev="3.10-FINAL" conf="*->*,!sources,!javadoc"/>
-		<dependency org="commons-lang" name="commons-lang" rev="2.6" conf="*->*,!sources,!javadoc"/>
-		<dependency org="org.slf4j" name="slf4j-simple" rev="1.6.4" conf="*->*,!sources,!javadoc"/>
-		<dependency org="com.jcraft" name="jsch" rev="0.1.48" conf="*->*,!sources,!javadoc"/>
-		<dependency org="net.java.dev.jna" name="jna" rev="3.4.0" conf="*->*,!sources,!javadoc"/>
-		<dependency org="org.seleniumhq.selenium" name="selenium-server" rev="2.37.0" conf="*->*,!sources,!javadoc"/>
-		<dependency org="org.seleniumhq.selenium" name="selenium-api" rev="2.37.0" conf="*->*,!sources,!javadoc"/>
-		<dependency org="org.seleniumhq.selenium" name="selenium-remote-driver" rev="2.37.0" conf="*->*,!sources,!javadoc"/>
-		<dependency org="org.seleniumhq.selenium" name="selenium-java" rev="2.37.0" conf="*->*,!sources,!javadoc"/>
-		<dependency org="com.opera" name="operadriver" rev="1.1" conf="*->*,!sources,!javadoc"/>
-		<dependency org="com.github.detro.ghostdriver" name="phantomjsdriver" rev="1.0.3" conf="*->*,!sources,!javadoc"/>
-		<dependency org="org.apache.httpcomponents" name="httpclient" rev="4.3.1" conf="*->*,!sources,!javadoc"/>
-		<dependency org="org.sikuli" name="sikuli-slides-api" rev="1.4.0" conf="*->*,!sources,!javadoc"/>
-		<!-- <dependency org="org.fitnesse" name="fitnesse" rev="20140201" conf="*->*,standalone,!sources,!javadoc"/> -->
+    <info organisation="org.oasis" module="oasis"/>
+	<configurations defaultconfmapping="runtime->*,!sources,!javadoc">
+		<conf name="runtime"/>
+		<conf name="test"/>
+	</configurations>
+    <dependencies xmlns:e="urn:ant.apache.org:ivy-extras">
+		<dependency org="org.apache.poi" name="poi-scratchpad" rev="3.10-FINAL"/>
+		<dependency org="org.apache.poi" name="poi-ooxml-schemas" rev="3.10-FINAL"/>
+		<dependency org="org.apache.poi" name="poi-ooxml" rev="3.10-FINAL"/>
+		<dependency org="org.apache.poi" name="poi-excelant" rev="3.10-FINAL"/>
+		<dependency org="org.apache.poi" name="poi-examples" rev="3.10-FINAL"/>
+		<dependency org="org.apache.poi" name="poi" rev="3.10-FINAL"/>
+		<dependency org="commons-lang" name="commons-lang" rev="2.6"/>
+		<dependency org="org.slf4j" name="slf4j-simple" rev="1.6.4"/>
+		<dependency org="com.jcraft" name="jsch" rev="0.1.48"/>
+		<dependency org="net.java.dev.jna" name="jna" rev="3.4.0"/>
+		<dependency org="org.seleniumhq.selenium" name="selenium-server" rev="2.37.0"/>
+		<dependency org="org.seleniumhq.selenium" name="selenium-api" rev="2.37.0"/>
+		<dependency org="org.seleniumhq.selenium" name="selenium-remote-driver" rev="2.37.0"/>
+		<dependency org="org.seleniumhq.selenium" name="selenium-java" rev="2.37.0"/>
+		<dependency org="com.opera" name="operadriver" rev="1.1"/>
+		<dependency org="com.github.detro.ghostdriver" name="phantomjsdriver" rev="1.0.3"/>
+		<dependency org="org.apache.httpcomponents" name="httpclient" rev="4.3.1"/>
+		<dependency org="org.sikuli" name="sikuli-slides-api" rev="1.4.0"/>
+		<!-- <dependency org="org.fitnesse" name="fitnesse" rev="20140201" conf="*->*,!sources,!javadoc"/> -->
+		<dependency org="org.fitnesse" name="fitnesse" rev="20140201" >
+			<artifact name="fitnesse" e:classifier="standalone" ext="jar"/>
+		</dependency>
 		
 		<!-- unit test dependencies -->
-		<dependency org="junit" name="junit" rev="4.5" conf="*->*,!sources,!javadoc"/>
-		<dependency org="org.mockito" name="mockito-core" rev="1.9.5" conf="*->*,!sources,!javadoc" />
-		<dependency org="org.hamcrest" name="hamcrest-all" rev="1.3" conf="*->*,!sources,!javadoc" />
-		<dependency org="org.mozilla" name="rhino" rev="1.7R4" conf="*->*,!sources,!javadoc" />
-	<!--
-		<dependency org="org.sikuli" name="sikuli-slides-api" rev="1.4.0" conf="*->*,!sources,!javadoc"/>
-	-->
+		<dependency org="junit" name="junit" rev="4.5" conf="test->*,!sources,!javadoc"/>
+		<dependency org="org.mockito" name="mockito-core" rev="1.9.5" conf="test->*,!sources,!javadoc" />
+		<dependency org="org.hamcrest" name="hamcrest-all" rev="1.3" conf="test->*,!sources,!javadoc" />
+		<dependency org="org.mozilla" name="rhino" rev="1.7R4" conf="test->*,!sources,!javadoc" />
+
     </dependencies>
 </ivy-module>
