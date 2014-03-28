@@ -448,7 +448,7 @@ public class SeleniumDriverFixture {
 		{
 				List <WebElement> framesList = null;
 				try {
-						framesList = driver.findElements(By.xpath("//iframe"));
+						framesList = driver.findElements(By.xpath("//iframe|//frame"));
 				}catch(Exception e) {}
 				if (framesList == null)
 						return null;
