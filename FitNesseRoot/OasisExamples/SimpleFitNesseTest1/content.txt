@@ -1,12 +1,5 @@
 !contents -R2 -g -p -f -h
 
-!define TEST_SYSTEM {slim} 
-!path build
-!path lib/ivy/*
-!path lib/mvn/*
-!path plugins/*
-!path fixtures/java
-
 Simple Math Fitnesse Fixture test
 
 !| script | eg.Division |
@@ -16,15 +9,15 @@ Simple Math Fitnesse Fixture test
 
 Using a scenario library table call
 
-!| scenario | division test | numerator | and | denominator |
+!| scenario | division test | numerator | and | denominator | equals | quotient |
 | set numerator | @numerator  |
 | set denominator | @denominator  |
-| show | quotient |
+| check | quotient | @quotient | 
 
 !| script | eg.Division |
-| division test | 20 | and | 2 |
-| division test | 100 | and | 4 |
-| division test | 7 | and | 2 |
+| division test | 20 | and | 2 | equals | 10.0 |
+| division test | 100 | and | 4 | equals | 25.0 |
+| division test | 7 | and | 2 | equals | 3.5 |
 
 
 
