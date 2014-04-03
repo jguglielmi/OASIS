@@ -1,12 +1,5 @@
 !contents -R2 -g -p -f -h
 
-!define TEST_SYSTEM {slim} 
-!path build
-!path lib/ivy/*
-!path lib/mvn/*
-!path plugins/*
-!path fixtures/java
-
 | import | 
 | com.xebia.incubator.xebium | 
 
