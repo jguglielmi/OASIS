@@ -1,9 +1,7 @@
-FitNesseRoot/ErrorLogs/
-FitNesseRoot/files/testResults/
 bin/
 build/
 lib/mvn/*.jar
 lib/ivy/*.jar
 dist/
 /target
-FitNesseRoot/FitNesse/SuiteAcceptanceTests/SuiteSlimTests/ScenarioLibraryTestSuite/
+
