@@ -1,14 +1,5 @@
 !contents -R2 -g -p -f -h
 
-!define TEST_SYSTEM {slim} 
-!path build
-!path builders
-!path lib/ivy/*
-!path lib/mvn/*
-!path plugins/*
-!path fixtures/java
-
-
 | import | 
 | com.xebia.sikuli | 
 
