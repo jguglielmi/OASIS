@@ -1,12 +1,12 @@
 
 // Name: DatabaseAdapter
-// Author: Edward Jakubowski ejakubowski@qed-sys.com
-// Last update: 11/12/2013
+// Author: Edward Jakubowski ejakubowski7@gmail.com
+// Last update: 04/06/2014
 // Description: This Fixture add support to run Database commands in fitnesse
 // Requirements: database libs (like sqljdbc4.jar)
 // Examples:
 
-package org.qedsys.fitnesse;
+package org.oasis.fitnesse;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -18,7 +18,7 @@ import java.util.*;
 import java.security.*;
 import javax.crypto.*;
 import javax.crypto.spec.*;
-import org.qedsys.fitnesse.*;
+import org.oasis.fitnesse.*;
 
 public class SqlDriverFixture {
 	
