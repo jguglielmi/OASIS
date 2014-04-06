@@ -1,0 +1,6 @@
+!contents -R2 -g -p -f -h
+
+
+!| script | selenium driver fixture |
+| start driver | $webDriver1 | on url | http://localhost:8000 |
+| stop browser |

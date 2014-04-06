@@ -1,0 +1,7 @@
+!contents -R2 -g -p -f -h
+
+!| import | 
+| com.xebia.incubator.xebium | 
+| com.xebia.sikuli | 
+| org.synthuse | 
+| org.qedsys.fitnesse |

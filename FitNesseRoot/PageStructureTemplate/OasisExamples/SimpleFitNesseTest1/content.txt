@@ -1,0 +1,26 @@
+!contents -R2 -g -p -f -h
+
+${BROWSER}
+
+Simple Math Fitnesse Fixture test
+
+!| script | eg.Division |
+| set numerator | 10 |
+| set denominator | 2 |
+| check | quotient | 4.0 |
+
+Using a scenario library table call
+
+!| scenario | division test | numerator | and | denominator | equals | quotientvalue |
+| set numerator | @numerator  |
+| set denominator | @denominator  |
+| check | quotient | @quotientvalue |
+
+!| script | eg.Division |
+| division test | 20 | and | 2 | equals | 10.0 |
+| division test | 100 | and | 4 | equals | 25.0 |
+| division test | 7 | and | 2 | equals | 3.5 |
+
+
+
+

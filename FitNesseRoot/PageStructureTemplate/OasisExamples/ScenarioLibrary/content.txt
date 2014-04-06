@@ -1,0 +1,5 @@
+!contents -R2 -g -p -f -h
+
+| scenario | connect to database and get count | count |
+| connect to | http://demodatabase:8000/sql | as user | root | with password | password |
+| check | execute count | SELECT COUNT (*) FROM TABLE | @count |

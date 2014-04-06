@@ -1,0 +1,8 @@
+!contents -R2 -g -p -f -h
+
+| script | sikuli driver fixture | 
+| click | !-<img src="SimpleSikuliTest1?sik&img=startButton.png" />-! |
+| delay | 1000 | 
+| type | calculator |
+| keyDown | ENTER | 
+| keyUp | ENTER | 

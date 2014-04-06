@@ -1,0 +1,12 @@
+!contents -R2 -g -p -f -h
+open up notepad first!
+!| script | synthuse driver fixture | 
+| do | waitForVisible | on | //win[@class='Notepad'] | 
+| do | windowSwitchToThis | on | //win[@class='Notepad'] | 
+| do | pause | on | 1000  | 
+| do | sendKeys | on | this is a test! | 
+
+
+
+
+

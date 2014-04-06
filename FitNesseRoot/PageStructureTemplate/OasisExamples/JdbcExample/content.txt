@@ -1,0 +1,8 @@
+!contents -R2 -g -p -f -h
+
+!| script | sql driver fixture |
+| connect to database and get count | 15 |
+| connect to database and get count | 1 |
+| connect to database and get count | 0 |
+| connect to database and get count | 13 |
+| connect to database and get string | Jaison |

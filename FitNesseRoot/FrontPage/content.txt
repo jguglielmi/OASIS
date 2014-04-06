@@ -12,6 +12,7 @@ To add your first "page", click the [[Edit][FrontPage?edit]] button and add a [[
 | [[Release Notes][FitNesse.ReleaseNotes]]|''Find out about FitNesse's new features''|
 
 OasisExamples
+PageStructureTemplate
 
 !note Release ${FITNESSE_VERSION}
 
