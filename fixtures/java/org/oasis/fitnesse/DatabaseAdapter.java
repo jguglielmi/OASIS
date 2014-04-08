@@ -1,7 +1,7 @@
 
 // Name: DatabaseAdapter
-// Author: Edward Jakubowski ejakubowski@qed-sys.com
-// Last update: 11/12/2013
+// Author: Edward Jakubowski ejakubowski7@gmail.com
+// Last update: 04/06/2014
 // Description: This Fixture add support to run Database commands in fitnesse
 // Requirements: database libs (like sqljdbc4.jar)
 // Examples:
@@ -11,7 +11,7 @@
 //   if (count.next())
 //     tableCount = count.getInt(1);
 
-package org.qedsys.fitnesse;
+package org.oasis.fitnesse;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -29,8 +29,6 @@ public class DatabaseAdapter {
 	
 	public static String getDbType(String dbConnectStr){
 		//sqlDbConnect("jdbc:sqlserver://localhost:1433;instanceName=INSTANCE1;database=AdventureWorks;integratedSecurity=true;");
-		//sqlDbConnect("jdbc:sqlserver://192.168.25.164:1500;databaseName=TED", "test", "x");
-		//sqlDbConnect("jdbc:sqlserver://192.168.31.123/TED", "sa", "pwd");
 		//jdbc:oracle:thin:@//oracle.hostserver2.mydomain.ca:1522/ABCD
 		if (dbConnectStr.contains("jdbc:sqlserver:"))
 			return DB_TYPE_SQLSERVER;

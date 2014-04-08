@@ -4,4 +4,4 @@ lib/mvn/*.jar
 lib/ivy/*.jar
 dist/
 /target
-
+FitNesseRoot/files/testResults/
