@@ -1,8 +1,5 @@
-!1 Welcome to [[FitNesse][FitNesse.FitNesse]]!
-!3 ''The fully integrated stand-alone acceptance testing framework and wiki.''
-
-# Here is a good place to add your first page (WikiWord). For example, MyTopLevelApplicationPage
-To add your first "page", click the [[Edit][FrontPage?edit]] button and add a [[!-WikiWord-!][FitNesse.UserGuide.WikiWord]] to the page.
+[[!img http://files/images/OASIS.jpg][PageStructureTemplate]]
+!3 ''Open Automation Source Integrated Suite, taking the fun out of automated scripted testing''
 
 | '''To Learn More...'''|
 | [[A One-Minute Description][FitNesse.UserGuide.OneMinuteDescription]]|''What is [[FitNesse][FitNesse.FitNesse]]? Start here.''|
@@ -10,13 +7,13 @@ To add your first "page", click the [[Edit][FrontPage?edit]] button and add a [[
 | [[User Guide][FitNesse.UserGuide]]|''Answer the rest of your questions here.''|
 | [[Acceptance Tests][FitNesse.SuiteAcceptanceTests]]|''FitNesse's suite of Acceptance Tests''|
 | [[Release Notes][FitNesse.ReleaseNotes]]|''Find out about FitNesse's new features''|
-
-OasisExamples
-PageStructureTemplate
-ProjectXebium
-XebiumTemplate
+| [[Project Xebium][ProjectXebium]] | ''Project Xebium(Selenium/FitNesse)''|
 
 
-!note Release ${FITNESSE_VERSION}
+
+
+
+
+
 
 
