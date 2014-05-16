@@ -629,8 +629,8 @@ public class SeleniumDriverFixture {
 				WebElement webElement = getWebDriver().findElement(By.xpath(values[0]));
 				new Actions(getWebDriver()).contextClick(webElement).perform();
 				LOG.info("Performing | contextMenu | " + values[0] + " | " );
-			} catch (Exception e) {
-				LOG.warn("contextMenu command interrupted", e);
+			} catch (final SeleniumException e) {
+				LOG.error("Execution of command contextMenu failed: ", e.getMessage());
 			}
 			return null;
 		}
