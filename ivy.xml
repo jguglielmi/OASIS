@@ -11,6 +11,7 @@
 		<dependency org="org.apache.poi" name="poi-excelant" rev="3.10-FINAL"/>
 		<dependency org="org.apache.poi" name="poi-examples" rev="3.10-FINAL"/>
 		<dependency org="org.apache.poi" name="poi" rev="3.10-FINAL"/>
+		<dependency org="org.apache.pdfbox" name="pdfbox" rev="1.8.5"/>
 		<dependency org="commons-lang" name="commons-lang" rev="2.6"/>
 		<dependency org="org.slf4j" name="slf4j-simple" rev="1.6.4"/>
 		<dependency org="com.jcraft" name="jsch" rev="0.1.48"/>

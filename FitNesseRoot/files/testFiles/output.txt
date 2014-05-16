@@ -1,0 +1,159 @@
+1 
+An Overview of Agile 
+Testing 
+Tampere 2009 
+Lisa Crispin 
+With Material from Janet Gregory 
+Copyright 2009: Lisa Crispin    
+2 
+Introduction  
+•? Tester on agile teams since 2000 
+•? My teams: 
+•? Delight customers 
+•? Deliver production-ready value every 2 
+weeks 
+•? Drive development with tests, examples 
+•? 100% regression test automation 
+Copyright 2009: Lisa Crispin    
+3 
+Your Agile Experience 
+How about you? 
+?? Managers, testers, developers, 
+ScrumMasters...? 
+?? How long has your team used agile 
+practices/principles? 
+Copyright 2009: Lisa Crispin    
+4 
+Takeaways 
+?? Transitioning to agile testing 
+?? How testing works on agile teams 
+?? Agile testing tools and techniques 
+?? Key success factors 
+Copyright 2009: Lisa Crispin    
+5 
+Traditional vs. Agile SDLC 
+Phased or gated – eg. Waterfall 
+It 1 It 2 It 3 
+A B A B A B 
+C C 
+D 
+Time 
+Agile: iterative and incremental 
+- Each story is expanded, coded and tested 
+- Possible release after each iteration 
+Requirements 
+Specifications 
+Code 
+Testing 
+Release 
+Copyright 2009 Lisa Crispin and 
+Janet Gregory 
+Copyright 2009: Lisa Crispin    
+6 
+Testing as a Phase 
+?? Code, then test 
+?? Separate, siloed teams 
+?? Heavyweight process 
+?? Requirements, design documents 
+?? Test plans 
+?? “Traceability” 
+?? Change review boards 
+?? Testing “bottleneck” at end 
+Copyright 2009: Lisa Crispin    
+7 
+Automation - After Coding 
+?? Vendor tools 
+?? Record/Playback 
+?? Done by testers or automation team 
+?? If developers automate unit tests – it’s after 
+coding 
+?? Expensive 
+Copyright 2009: Lisa Crispin    
+8 
+Exploratory Testing – “agile”  
+?? Exploring reveals unintended consequences 
+and uncovers implicit expectations 
+?? Elisabeth Hendrickson http://testobsessed.com/
+2009/05/18/from-the-mailbox-fully-automated-gui-
+testing/Careful observation 
+?? Critical thinking, no requirements doc needed 
+?? Diverse ideas 
+?? Rich resources 
+?? Tools, data, people 
+   [source: Jon Hagar] 
+Copyright 2009: Lisa Crispin    
+9 
+How Agile Changes Things 
+?? Whole Team Approach 
+?? Coding and testing are one process 
+?? Feedback, collaboration key 
+?? TDD/ATDD practices 
+?? Test-infected developers, better tools, better-
+designed tests 
+Copyright 2009: Lisa Crispin    Copyright 2007: Lisa Crispin 
+and Janet Gregory 
+10 
+Team Organization -  Traditional vs. Agile 
+Agile: roles overlap Tester 
+Programmer Domain  Expert 
+Traditional: independent functional groups 
+Dev 
+BAs Tester 
+Copyright 2009: Lisa Crispin    
+Copyright 2007: Lisa Crispin 
+and Janet Gregory 
+11
+Test Approach - The Agile Way 
+Project Initiation Get an understanding of  the project 
+Participate in estimating stories  Create Test Plan  Release Planning 
+Each Iteration 
+             1  
+           …. 
+            X 
+Write and execute story tests 
+Write and execute new functional test cases 
+Pair test with other testers, developers 
+Automate new functional test cases 
+Run automated regression test cases 
+Perform Load Test 
+Complete Regression Test 
+Perform UAT 
+Perform Mock Deploy 
+Participate in Release Readiness 
+System Test / 
+End Game 
+Participate in Release to Prod 
+Participate in Retrospectives 
+Release to Prod/ 
+Support 
+Copyright 2009: Lisa Crispin    
+12 
+The Whole Team Approach 
+?? Team commitment to quality 
+?? Team responsible for testing 
+?? Testers get support, training 
+?? Developers do testing activities 
+?? Testers and developers pair 
+?? Get the right people 
+Copyright 2009: Lisa Crispin    
+13 
+Testing is Not a Phase 
+?? Development = testing + coding 
+?? Write test, write code, test 
+?? At unit and acceptance test levels 
+?? Automated tests 
+?? Designed for efficiency, 
+maintainability 
+?? Free time for exploratory testing 
+?? Team plans testing activities 
+?? All four “quadrants” 
+Copyright 2009: Lisa Crispin    
+14 
+Agile Testing Quadrants 
+Copyright 2009: Lisa Crispin    
+15 
+Feedback Guides Development 
+?? Team uses feedback to improve 
+?? Testers are expert feedback providers 
+?? Feedback lets team make course 
+corrections 
