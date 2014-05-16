@@ -4,5 +4,5 @@
 !***> Preset variables
 !define TEST_SYSTEM {slim}
 !define BROWSER {firefox}
-!pomFile pom.xml@runtime
+!oasis
 ***!

@@ -1,0 +1,26 @@
+!contents -R2 -g -p -f -h
+
+| script | !-TextFileReader-! |
+| $textReader= | set file | ./FitNesseRoot/files/testFiles/SampleText.txt |
+| $line1= | read next line of | $textReader |
+| $line2= | read next line of | $textReader |
+| $line3= | read next line of | $textReader |
+| $line4= | read next line of | $textReader |
+| $line5= | read next line of | $textReader |
+| $line6= | read next line of | $textReader |
+| $line7= | read next line of | $textReader |
+| $line8= | read next line of | $textReader |
+| $line9= | read next line of | $textReader |
+| $line10= | read next line of | $textReader |
+
+| script | text file reader |
+| $textReader2= | set file | ./FitNesseRoot/files/testFiles/SampleText.txt |
+| read to end of file | $textReader2 |
+
+
+!| script | eg.Division |
+| set numerator | 10 |
+| set denominator | 2 |
+| check | quotient | $line8 |
+
+

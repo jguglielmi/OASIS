@@ -25,7 +25,7 @@
 		<dependency org="org.apache.httpcomponents" name="httpclient" rev="4.3.1"/>
 		<dependency org="org.sikuli" name="sikuli-slides-api" rev="1.4.0"/>
 		<!-- <dependency org="org.fitnesse" name="fitnesse" rev="20140201" conf="*->*,!sources,!javadoc"/> -->
-		<dependency org="org.fitnesse" name="fitnesse" rev="20140201" >
+		<dependency org="org.fitnesse" name="fitnesse" rev="20140418" >
 			<artifact name="fitnesse" e:classifier="standalone" ext="jar"/>
 		</dependency>
 		

@@ -5,3 +5,4 @@ lib/ivy/*.jar
 dist/
 /target
 FitNesseRoot/files/testResults/
+/FitNesseRoot/ErrorLogs/

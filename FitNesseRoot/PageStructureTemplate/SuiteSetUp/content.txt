@@ -5,3 +5,4 @@
 | com.xebia.sikuli | 
 | org.synthuse | 
 | org.qedsys.fitnesse |
+| org.qedsys.file |

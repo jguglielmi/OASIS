@@ -1,0 +1,22 @@
+!contents -R2 -g -p -f -h
+!| Testing Type | Applicable? | Performed? | Date Performed? | Verified By? |
+| Boundary (Upper) | | | | |
+| Boundary (Lower) | | | | |
+| Input Validation (Max Length i.e. field accepts 20 characters and the DB mapping is varchar(20)) | | | | |
+| Input Validation (Min Length) | | | | |
+| Input Validation (Invalid Input, special characters, different time stamp format) | | | | |
+| Positive Condition (Satisfy Requirement) | | | | |
+| Negative Condition(NULL/Blank values) | | | | |
+| White Box/Acceptance (FitNesse) | | | | |
+| Black Box/GUI/Functional (Selenium/Sikuli/Synthuse) | | | | |
+| Regression(Has this been added to the suite?) | | | | |
+| Performance(How well it handles, i.e. throttle bandwidth) | | | | |
+| Load(Placing any type of load on a server or DB) | | | | |
+| Stress(Discover its breaking point) | | | | |
+| Smoke(Is the test short and does it cover a lot of area?) | | | | |
+| Installation | | | | |
+| Compatibility(Did we cover all environments specified by the customer?) | | | | |
+| Security(SQL Injections, middle man attacks, etc...) | | | | |
+| Session(Do we allow 1 session or multiples?) | | | | |
+| Automated/CI Jenkins Integrated | | | | |
+| Exploratory(Did you perform all applicable testing tours?) | | | | |

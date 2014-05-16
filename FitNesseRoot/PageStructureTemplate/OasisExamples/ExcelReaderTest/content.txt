@@ -1,0 +1,54 @@
+!contents -R2 -g -p -f -h
+
+| script | excel file reader |
+| $array1= | get string array from file | ./FitNesseRoot/files/testFiles/SampleExcel.xlsx | with sheet | Report1 |
+| $val1= | get | 1 | cell | 1 |
+| $val2= | get | 2 | cell | 2 |
+
+| script | excel file reader |
+| $array2= | get string array from file | ./FitNesseRoot/files/testFiles/SampleExcel.xlsx | with sheet | Report2 |
+| $val3= | get | 1 | cell | 1 |
+| $val4= | get | 2 | cell | 2 |
+
+| script | excel file reader |
+| set file | ./FitNesseRoot/files/testFiles/SampleExcel.xlsx |
+| set sheet | Report1 |
+| set cell array |
+| $val5= | get | 1 | cell | 3 |
+| $val6= | get left header |
+| $val7= | get center header |
+| $val8= | get right header |
+| $val9= | get left footer |
+| $val10= | get center footer |
+| $val11= | get right footer |
+
+| script | excel file reader |
+| set file | ./FitNesseRoot/files/testFiles/SampleExcel.xlsx |
+| set sheet | Report1 |
+| set cell array |
+| $val5= | get | 1 | cell | 3 |
+| $val6= | get left header |
+| $val7= | get center header |
+| $val8= | get right header |
+| $val9= | get left footer |
+| $val10= | get center footer |
+| $val11= | get right footer |
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

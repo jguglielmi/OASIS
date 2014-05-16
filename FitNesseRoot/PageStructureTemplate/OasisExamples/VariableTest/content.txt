@@ -1,0 +1,39 @@
+!contents -R2 -g -p -f -h
+
+| script | excel file reader |
+| set file | ./FitNesseRoot/files/testFiles/SampleExcel.xlsx |
+| set sheet | Report1 |
+| set cell array |
+| $val1= | get | 1 | cell | 3 |
+| $val2= | get left header |
+| $val3= | get center header |
+| $val4= | get right header |
+| $val5= | get left footer |
+| $val6= | get center footer |
+| $val7= | get right footer |
+| $val8= | get | 2 | cell | 3 |
+
+| script | text file reader |
+| $textReader= | set file | ./FitNesseRoot/files/testFiles/SampleText.txt |
+| $line1= | read next line of | $textReader |
+| $line2= | read next line of | $textReader |
+| $line3= | read next line of | $textReader |
+| $line4= | read next line of | $textReader |
+| $line5= | read next line of | $textReader |
+| $line6= | read next line of | $textReader |
+| $line7= | read next line of | $textReader |
+| $line8= | read next line of | $textReader |
+| $line9= | read next line of | $textReader |
+| $line10= | read next line of | $textReader |
+
+| script | value compare fixture |
+| compare double | $val8 | to | $line8 |
+
+
+
+
+
+
+
+
+

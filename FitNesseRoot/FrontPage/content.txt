@@ -13,6 +13,9 @@ To add your first "page", click the [[Edit][FrontPage?edit]] button and add a [[
 
 OasisExamples
 PageStructureTemplate
+ProjectXebium
+XebiumTemplate
+
 
 !note Release ${FITNESSE_VERSION}
 

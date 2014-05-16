@@ -1,0 +1,61 @@
+!contents -R2 -g -p -f -h
+
+!2 '''Exploratory Testing Tours'''
+!3 '''Brief''':
+Most of your high value defects and bugs are derived when testing a system in a non-linear fashion.  As to where we think a system should work by the book in the order of A->B->C, why not try C->B->A or another variation?  It is always bad to assume our customer will work "by the book".  We leverage CI and scripted testing to reduce our redundancy of the testing checklist, and spend more time exploring the system by "touring" it.
+
+We spend as much time as possible focusing in on these brief "Testing Tours" to flush out additional issues that our scripted tests do not cover.  We may record, dictate, and narrate our work much as a doctor would do while we explore the system to recall the exact sequence of events to reproduce defects.  From these system tours, we attempt to simulate real life experiences rather than just idealistic environments to learn how well our system is built and provide additional areas of metrics and locate issues more frequently.
+
+!5
+!3 '''Sources:'''
+!5 http://msdn.microsoft.com/en-us/library/jj620911.aspx
+!5 http://www.developsense.com/blog/2009/04/of-testing-tours-and-dashboards/
+'''Guidebook tour:''' Guidebooks for tourists identify the best hotels, the best bargains, and the top attractions, without going into too much detail or overwhelming a tourist with too many options. The analogous artifact for exploratory testing is the user manual, whether it is printed or implemented as online help (in which case, I often call this the F1 tour to denote the shortcut to most help systems). For this tour, we will follow the user manual’s advice just like the wary traveler, by never deviating from its lead.
+
+'''Money tour:''' Every location that covets tourists must have some good reasons for them to come. For Las Vegas, it’s the casinos and the strip, and for Egypt it’s the pyramids. For exploratory testers finding the money features leads directly to the sales force. Sales folk spend a great deal of time giving demos of applications and are a fantastic source of information for the Money tour. To execute the tour, simply run through the demos yourself and look for problems. As the product code is modified for bug fixes and new features, it may be that the demo breaks and you’ve not only found a great bug, but you’ve saved your sales force from some pretty serious embarrassment.
+
+'''Landmark tour:''' The Landmark tour for exploratory testers is similar in that we will choose landmarks and perform the same landmark hopping through the software that we would through a forest. Choose a set of landmarks, decide on an ordering for them, and then explore the application going from landmark to landmark until you’ve visited all of them in your list. Keep track of which landmarks you’ve used and create a landmark coverage map to track your progress.
+
+'''Intellectual tour:''' I was once on a walking tour of London in which the guide was a gentleman in his fifties who claimed at the outset to have lived in London all his life. A fellow tourist happened to be a scholar who was knowledgeable in English history and was constantly asking hard questions of the guide. He didn’t mean to be a jerk, but he was curious, and that combined with his knowledge ended up being a dangerous combination … at least to the guide. When applied to exploratory testing, this tour takes on the approach of asking the software hard questions. How do we make the software work as hard as possible? Which features will stretch it to its limits? What inputs and data will cause it to perform the most processing? Which inputs might fool its error-checking routines? Which inputs and internal data will stress its capability to produce any specific output?
+
+'''!-FedEx tour:-!''' !-FedEx-! is an icon in the package-delivery world. They pick up packages, move them around their various distribution centers, and send them to their final destination. For this tour, instead of packages moving around the planet through the !-FedEx-! system, think of data moving through the software. During this tour, a tester must concentrate on this data. Try to identify inputs that are stored and “follow” them around the software. For example, when an address is entered into a shopping site, where does it gets displayed? What features consume it? If it is used as a billing address, make sure you exercise that feature. If it is used as a shipping address, make sure you use that feature. If can be updated, update it. Does it ever get printed or purged or processed? Try to find every feature that touches the data so that, just as !-FedEx-! handles their packages, you are involved in every stage of the data’s life cycle.
+
+'''Garbage Collector's tour:''' Those who collect curbside garbage often know neighborhoods better than even residents and police because they go street by street, house by house, and become familiar with every bump in the road. However, because they are in a hurry, they don’t stay in one place very long. For software, this is like a methodical spot check. We can decide to spot check the interface where we go screen by screen, dialog by dialog (favoring, like the garbage collector, the shortest route), and not stopping to test in detail, but checking the obvious things (perhaps like the Supermodel tour). We could also use this tour to go feature by feature, module by module, or any other landmark that makes sense for our specific application.
+
+'''Bad Neighbor tour:''' Every city worth visiting has bad neighborhoods and areas that a tourist is well advised to avoid. Software also has bad neighborhoods—those sections of the code populated by bugs. Clearly, we do not know in advance which features are likely to represent bad neighborhoods. But as bugs are found and reported, we can connect certain features with bug counts and can track where bugs are occurring on our product. Because bugs tend to congregate, revisiting buggy sections of the product is a tour worth taking. Indeed, once a buggy section of code is identified, it is recommended to take a Garbage Collector’s tour through nearby features to verify that the fixes didn’t introduce any new bugs.
+
+'''Museum tour:''' Museums that display antiquities are a favorite of tourists. Antiquities within a code base deserve the same kind of attention from testers. In this case, software’s antiquities are legacy code. Older code files that undergo revision or that are put into a new environment tend to be failure prone. With the original developers long gone and documentation often poor, legacy code is hard to modify, hard to review, and evades the unit testing net of developers (who usually write such tests only for new code). During this tour, testers should identify older code and executable artifacts and ensure they receive a fair share of testing attention.
+
+'''Back Alley tour:''' In many peoples’ eye, a good tour is one in which you visit popular places. The opposite of these tours would be one in which you visited places no one else was likely to go. In exploratory testing terms, these are the least likely features to be used and the ones that are the least attractive to users. If your organization tracks feature usage, this tour will direct you to test the ones at the bottom of the list. If your organization tracks code coverage, this tour implores you to find ways to test the code yet to be covered.
+
+'''All- Nighter tour:''' Also known as the Clubbing tour, this one is for those folks who stay out late and hit the nightspots. The key here is all night. Exploratory testers on the All-Nighter tour will keep their application running without closing it. They will open files and not close them. Often, they don’t even bother saving them so as to avoid any potential resetting effect that might occur at save time. They connect to remote resources and never disconnect. And while all these resources are in constant use, they may even run tests using other tours to keep the software working and moving data around. If they do this long enough, they may find bugs that other testers will not find because the software is denied that clean reset that occurs when it is restarted.
+
+'''Supermodel tour:''' For this tour, I want you to think superficially. Whatever you do, don’t go beyond skin deep. This tour is not about function or substance; it’s about looks and first impressions. During the Supermodel tour, the focus is not on functionality or real interaction. It’s only on the interface. Take the tour and watch the interface elements. Do they look good? Do they render properly, and is the performance good? As you make changes, does the GUI refresh properly? Does it do so correctly or are there unsightly artifacts left on the screen? If the software is using color in a way to convey some meaning, is this done consistently? Are the GUI panels internally consistent with buttons and controls where you would expect them to be? Does the interface violate any conventions or standards?
+
+'''Couch Potato tour:''' There’s always one person on a group tour who just doesn’t participate. He stands in the back with his arms folded. He’s bored, unenergetic, and makes one wonder exactly why he bothered paying for the tour in the first place. A Coach Potato tour means doing as little actual work as possible. This means accepting all default values (values prepopulated by the application), leaving input fields blank, filling in as little form data as possible, never clicking on an advertisement, paging through screens without clicking any buttons or entering any data, and so forth. If there is any choice to go one way in the application or another, the coach potato always takes the path of least resistance.
+
+'''Obsessive-Compulsive tour:''' OCD testers will enter the same input over and over. They will perform the same action over and over. They will repeat, redo, copy, paste, borrow, and then do all that some more. Mostly, the name of the game is repetition. Order an item on a shopping site and then order it again to check if a multiple purchase discount applies. Enter some data on a screen, then return immediately to enter it again. These are actions developers often don’t program error cases for. They can wreak significant havoc.
+
+'''Feature tour:''' Move through the application and get familiar with all the controls and features you come across.
+
+'''Complexity tour:''' Find the five most complex things about the application.
+
+'''Claims tour:''' Find all the information in the product that tells you what the product does.
+
+'''Configuration tour:''' Attempt to find all the ways you can change settings in the product in a way that the application retains those settings.
+
+'''User tour:''' Imagine five users for the product and the information they would want from the product or the major features they would be interested in.
+
+'''Testability tour:''' Find all the features you can use as testability features and/or identify tools you have available that you can use to help in your testing.
+
+'''Scenario tour:''' Imagine five realistic scenarios for how the users identified in the user tour would use this product.
+
+'''Variability tour:''' Look for things you can change in the application – and then you try to change them.
+
+'''Interoperability tour:''' What does this application interact with?
+
+'''Data tour:''' Identify the major data elements of the application.
+
+'''Structure tour:''' Find everything you can about what comprises the physical product (code, interfaces, hardware, files, etc…).
+
+'''Rained-out tour:''' Start and stop tasks, hit cancel, etc. (rather like Kaner’s notion of “interruptions” above)

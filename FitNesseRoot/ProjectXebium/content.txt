@@ -1,0 +1,12 @@
+!contents -R2 -g -h
+
+!*> '''Variables Defined'''
+
+!define TEST_SYSTEM {slim}
+!define BROWSER {firefox}
+
+*!
+!*****> '''Classpath'''
+!pomFile pom.xml@runtime
+!oasis
+*****!
