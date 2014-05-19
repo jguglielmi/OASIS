@@ -55,6 +55,20 @@ public class SeleniumGridFixture {
 		return true;
 	}
 
+	public boolean startNodeUsingJson(String json){
+		Runtime run = Runtime.getRuntime();
+		try {
+			run.exec("java -jar ./FitNesseRoot/files/selenium/standalone/selenium-server-standalone.jar -role webdriver -nodeConfig " + json);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		}
+		return true;
+		//java -jar selenium-server-standalone.jar -role hub -hubConfig hubconfig.json
+
+	}
+
 	public boolean startNodeOnHubUrl(String hubUrl){
 		Runtime run = Runtime.getRuntime();
 		try {
