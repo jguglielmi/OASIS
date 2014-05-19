@@ -1,0 +1,45 @@
+!contents -R2 -g -p -f -h
+
+!| script | selenium grid fixture |
+| set port | 5555 |
+| start hub |
+| set port | 5556 |
+| set browser parameters | browserName="iexplore",version=ANY,platform=WINDOWS,maxInstances=5 |
+| start node on hub url | http://localhost:5555/grid/register |
+| set port | 5557 |
+| set browser parameters | browserName="firefox",version=ANY,platform=WINDOWS,maxInstances=5 |
+| start node on hub url | http://localhost:5555/grid/register |
+| set port | 5558 |
+| set browser parameters | browserName="chrome",version=ANY,platform=WINDOWS,maxInstances=5 |
+| start node on hub url | http://localhost:5555/grid/register |
+
+!| script | default web driver supplier |
+| set browser | { "browserName": "firefox", "remote": "http://localhost:5555/wd/hub","platform":"WINDOWS", "port": "5557" } |
+| $webDriver1= | new web driver |
+
+!| script | selenium driver fixture |
+| start driver | $webDriver1 | on url | http://localhost:8000 |
+| do | open | on | /files/testHtml/iFrameTest1.html |
+| ensure | do | waitForVisible | on | //input[@id='topTxt'] |
+| ensure | do | click | on | !-//input[@value='fill city']-! |
+| ensure | do | click | on | !-//input[@value='fill phone']-! |
+| ensure | do | click | on | !-//input[@value='fill top']-! |
+| ensure | do | click | on | !-//input[@value='fill names']-! |
+| ensure | do | click | on | !-//input[@value='fill email']-! |
+| stop browser |
+
+!| script | default web driver supplier |
+| set browser | { "browserName": "chrome", "remote": "http://localhost:5555/wd/hub","platform":"WINDOWS", "port": "5558" } |
+| $webDriver2= | new web driver |
+
+!| script | selenium driver fixture |
+| start driver | $webDriver2 | on url | http://localhost:8000 |
+| do | open | on | /files/testHtml/iFrameTest1.html |
+| ensure | do | waitForVisible | on | //input[@id='topTxt'] |
+| ensure | do | click | on | !-//input[@value='fill city']-! |
+| ensure | do | click | on | !-//input[@value='fill phone']-! |
+| ensure | do | click | on | !-//input[@value='fill top']-! |
+| ensure | do | click | on | !-//input[@value='fill names']-! |
+| ensure | do | click | on | !-//input[@value='fill email']-! |
+| stop browser |
+
