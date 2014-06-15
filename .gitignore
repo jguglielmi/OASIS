@@ -4,5 +4,6 @@ lib/mvn/*.jar
 lib/ivy/*.jar
 dist/
 target
+FitNesseRoot/ErrorLogs/
 /FitNesseRoot/files/testResults/*
-/FitNesseRoot/ErrorLogs/*
+FitNesseRoot/ErrorLogs/*

@@ -4,8 +4,10 @@
 | org.synthuse | 
 
 !| script | synthuse driver fixture | 
+| do | open | on | cmd.exe /c start notepad.exe | 
 | do | waitForVisible | on | //win[@class='Notepad'] | 
-| do | windowSwitchToThis | on | //win[@class='Notepad'] | 
+| do | windowMaximize | on | //win[@class='Notepad'] | 
+| do | windowFocus | on | //win[@class='Notepad'] | 
 | do | pause | on | 1000  | 
 | do | sendKeys | on | this is a test! | 
 

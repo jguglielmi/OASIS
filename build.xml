@@ -3,8 +3,8 @@
         This ant build file will download dependency jars, compile all FitNesse Fixtures and startup OASIS
     </description>
   <!-- set global properties for this build -->
-  <property name="src" location="fixtures/java"/>
-  <property name="src.unit.test" location="fixtures/test/java"/>
+  <property name="src" location="src/main/java"/>
+  <property name="src.unit.test" location="src/test/java"/>
   <property name="build" location="build"/>
   <property name="lib" location="lib"/>
   <property name="dist"  location="dist"/>
@@ -41,6 +41,7 @@
   <target name="resolve" depends="init" description="--> retreive dependencies with ivy">
     <ivy:retrieve pattern="${lib}/ivy/[artifact]-[revision](-[classifier]).[ext]" conf="*"/>
     <ivy:report todir="${build}"/>
+	<!--  need to use customized fitnesse jar to load custom OasisScriptTable
     <echo message="moving ivy/${fitnesse_jar} to ${basedir}" />
     <move todir="${basedir}" includeemptydirs="false">
       <fileset dir="${lib}/ivy">
@@ -48,6 +49,7 @@
       </fileset>
       <mapper type="glob" from="*" to="${fitnesse_jar}"/>
     </move>
+	-->
   </target>
 
   <target name="compile" depends="init" description="compile the source " >

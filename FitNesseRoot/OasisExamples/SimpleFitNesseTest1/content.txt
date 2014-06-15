@@ -18,6 +18,8 @@ Using a scenario library table call
 | division test | 20 | and | 2 | equals | 10.0 |
 | division test | 100 | and | 4 | equals | 25.0 |
 | division test | 7 | and | 2 | equals | 3.5 |
+| repeat | division test | 7 | and | 2 | equals | 3.5 | 2 |
+
 
 
 
