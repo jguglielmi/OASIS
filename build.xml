@@ -175,6 +175,11 @@
     </loadresource>
 
     <get dest="TestResult-${results_name}.xml" src="http://localhost:${fitnesse_port}/${fitnesse_test}?test&amp;format=xml&amp;includehtml"/>
+	
+	<echo message="converting TestResult-${results_name}.xml to build/TestResult-${results_name}.html"/>
+    <xslt basedir="." destdir="build" style="src/test/xslt/fitnesse-xml2html.xslt">
+      <mapper type="glob" from="TestResult-*.xml" to="TestResult-*.html"/>
+    </xslt>
   </target>
 
   <target name="shutdown" description="shutdown fitnesse and browser" >
