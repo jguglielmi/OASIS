@@ -214,7 +214,7 @@ public class SikuliDriverFixture extends SikuliCommandProcessor{
 		target1.setMinScore(matching);
 		screenRegion1 = currentRegion().find(target1);
 		if (screenRegion1==null){
-			statusDtr.dispose();
+			if (statusDtr != null) statusDtr.dispose();
 			LOG.error("Cannot find object: " + target1);
 			LOG.error("Matching was set to " + matching);
 			LOG.error("Offset was set to " + xOffSet + " , " + yOffSet);
@@ -223,7 +223,7 @@ public class SikuliDriverFixture extends SikuliCommandProcessor{
 		else {
 			mouse.click(screenRegion1.getCenter().getRelativeScreenLocation(xOffSet, yOffSet));
 			LOG.info("Click performed on " + target1);
-			statusDtr.dispose();
+			if (statusDtr != null) statusDtr.dispose();
 			return true;
 		}
 	}
@@ -255,14 +255,14 @@ public class SikuliDriverFixture extends SikuliCommandProcessor{
 		target1.setMinScore(matching);
 		screenRegion1 = currentRegion().find(target1);
 		if (screenRegion1==null){
-			statusDtr.dispose();
+			if (statusDtr != null) statusDtr.dispose();
 			LOG.error("Cannot find object: " + target1);
 			return false;
 		}
 		else {
 			mouse.doubleClick(screenRegion1.getCenter().getRelativeScreenLocation(xOffSet, yOffSet));
 			LOG.info("Double click performed on " + target1);
-			statusDtr.dispose();
+			if (statusDtr != null) statusDtr.dispose();
 			return true;
 		}
 	}
@@ -278,14 +278,14 @@ public class SikuliDriverFixture extends SikuliCommandProcessor{
 		target1.setMinScore(matching);
 		screenRegion1 = currentRegion().find(target1);
 		if (screenRegion1==null) {
-			statusDtr.dispose();
+			if (statusDtr != null) statusDtr.dispose();
 			LOG.error("Cannot find object: " + target1);
 			return false;
 		}
 		else {
 			mouse.rightClick(screenRegion1.getCenter().getRelativeScreenLocation(xOffSet, yOffSet));
 			LOG.info("Right click performed on " + target1);
-			statusDtr.dispose();
+			if (statusDtr != null) statusDtr.dispose();
 			return true;
 		}
 	}
@@ -302,13 +302,13 @@ public class SikuliDriverFixture extends SikuliCommandProcessor{
 		screenRegion1 = currentRegion().find(target1);
 		if (screenRegion1==null){
 			LOG.error("Cannot find object: " + target1);
-			statusDtr.dispose();
+			if (statusDtr != null) statusDtr.dispose();
 			return false;
 		}
 		else {
 			mouse.drop(screenRegion1.getCenter().getRelativeScreenLocation(xOffSet, yOffSet));
 			LOG.info("Hover performed on " + target1);
-			statusDtr.dispose();
+			if (statusDtr != null) statusDtr.dispose();
 			return true;
 		}
 	}
@@ -338,14 +338,14 @@ public class SikuliDriverFixture extends SikuliCommandProcessor{
 		target1.setMinScore(matching);
 		screenRegion1 = currentRegion().find(target1);
 		if (screenRegion1==null){
-			statusDtr.dispose();
+			if (statusDtr != null) statusDtr.dispose();
 			LOG.error("Cannot find object: " + target1);
 			return false;
 		}
 		else {
 			mouse.drop(screenRegion1.getCenter().getRelativeScreenLocation(xOffSet, yOffSet));
 			LOG.info("Drop performed on " + target1);
-			statusDtr.dispose();
+			if (statusDtr != null) statusDtr.dispose();
 			return true;
 		}
 	}
@@ -357,14 +357,14 @@ public class SikuliDriverFixture extends SikuliCommandProcessor{
 		target1.setMinScore(matching);
 		screenRegion1 = currentRegion().find(target1);
 		if (screenRegion1==null){
-			statusDtr.dispose();
+			if (statusDtr != null) statusDtr.dispose();
 			LOG.error("Cannot find object: " + target1);
 			return false;
 		}
 		else {
 			mouse.drag(screenRegion1.getCenter().getRelativeScreenLocation(xOffSet, yOffSet));
 			LOG.info("Drag performed on " + target1);
-			statusDtr.dispose();
+			if (statusDtr != null) statusDtr.dispose();
 			return true;
 		}
 	}
@@ -380,7 +380,7 @@ public class SikuliDriverFixture extends SikuliCommandProcessor{
 		screenRegion2 = currentRegion().find(target2);
 		if (screenRegion1==null || screenRegion2==null){
 			LOG.error("Cannot find either object: " + target1 + " or " + target2);
-			statusDtr.dispose();
+			if (statusDtr != null) statusDtr.dispose();
 			return false;
 		}
 		else {
@@ -388,7 +388,7 @@ public class SikuliDriverFixture extends SikuliCommandProcessor{
 			mouse.drag(screenRegion1.getCenter());
 			mouse.drop(screenRegion2.getCenter());
 			LOG.info("Drag and Drop performed on " + target1 + " " + target2);
-			statusDtr.dispose();
+			if (statusDtr != null) statusDtr.dispose();
 			return true;
 		}
 	}
@@ -422,7 +422,8 @@ public class SikuliDriverFixture extends SikuliCommandProcessor{
 		target1=fuzzyTarget(imgOrText);
 		target1.setMinScore(matching);
 		boolean result = maybeAddNewMatch(currentRegion().wait(target1,waitTimeMs));
-		statusDtr.dispose();
+		if (statusDtr != null)
+			statusDtr.dispose();
 		return result;
 	}
 	
@@ -543,27 +544,27 @@ public class SikuliDriverFixture extends SikuliCommandProcessor{
 		screenRegion2 = currentRegion().find(target2);
 		if (screenRegion1==null && screenRegion2==null){
 			LOG.error("Cannot find object: " + target1 + " or " + target2);
-			statusDtr.dispose();
+			if (statusDtr != null) statusDtr.dispose();
 			return false;
 		}
 		else if(screenRegion1!=null && screenRegion2==null){
 			mouse.click(screenRegion1.getCenter().getRelativeScreenLocation(xOffSet, yOffSet));
 			LOG.info("Clicked on: " + target1);
-			statusDtr.dispose();
+			if (statusDtr != null) statusDtr.dispose();
 			return true;
 		}
 		
 		else if(screenRegion2!=null && screenRegion1==null){
 			mouse.click(screenRegion2.getCenter().getRelativeScreenLocation(xOffSet, yOffSet));
 			LOG.info("Clicked on: " + target2);
-			statusDtr.dispose();
+			if (statusDtr != null) statusDtr.dispose();
 			return true;
 		}
 		else {
 			mouse.click(screenRegion1.getCenter().getRelativeScreenLocation(xOffSet, yOffSet));
 			mouse.click(screenRegion2.getCenter().getRelativeScreenLocation(xOffSet, yOffSet));
 			LOG.info("Click performed on " + target1 + " and " + target2);
-			statusDtr.dispose();
+			if (statusDtr != null) statusDtr.dispose();
 			return true;
 		}
 	}
@@ -634,7 +635,7 @@ public class SikuliDriverFixture extends SikuliCommandProcessor{
 		StatusWindow statusDtr = statusText("delay " + delayMilliSec);
 		LOG.info("Delaying for " + delayMilliSec + " milliseconds");
 		try { Thread.sleep(delayMilliSec); } catch ( Exception e) { e.printStackTrace(); }
-		statusDtr.dispose();
+		if (statusDtr != null) statusDtr.dispose();
 	}
 	
 	
@@ -704,7 +705,7 @@ public class SikuliDriverFixture extends SikuliCommandProcessor{
 				break;
 		}
 		this.showStatusText = sf;
-		statusDtr.dispose();
+		if (statusDtr != null) statusDtr.dispose();
 		return true;
 	}
 	
@@ -721,7 +722,7 @@ public class SikuliDriverFixture extends SikuliCommandProcessor{
 			//LOG.info("fitnesse.responders.SikuliResponder.isShutdownPressed(): " + fitnesse.responders.SikuliResponder.isShutdownPressed());
 		}
 		this.showStatusText = sf;
-		statusDtr.dispose();
+		if (statusDtr != null) statusDtr.dispose();
 		return true;
 	}
 	
@@ -764,7 +765,14 @@ public class SikuliDriverFixture extends SikuliCommandProcessor{
 		}
 	}
 	
-		public boolean executeMethod(String methodName) throws SecurityException, NoSuchMethodException, IllegalArgumentException, IllegalAccessException, InvocationTargetException, InstantiationException, ClassNotFoundException{
+	public boolean open(String cmd) throws IOException {
+		LOG.debug("open " + cmd);
+		Runtime runtime = Runtime.getRuntime();
+		runtime.exec(cmd);
+		return true;
+	}
+	
+	public boolean executeMethod(String methodName) throws SecurityException, NoSuchMethodException, IllegalArgumentException, IllegalAccessException, InvocationTargetException, InstantiationException, ClassNotFoundException{
 		extendedSikuliCommands = new ExtendedSikuliCommands(methodName);
 		if(!extendedSikuliCommands.isSupportedBySikuliDriver()){
 			return false;

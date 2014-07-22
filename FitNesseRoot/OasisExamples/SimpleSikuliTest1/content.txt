@@ -4,9 +4,11 @@
 | com.xebia.sikuli | 
 
 | script | sikuli driver fixture | 
-| set the matching similarity to | 0.3 |
+| set the matching similarity to | 0.6 |
+| open | cmd.exe /c "start calc.exe" |
 | click | !-<img src="SimpleSikuliTest1?sik&img=startButton.png" />-! |
 | delay | 1000 | 
 | type | calculator |
 | keyDown | ENTER | 
 | keyUp | ENTER | 
+| open | taskkill /F /IM calc.exe |

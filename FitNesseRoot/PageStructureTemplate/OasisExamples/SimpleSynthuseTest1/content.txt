@@ -1,11 +1,18 @@
 !contents -R2 -g -p -f -h
 open up notepad first!
 !| script | synthuse driver fixture | 
+| do | open | on | cmd.exe /c start notepad.exe | 
 | do | waitForVisible | on | //win[@class='Notepad'] | 
 | do | windowSwitchToThis | on | //win[@class='Notepad'] | 
 | do | pause | on | 1000  | 
 | do | sendKeys | on | this is a test! | 
-
+| do | sendKeys | on | {ENTER}another line |
+| do | sendKeys | on | {ENTER}{ADD} for shift key, example: +q | 
+| do | sendKeys | on | {ENTER}{CARROT} for control key |
+| do | disableStatus | on | true |
+| do | sendKeys | on | {ENTER}{PERCENT} for alt key |
+| do | disableStatus | on | false |
+| do | doubleClick | on | //win[@class='Notepad'] | 
 
 
 

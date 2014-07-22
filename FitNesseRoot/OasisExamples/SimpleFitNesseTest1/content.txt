@@ -6,6 +6,7 @@ Simple Math Fitnesse Fixture test
 | set numerator | 10 |
 | set denominator | 2 |
 | show | quotient |
+| check | quotient | 6 |
 
 Using a scenario library table call
 
