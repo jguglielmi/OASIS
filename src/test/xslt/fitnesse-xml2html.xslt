@@ -15,6 +15,9 @@
       background-image: url("../img/plus-sign.png");
       padding-left: 18px;
     }
+	div.collapsible.closed {
+	  display: none;
+	}
     .pass, span.pass * {
       background-color: #C1E2B3;
       color: #081109;
@@ -57,10 +60,10 @@
 	  
 	  <xsl:text disable-output-escaping="yes">&lt;b&gt;Counts:&lt;/b&gt;</xsl:text>
 	  <xsl:text disable-output-escaping="yes">&lt;p style="margin-left:50px;"&gt;</xsl:text>
-	  <xsl:text disable-output-escaping="yes">right: </xsl:text> <xsl:value-of select="//finalCounts/right" disable-output-escaping="yes" />
-	  <xsl:text disable-output-escaping="yes">&lt;br /&gt;wrong: </xsl:text> <xsl:value-of select="//finalCounts/wrong" disable-output-escaping="yes" />
-	  <xsl:text disable-output-escaping="yes">&lt;br /&gt;ignores: </xsl:text> <xsl:value-of select="//finalCounts/ignores" disable-output-escaping="yes" />
-	  <xsl:text disable-output-escaping="yes">&lt;br /&gt;exceptions: </xsl:text> <xsl:value-of select="//finalCounts/exceptions" disable-output-escaping="yes" />
+	  <xsl:text disable-output-escaping="yes">right: </xsl:text> <xsl:value-of select="sum(//counts/right)" disable-output-escaping="yes" />
+	  <xsl:text disable-output-escaping="yes">&lt;br /&gt;wrong: </xsl:text> <xsl:value-of select="sum(//counts/wrong)" disable-output-escaping="yes" />
+	  <xsl:text disable-output-escaping="yes">&lt;br /&gt;ignores: </xsl:text> <xsl:value-of select="sum(//counts/ignores)" disable-output-escaping="yes" />
+	  <xsl:text disable-output-escaping="yes">&lt;br /&gt;exceptions: </xsl:text> <xsl:value-of select="sum(//counts/exceptions)" disable-output-escaping="yes" />
 	  <xsl:text disable-output-escaping="yes">&lt;br /&gt;</xsl:text>
 	  <xsl:text disable-output-escaping="yes">&lt;/p&gt;</xsl:text>
 	  

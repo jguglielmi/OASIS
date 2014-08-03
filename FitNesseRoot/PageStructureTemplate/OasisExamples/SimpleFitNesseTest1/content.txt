@@ -5,7 +5,7 @@ Simple Math Fitnesse Fixture test
 !| script | eg.Division |
 | set numerator | 10 |
 | set denominator | 2 |
-| check | quotient | 4.0 |
+| check | quotient | 5.0 |
 
 Using a scenario library table call
 
