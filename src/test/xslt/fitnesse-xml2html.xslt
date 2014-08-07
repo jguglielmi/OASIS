@@ -52,6 +52,23 @@
       padding: 5px;
     }
     &lt;/style&gt;
+	&lt;script type="text/javascript"&gt;
+	window.onload = function() {
+		showImageFilenames();
+	}
+	function showImageFilenames() {
+		var img;
+		var allImg=document.getElementsByTagName("img");
+		var i = 0;
+		while (img = allImg[i++])
+		{
+			if (img.src.indexOf("?sik&amp;img=") != -1)
+			{
+				img.parentNode.innerHTML = img.parentNode.innerHTML + ' ' + img.src.substring(img.src.indexOf("?sik&amp;img=") + 9);
+			}
+		}
+	}
+	&lt;/script&gt;
     </xsl:text>
       <xsl:text disable-output-escaping="yes">&lt;h2&gt;</xsl:text>
         <xsl:value-of select="//rootPath" disable-output-escaping="yes" />
