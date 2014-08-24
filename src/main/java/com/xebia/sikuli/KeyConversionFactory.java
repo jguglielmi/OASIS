@@ -1,6 +1,6 @@
 package com.xebia.sikuli;
 
-//import java.awt.event.KeyEvent;
+import java.awt.event.KeyEvent;
 import org.sikuli.script.*;
 import org.sikuli.api.robot.Keyboard;
 import org.sikuli.api.robot.desktop.*;
@@ -82,7 +82,7 @@ public class KeyConversionFactory  {
 		else if(key.contains("C_META")){keyboard.keyDown(Key.C_META);}
 		else if(key.contains("CMD")){keyboard.keyDown(Key.CMD);}
 		else if(key.contains("C_CMD")){keyboard.keyDown(Key.C_CMD);}
-		else if(key.contains("WIN")){keyboard.keyDown(Key.WIN);}
+		else if(key.contains("WIN")){keyboard.keyDown(KeyEvent.VK_WINDOWS);}
 		else if(key.contains("C_WIN")){keyboard.keyDown(Key.C_WIN);}
 		else if(key.contains("PRINTSCREEN")){keyboard.keyDown(Key.PRINTSCREEN);}
 		else if(key.contains("C_PRINTSCREEN")){keyboard.keyDown(Key.C_PRINTSCREEN);}
@@ -194,7 +194,7 @@ public class KeyConversionFactory  {
 		else if(key.contains("C_META")){keyboard.keyUp(Key.C_META);}
 		else if(key.contains("CMD")){keyboard.keyUp(Key.CMD);}
 		else if(key.contains("C_CMD")){keyboard.keyUp(Key.C_CMD);}
-		else if(key.contains("WIN")){keyboard.keyUp(Key.WIN);}
+		else if(key.contains("WIN")){keyboard.keyUp(KeyEvent.VK_WINDOWS);}
 		else if(key.contains("C_WIN")){keyboard.keyUp(Key.C_WIN);}
 		else if(key.contains("PRINTSCREEN")){keyboard.keyUp(Key.PRINTSCREEN);}
 		else if(key.contains("C_PRINTSCREEN")){keyboard.keyUp(Key.C_PRINTSCREEN);}

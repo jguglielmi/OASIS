@@ -1,0 +1,26 @@
+!contents -R2 -g -p -f -h
+
+''' open notepad '''
+!| script | sikuli driver fixture | 
+| keyPress | WIN |
+| delay | 3000 | 
+| type | notepad |
+| keyPress | ENTER |
+
+
+!| script | sikuli driver fixture | 
+| note | | set wait time to | 100 | |
+| note | | while | !-<img src="AdvancedSikuliTest1?sik&img=FOUND.png" />-! | is hidden then keypress | DOWN | |
+
+
+
+!| script | sikuli driver fixture | 
+| save screenshot after | step | with base | ./FitNesseRoot/files/testResults/screenshots/${PAGE_NAME} |
+| wait | !-<img src="AdvancedSikuliTest1?sik&img=FormatMenu.png" />-! |
+| click | !-<img src="AdvancedSikuliTest1?sik&img=FormatMenu.png" />-! |
+| delay | 4000 | 
+| click | !-<img src="AdvancedSikuliTest1?sik&img=NotepadFont.png" />-! |
+
+!| script | sikuli driver fixture | 
+| delay | 4000 | 
+| click | !-<img src="AdvancedSikuliTest1?sik&img=FormatMenu.png" />-! |
