@@ -444,6 +444,13 @@ public class SeleniumDriverFixture {
 		}
 		return result;
 	}
+	
+	public boolean maximize() {
+		WebDriver driver = getWebDriver();
+		driver.manage().window().maximize();
+		return true;
+	}
+
 	// The Below 2 functions (searchAllFrames) are used to search all frames for a specific xpath search, and also switchTo the frame that has the found web element
 
 	public WebElement searchAllFrames(String elementXpath) {
