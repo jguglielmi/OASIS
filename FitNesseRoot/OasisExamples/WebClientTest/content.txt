@@ -1,0 +1,16 @@
+!contents -R2 -g -p -f -h
+
+
+| import | 
+| org.oasis.fitnesse | 
+
+!| script | web client | 
+| get http | !-https://www.google.com/search?q=test-! |
+| show | matchOnFirstPattern | !-.input .*? id="sbhost" .*? value="([^"]*)" -! |
+| get http | !-https://www.google.com/search?q=test-! | to file | ./FitNesseRoot/files/testResults/webclient-test.html |
+| $param1= | url encode name | q | with value | test |
+| show | post http | !-http://www.google.com-! | with Params | $param1&$param1 | 
+| set user agent | Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10.4; en-US; rv:1.9.2.2) Gecko/20100316 Firefox/3.6.2 |
+| show | get http | !-http://www.google.com-! |
+| show | get ip address | google.com |
+
