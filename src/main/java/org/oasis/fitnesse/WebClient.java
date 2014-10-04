@@ -24,10 +24,12 @@ import org.xml.sax.*;
 
 public class WebClient {
 	
-	private int readTimeout = 15000; //15 seconds
+	private int readTimeout = 30000; //15 seconds
 	private String userAgent = "";
 	//Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10.4; en-US; rv:1.9.2.2) Gecko/20100316 Firefox/3.6.2
 	private String lastResults = "";
+	private String paramList = "";
+	private String charset = "UTF-8";
 
 	
 	public static void main(String[] args) {
@@ -39,13 +41,20 @@ public class WebClient {
 	//init
 	public void WebClient() {
 	    ignoreBadSSLCerts();
-	    CookieManager cman = new CookieManager();
-	    CookieHandler.setDefault(cman);
+		setCookieManager();
 		System.setProperty("http.agent", ""); //clear java user agent
 	}
 	
 	public void setUserAgent(String agent) {
 		this.userAgent = agent;
+	}
+	
+	public void setReadTimeout(int timeout) {
+		this.readTimeout = timeout;
+	}
+	
+	public void setCharset(String charset) {
+		this.charset = charset;
 	}
 	
 	public String getLastResults() {
@@ -54,6 +63,11 @@ public class WebClient {
 	
 	public void setLastResults(String results) {
 		lastResults = results;
+	}
+	
+	public void setCookieManager() {
+		CookieManager cman = new CookieManager();
+	    CookieHandler.setDefault(cman);
 	}
 	
 	public void ignoreBadSSLCerts() {
@@ -100,7 +114,6 @@ public class WebClient {
 	    }
 	    return cookieStr;
 	}
-	
 	
 	public String getHttp(String urlStr) {
 		return getHttpWithAuth(urlStr, "");
@@ -166,6 +179,7 @@ public class WebClient {
 	
 	public String urlEncodeNameWithValue(String paramName, String paramValue) {
 		try {
+			paramValue = org.oasis.plugin.Util.processDecryptionString(paramValue);
 			return paramName + "=" + URLEncoder.encode(paramValue, "UTF-8");
 		} catch (UnsupportedEncodingException e) {
 			logWrite("Exception urlEncode of " + paramName + "=" + paramValue + ": " + e.getMessage());
@@ -173,9 +187,24 @@ public class WebClient {
 		return "";
 	}
 	
+	public void clearParamList() {
+		this.paramList = "";
+	}
+	
+	public void addParamListNameWithValue(String paramName, String paramValue) {
+		if (this.paramList.length() == 0)
+			this.paramList = urlEncodeNameWithValue(paramName, paramValue);
+		else
+			this.paramList += "&" + urlEncodeNameWithValue(paramName, paramValue);
+	}
+	
+	public String postHttpParamList(String urlStr) {
+		return postHttp(urlStr, this.paramList, "application/x-www-form-urlencoded");
+	}
+	
 	//String urlParameters = "fName=" + URLEncoder.encode("???", "UTF-8") + "&lName=" + URLEncoder.encode("???", "UTF-8")
 	public String postHttpWithParams(String urlStr, String urlParameters) {
-		return postHttp(urlStr, urlParameters, "application/x-www-form-urlencoded") ;
+		return postHttp(urlStr, urlParameters, "application/x-www-form-urlencoded");
 	}
 	
 	public String postHttp(String urlStr, String urlParameters, String contentType) {
@@ -236,6 +265,12 @@ public class WebClient {
 		return customHttp(urlStr, urlParameters, "DELETE", "application/x-www-form-urlencoded") ;
 	}
 	
+	// Example:
+	// | custom http | http://www.google.com | with params | q=test | using method | POST | and content type | application/x-www-form-urlencoded |
+	public String customHttpWithParamsUsingMethodAndContentType(String urlStr, String urlParameters, String method, String contentType) {
+		return customHttp(urlStr, urlParameters, method, contentType);
+	}
+	
 	public String customHttp(String urlStr, String urlParameters, String method, String contentType) {
 		//logWrite("customHttp " + method + " to " + urlStr + " with params: " + urlParameters);
 	    URL url;
@@ -248,6 +283,7 @@ public class WebClient {
 	        conn = (HttpURLConnection) url.openConnection();
 	        conn.setRequestMethod(method);
 			conn.setRequestProperty("User-Agent", this.userAgent);
+			conn.setRequestProperty("accept-charset", charset);
 	        conn.setRequestProperty("Content-Type", contentType); // "application/x-www-form-urlencoded"
 	        //conn.setRequestProperty("Content-Type", "application/json");
 	        //conn.setRequestProperty("Content-Language", "en-US");
