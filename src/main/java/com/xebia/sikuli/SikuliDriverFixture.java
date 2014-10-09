@@ -3,7 +3,7 @@ package com.xebia.sikuli;
 import java.awt.image.BufferedImage;
 import java.io.*;
 import java.util.Stack;
-import java.util.concurrent.atomic.AtomicBoolean;
+//import java.util.concurrent.atomic.AtomicBoolean;
 import java.awt.AWTException;
 import java.awt.Dimension;
 import java.awt.Rectangle;
@@ -17,13 +17,12 @@ import org.sikuli.api.*;
 import org.sikuli.api.robot.*;
 import org.sikuli.api.robot.desktop.*;
 import org.sikuli.api.visual.*;
+import org.sikuli.script.Button;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.xebia.sikuli.ExtendedSikuliCommands; 
 
-import javax.crypto.*;
-import javax.crypto.spec.*;
 import org.synthuse.*; //for showing status window
 
 /**
@@ -56,6 +55,7 @@ public class SikuliDriverFixture extends SikuliCommandProcessor{
 	private String screenshotBaseDir = "./FitNesseRoot/files/testResults/screenshots";
 	private String screenshotPolicy = "none";
 	private int stepNumber=0;
+	private int mouseWheelStep = 1;
 
 	public ExtendedSikuliCommands extendedSikuliCommands;
 
@@ -117,6 +117,10 @@ public class SikuliDriverFixture extends SikuliCommandProcessor{
 	
 	public StatusWindow displayText(String text) {
 		return new StatusWindow(text, 3);
+	}
+	
+	public void setMouseWheelStep(int step) {
+		mouseWheelStep = step;
 	}
 
 	public void setWaitTimeTo(int milliseconds){
@@ -309,6 +313,96 @@ public class SikuliDriverFixture extends SikuliCommandProcessor{
 			return true;
 		}
 	}
+	
+	public void middleClick() {
+		mouse.mouseDown(Button.MIDDLE);
+		mouse.mouseUp(Button.MIDDLE);
+	}
+
+	public boolean middleClick(String imgOrText) throws IOException, AWTException {
+		StatusWindow statusDtr = statusText("middleClick " + imgOrText);
+		refreshDesktopMouseScreen();
+		target1=fuzzyTarget(imgOrText);
+		target1.setMinScore(matching);
+		screenRegion1 = currentRegion().find(target1);
+		if (screenRegion1==null) {
+			checkForScreenshotAfter("middleClick", imgOrText, false);
+			if (statusDtr != null) statusDtr.dispose();
+			LOG.error("Cannot find object: " + target1);
+			return false;
+		}
+		else {
+			mouse.hover(screenRegion1.getCenter().getRelativeScreenLocation(xOffSet, yOffSet));
+			mouse.mouseDown(Button.MIDDLE);
+			mouse.mouseUp(Button.MIDDLE);
+			checkForScreenshotAfter("middleClick", imgOrText, true);
+			LOG.info("middle click up performed on " + target1);
+			if (statusDtr != null) statusDtr.dispose();
+			return true;
+		}
+	}
+	
+	//turn the mouse wheel in the specified direction by the specified number of steps
+	
+	public boolean wheelUp(String imgOrText) throws IOException, AWTException {
+		StatusWindow statusDtr = statusText("wheelUp " + imgOrText);
+		refreshDesktopMouseScreen();
+		target1=fuzzyTarget(imgOrText);
+		target1.setMinScore(matching);
+		screenRegion1 = currentRegion().find(target1);
+		if (screenRegion1==null) {
+			checkForScreenshotAfter("wheelUp", imgOrText, false);
+			if (statusDtr != null) statusDtr.dispose();
+			LOG.error("Cannot find object: " + target1);
+			return false;
+		}
+		else {
+			mouse.hover(screenRegion1.getCenter().getRelativeScreenLocation(xOffSet, yOffSet));
+			mouse.mouseDown(Button.MIDDLE);
+			mouse.mouseUp(Button.MIDDLE);
+			mouse.wheel(Button.WHEEL_UP, mouseWheelStep);
+			checkForScreenshotAfter("wheelUp", imgOrText, true);
+			LOG.info("mouse wheel up performed on " + target1);
+			if (statusDtr != null) statusDtr.dispose();
+			return true;
+		}
+	}
+
+	// | wheel down | img or text |
+	public boolean wheelDown(String imgOrText) throws IOException, AWTException {
+		StatusWindow statusDtr = statusText("wheelDown " + imgOrText);
+		refreshDesktopMouseScreen();
+		target1=fuzzyTarget(imgOrText);
+		target1.setMinScore(matching);
+		screenRegion1 = currentRegion().find(target1);
+		if (screenRegion1==null) {
+			checkForScreenshotAfter("wheelDown", imgOrText, false);
+			if (statusDtr != null) statusDtr.dispose();
+			LOG.error("Cannot find object: " + target1);
+			return false;
+		}
+		else {
+			mouse.hover(screenRegion1.getCenter().getRelativeScreenLocation(xOffSet, yOffSet));
+			mouse.mouseDown(Button.MIDDLE);
+			mouse.mouseUp(Button.MIDDLE);
+			mouse.wheel(Button.WHEEL_DOWN, mouseWheelStep);
+			checkForScreenshotAfter("wheelDown", imgOrText, true);
+			LOG.info("mouse wheel up performed on " + target1);
+			if (statusDtr != null) statusDtr.dispose();
+			return true;
+		}
+	}
+	
+	// | wheel up |
+	public void wheelUp() {
+		mouse.wheel(Button.WHEEL_UP, mouseWheelStep);
+	}
+	
+	// | wheel down |
+	public void wheelDown() {
+		mouse.wheel(Button.WHEEL_DOWN, mouseWheelStep);
+	}
+
 
 	public void hover() {
 		mouse.drop(currentRegion().getCenter());

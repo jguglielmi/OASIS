@@ -1,0 +1,11 @@
+!contents -R2 -g -p -f -h
+
+| import | 
+| com.xebia.sikuli | 
+
+| script | sikuli driver fixture | 
+| delay | 5000 | 
+| set mouse wheel step | 2 |
+| wheel up |
+| wheel down |
+| wheel down | !-<img src="MouseWheelTest?sik&img=1412814077789.png" />-! |
