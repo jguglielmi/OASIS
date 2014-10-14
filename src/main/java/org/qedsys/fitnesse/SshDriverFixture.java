@@ -14,18 +14,12 @@
 package org.qedsys.fitnesse;
 
 import java.io.*;
-import java.util.*;
-import java.util.regex.*;
-import java.util.concurrent.*;
 import com.jcraft.jsch.*;
-
-import java.security.*;
-import javax.crypto.*;
-import javax.crypto.spec.*;
-
 
 public class SshDriverFixture {
 	Session session = null;
+	String passwordPromptStr = " password";
+	int shellCommandResponseDelay = 10; // seconds
 
 	public static void main(String[] args) {
 		System.out.println("starting driver...");
@@ -35,6 +29,8 @@ public class SshDriverFixture {
 	public SshDriverFixture () {
 	}
 	
+	//example:
+	//| connect to | host | with user | username | and password | password | 
 	public boolean connectToWithUserAndPassword(String hostname, String sshUser, String sshPwd) {
 		sshPwd = org.oasis.plugin.Util.processDecryptionString(sshPwd);
 		return connect(hostname, sshUser, sshPwd);
@@ -88,6 +84,69 @@ public class SshDriverFixture {
 			ex.printStackTrace();
 		}
 		return output;
+	}
+	
+	public void setShellCommandResponseDelay(int delay) {
+		shellCommandResponseDelay = delay;
+	}
+	
+	public void setPasswordPromptString(String passwordPrompt) {
+		passwordPromptStr = passwordPrompt;
+	}
+	
+	//this is similar to sshpass: sshpass -ptest1324 ssh -o "StrictHostKeyChecking no" user@host ls -l /tmp
+	//example:
+	//| execute command | ssh -o "StrictHostKeyChecking no" user@host ls -l /tmp | provide password | test1234 |
+	
+	public String executeCommandProvidePassword(String command, String password) {
+	    String output = "";
+	    try {
+	    	//System.out.println("SSH Session executing command: " + command);
+	        Channel channel = session.openChannel("shell");
+	        InputStream in=channel.getInputStream();
+	        OutputStream out=channel.getOutputStream();
+	        channel.connect();
+	        //Thread.sleep(1000);
+	        out.write((command + "\n").getBytes());
+	        out.flush();
+	        //Thread.sleep(1000);
+	        boolean pwdFlg = false;
+	        
+	        int timeout = shellCommandResponseDelay; //10 seconds
+	        byte[] tmp=new byte[1024];
+	        while(true) {
+	            while(in.available() > 0) {
+	                int i = in.read(tmp, 0, 1024);
+	                if ( i < 0 )
+	                    break;
+	                String line = new String(tmp, 0, i);
+	                output += line;
+	                //System.out.print(line);
+	                timeout = shellCommandResponseDelay;
+	            }
+				// if password was requested, then send the password
+				if (output.contains(passwordPromptStr) && !pwdFlg) {
+					pwdFlg = true;
+					//System.out.println("SSH Session sending password");
+			        out.write((password + "\n").getBytes());
+			        out.flush();
+				}
+	            if(channel.isClosed()){
+	                //System.out.println("exit-status: " + channel.getExitStatus());
+	                break;
+	            }
+	            try{Thread.sleep(1000);}catch(Exception ee){}
+	            --timeout;
+	            if (timeout <= 0)
+	                break;
+	        }
+	        channel.disconnect();
+	    }
+	    catch (Exception ex) {
+			ex.printStackTrace();
+	    }
+	    //System.out.println("SSH Session command completed");
+	    return output;
 	}
 	
 	public boolean executeCommandEqualsResult(String command, String expectString) { 
