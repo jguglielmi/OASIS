@@ -32,12 +32,12 @@ public class SshDriverFixture {
 	//example:
 	//| connect to | host | with user | username | and password | password | 
 	public boolean connectToWithUserAndPassword(String hostname, String sshUser, String sshPwd) {
-		sshPwd = org.oasis.plugin.Util.processDecryptionString(sshPwd);
 		return connect(hostname, sshUser, sshPwd);
 	}
 	
 	public boolean connect(String hostname, String sshUser, String sshPwd) {
 		try {
+			sshPwd = org.oasis.plugin.Util.processDecryptionString(sshPwd);
 			JSch jsch = new JSch();
 			session = jsch.getSession(sshUser, hostname, 22);
 			session.setPassword(sshPwd);
@@ -101,6 +101,7 @@ public class SshDriverFixture {
 	public String executeCommandProvidePassword(String command, String password) {
 	    String output = "";
 	    try {
+	    	password = org.oasis.plugin.Util.processDecryptionString(password);
 	    	//System.out.println("SSH Session executing command: " + command);
 	        Channel channel = session.openChannel("shell");
 	        InputStream in=channel.getInputStream();
@@ -157,6 +158,12 @@ public class SshDriverFixture {
 	public boolean executeCommandContainsResult(String command, String expectString) { 
 		String result = executeCommand(command);
 		return result.contains(expectString);
+	}
+	
+	public String usingStringReplaceAllWith(String source, String pattern, String replacement) {
+		//(".*[^\\d](\\d+).*", "$1")
+		//("(?m)^\s+$", "")
+		return source.replaceAll(pattern, replacement);
 	}
 	
 	public static String newString(String val) {

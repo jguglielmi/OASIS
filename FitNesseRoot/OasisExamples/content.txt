@@ -1,14 +1,6 @@
 !contents -R2 -g -p -f -h
-
-
-!define TEST_SYSTEM {slim} 
+!define TEST_SYSTEM {slim}
 !oasis
 
 
-
-
-
-
-
-
-
+[[Regular Expression Cheat Sheet][/files/testHtml/regex_cheat_sheet.html]]

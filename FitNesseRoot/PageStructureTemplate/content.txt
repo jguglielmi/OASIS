@@ -6,3 +6,5 @@
 !define BROWSER {firefox}
 !oasis
 ***!
+
+[[Regular Expression Cheat Sheet][/files/testHtml/regex_cheat_sheet.html]]
