@@ -16,14 +16,14 @@
 		<dependency org="org.slf4j" name="slf4j-simple" rev="1.6.4"/>
 		<dependency org="com.jcraft" name="jsch" rev="0.1.48"/>
 		<dependency org="net.java.dev.jna" name="jna" rev="3.4.0"/>
-		<dependency org="org.seleniumhq.selenium" name="selenium-server" rev="2.39.0"/>
-		<dependency org="org.seleniumhq.selenium" name="selenium-firefox-driver" rev="2.39.0"/>
-		<dependency org="org.seleniumhq.selenium" name="selenium-api" rev="2.39.0"/>
-		<dependency org="org.seleniumhq.selenium" name="selenium-remote-driver" rev="2.39.0"/>
-		<dependency org="org.seleniumhq.selenium" name="selenium-java" rev="2.39.0"/>
+		<dependency org="org.seleniumhq.selenium" name="selenium-server" rev="2.44.0"/>
+		<dependency org="org.seleniumhq.selenium" name="selenium-firefox-driver" rev="2.44.0"/>
+		<dependency org="org.seleniumhq.selenium" name="selenium-api" rev="2.44.0"/>
+		<dependency org="org.seleniumhq.selenium" name="selenium-remote-driver" rev="2.44.0"/>
+		<dependency org="org.seleniumhq.selenium" name="selenium-java" rev="2.44.0"/>
 		<dependency org="com.opera" name="operadriver" rev="1.1"/>
-		<dependency org="com.github.detro.ghostdriver" name="phantomjsdriver" rev="1.0.3"/>
-		<dependency org="org.apache.httpcomponents" name="httpclient" rev="4.3.1"/>
+		<dependency org="com.github.detro.ghostdriver" name="phantomjsdriver" rev="1.0.4"/>
+		<dependency org="org.apache.httpcomponents" name="httpclient" rev="4.3.4"/>
 		<dependency org="org.sikuli" name="sikuli-slides-api" rev="1.4.0"/>
 		<!-- <dependency org="org.fitnesse" name="fitnesse" rev="20140201" conf="*->*,!sources,!javadoc"/> -->
 		<dependency org="org.fitnesse" name="fitnesse" rev="20140418" >
