@@ -1,0 +1,12 @@
+!contents -R2 -g -p -f -h
+
+
+| import | 
+| org.qedsys.fitnesse | 
+
+| script | ssh driver fixture |
+| connect to | oasis.homenet.org | with user | test | and password | passwordhere | 
+| show | execute command | df -h |
+| show | execute command | ssh -o "StrictHostKeyChecking no" test@localhost ls -l /tmp | provide password | passwordhere |
+| disconnect |
+

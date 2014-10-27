@@ -1,0 +1,11 @@
+!contents -R2 -g -p -f -h
+
+!define TEST_SYSTEM {slim} 
+
+!| scenario | division test | numerator | and | denominator | equals | quotient |
+| set numerator | @numerator  |
+| set denominator | @denominator  |
+| check | quotient | @quotient | 
+
+!| script | eg.Division |
+| repeat | division test | 7 | and | 2 | equals | 3.5 | 50000 |

@@ -1,0 +1,965 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+	<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=windows-1252">
+	<TITLE></TITLE>
+	<META NAME="GENERATOR" CONTENT="LibreOffice 4.1.3.2 (Windows)">
+	<META NAME="CREATED" CONTENT="20141014;123213584000000">
+	<META NAME="CHANGED" CONTENT="20141014;125821531000000">
+	<STYLE TYPE="text/css">
+	<!--
+		@page { margin: 0.79in }
+		P { margin-bottom: 0.08in }
+		H2 { margin-bottom: 0.08in }
+		H2.cjk { font-family: "SimSun" }
+		H2.ctl { font-family: "Mangal" }
+		TD P { margin-bottom: 0in }
+		TH P { margin-bottom: 0in }
+		H1 { margin-bottom: 0.08in }
+		H1.western { font-family: "Times New Roman", serif }
+		H1.cjk { font-family: "SimSun"; font-size: 24pt }
+		H1.ctl { font-family: "Mangal"; font-size: 24pt }
+		A:link { so-language: zxx }
+	-->
+	</STYLE>
+</HEAD>
+<BODY LANG="en-US" DIR="LTR">
+<H1 CLASS="western" ALIGN=CENTER><FONT SIZE=4>Regex Cheat Sheet</FONT></H1>
+<H2 CLASS="western"><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 11pt">Characters</FONT></FONT></H2>
+<TABLE WIDTH=667 CELLPADDING=2 CELLSPACING=0>
+	<COL WIDTH=83>
+	<COL WIDTH=304>
+	<COL WIDTH=153>
+	<COL WIDTH=109>
+	<TR>
+		<TH WIDTH=83 STYLE="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0.02in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">Character</FONT></FONT></P>
+		</TH>
+		<TH WIDTH=304 STYLE="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0.02in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">Legend</FONT></FONT></P>
+		</TH>
+		<TH WIDTH=153 STYLE="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0.02in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">Example</FONT></FONT></P>
+		</TH>
+		<TH WIDTH=109 STYLE="border: 1px solid #000000; padding: 0.02in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">Sample
+			Match</FONT></FONT></P>
+		</TH>
+	</TR>
+	<TR>
+		<TD WIDTH=83 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">\d</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=304 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">Most
+			engines: one digit<BR>from 0 to 9</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=153 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">file_\d\d</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=109 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0.02in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">file_25</FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=83 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">\d</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=304 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">.NET,
+			Python 3: one Unicode digit in any script</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=153 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">file_\d\d</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=109 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0.02in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">file_9</FONT></FONT><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt"><SPAN LANG="hi-IN">&#2665;</SPAN></FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=83 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">\w</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=304 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">Most
+			engines: &quot;word character&quot;: ASCII letter, digit or
+			underscore</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=153 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">\w-\w\w\w</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=109 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0.02in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">A-b_1</FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=83 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">\s</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=304 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">Most
+			engines: &quot;whitespace character&quot;: space, tab, newline,
+			carriage return, vertical tab</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=153 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">a\sb\sc</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=109 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0.02in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">a
+			b<BR>c</FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=83 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">\s</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=304 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">.NET,
+			Python 3, JavaScript: &quot;whitespace character&quot;: any
+			Unicode separator</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=153 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">a\sb\sc</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=109 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0.02in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">a
+			b<BR>c</FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=83 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">\D</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=304 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">One
+			character that is not a <I>digit</I> as defined by your engine's
+			<I>\d</I></FONT></FONT></P>
+		</TD>
+		<TD WIDTH=153 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">\D\D\D</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=109 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0.02in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">ABC</FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=83 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">\W</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=304 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">One
+			character that is not a <I>word character</I> as defined by your
+			engine's <I>\w</I></FONT></FONT></P>
+		</TD>
+		<TD WIDTH=153 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">\W\W\W\W\W</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=109 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0.02in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">*-+=)</FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=83 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">\S</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=304 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">One
+			character that is not a <I>whitespace character</I> as defined by
+			your engine's <I>\s</I></FONT></FONT></P>
+		</TD>
+		<TD WIDTH=153 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">\S\S\S\S</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=109 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0.02in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">Yoyo</FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=83 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">.</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=304 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">Any
+			character except line break </FONT></FONT>
+			</P>
+		</TD>
+		<TD WIDTH=153 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">a.c</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=109 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0.02in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">abc</FONT></FONT></P>
+		</TD>
+	</TR>
+</TABLE>
+<TABLE WIDTH=667 CELLPADDING=2 CELLSPACING=0>
+	<COL WIDTH=83>
+	<COL WIDTH=304>
+	<COL WIDTH=153>
+	<COL WIDTH=109>
+	<TR>
+		<TD WIDTH=83 STYLE="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0.02in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">\t</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=304 STYLE="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0.02in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">Tab</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=153 STYLE="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0.02in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">T\t\w{2}</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=109 STYLE="border: 1px solid #000000; padding: 0.02in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">T&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ab</FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=83 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">\r</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=304 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">Carriage
+			return character</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=153 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">see
+			below</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=109 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0.02in">
+			<P><BR>
+			</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=83 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">\n</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=304 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">Line
+			feed character</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=153 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">see
+			below</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=109 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0.02in">
+			<P><BR>
+			</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=83 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">\r\n</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=304 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">Line
+			separator on Windows</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=153 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">AB\r\nCD</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=109 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0.02in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">AB<BR>CD</FONT></FONT></P>
+		</TD>
+	</TR>
+</TABLE>
+<H2 CLASS="western"><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 11pt">Character
+Classes</FONT></FONT></H2>
+<TABLE WIDTH=667 CELLPADDING=2 CELLSPACING=0>
+	<COL WIDTH=84>
+	<COL WIDTH=303>
+	<COL WIDTH=101>
+	<COL WIDTH=161>
+	<TR>
+		<TH WIDTH=84 STYLE="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0.02in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">Character</FONT></FONT></P>
+		</TH>
+		<TH WIDTH=303 STYLE="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0.02in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">Legend</FONT></FONT></P>
+		</TH>
+		<TH WIDTH=101 STYLE="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0.02in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">Example</FONT></FONT></P>
+		</TH>
+		<TH WIDTH=161 STYLE="border: 1px solid #000000; padding: 0.02in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">Sample
+			Match</FONT></FONT></P>
+		</TH>
+	</TR>
+	<TR>
+		<TD WIDTH=84 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">[
+			&hellip; ]</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=303 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">One
+			of the characters in the brackets</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=101 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">[AEIOU]</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=161 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0.02in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">One
+			uppercase vowel</FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=84 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">[
+			&hellip; ]</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=303 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">One
+			of the characters in the brackets</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=101 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">T[ao]p</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=161 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0.02in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt"><I>Tap</I>
+			or <I>Top</I></FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=84 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">-</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=303 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">Range
+			indicator</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=101 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">[a-z]</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=161 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0.02in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">One
+			lowercase letter</FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=84 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">[x-y]</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=303 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">One
+			of the characters in the range from x to y</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=101 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">[A-Z]+</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=161 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0.02in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">GREAT</FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=84 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">[
+			&hellip; ]</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=303 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">One
+			of the characters in the brackets</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=101 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">[AB1-5w-z]</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=161 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0.02in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">One
+			of either: A,B,1,2,3,4,5,w,x,y,z</FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=84 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">[x-y]</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=303 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">One
+			of the characters in the range from x to y</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=101 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">[&ensp;-~]+</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=161 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0.02in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">Characters
+			in the printable section of the <A HREF="http://www.asciitable.com/" TARGET="_blank">ASCII
+			table</A>.</FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=84 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">[^x]</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=303 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">One
+			character that is not x</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=101 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">[^a-z]{3}</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=161 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0.02in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">A1!</FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=84 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">[^x-y]</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=303 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">One
+			of the characters <B>not</B> in the range from x to y</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=101 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">[^&ensp;-~]+</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=161 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0.02in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">Characters
+			that are </FONT></FONT><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt"><B>not</B></FONT></FONT><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">
+			in the printable section of the <A HREF="http://www.asciitable.com/" TARGET="_blank">ASCII
+			table</A>.</FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=84 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">[\d\D]</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=303 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">One
+			character that is a digit or a non-digit</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=101 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">[\d\D]+</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=161 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0.02in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">Any
+			characters, inc-<BR>luding new lines, which the regular dot
+			doesn't match</FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=84 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">[\x41]</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=303 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">Matches
+			the character at hexadecimal position 41 in the ASCII table, i.e.
+			A</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=101 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">[\x41-\x45]{3}</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=161 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0.02in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">ABE</FONT></FONT></P>
+		</TD>
+	</TR>
+</TABLE>
+<H2 CLASS="western"><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 11pt">Anchors
+and Boundaries</FONT></FONT></H2>
+<TABLE WIDTH=667 CELLPADDING=2 CELLSPACING=0>
+	<COL WIDTH=84>
+	<COL WIDTH=303>
+	<COL WIDTH=153>
+	<COL WIDTH=109>
+	<TR>
+		<TH WIDTH=84 STYLE="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0.02in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">Anchor</FONT></FONT></P>
+		</TH>
+		<TH WIDTH=303 STYLE="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0.02in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">Legend</FONT></FONT></P>
+		</TH>
+		<TH WIDTH=153 STYLE="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0.02in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">Example</FONT></FONT></P>
+		</TH>
+		<TH WIDTH=109 STYLE="border: 1px solid #000000; padding: 0.02in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">Sample
+			Match</FONT></FONT></P>
+		</TH>
+	</TR>
+	<TR>
+		<TD WIDTH=84 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">^</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=303 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt"><A HREF="http://www.rexegg.com/regex-anchors.html#caret">Start
+			of string</A> or <A HREF="http://www.rexegg.com/regex-anchors.html#carmulti">start
+			of line</A> depending on multiline mode. (But when [^inside
+			brackets], it means &quot;not&quot;)</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=153 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">^abc
+			.*</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=109 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0.02in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">abc
+			(line start)</FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=84 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">$</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=303 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt"><A HREF="http://www.rexegg.com/regex-anchors.html#dollar">End
+			of string</A> or <A HREF="http://www.rexegg.com/regex-anchors.html#eol">end
+			of line</A> depending on multiline mode. Many engine-dependent
+			subtleties.</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=153 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">.*?
+			the end$</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=109 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0.02in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">this
+			is the end</FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=84 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">\A</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=303 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt"><A HREF="http://www.rexegg.com/regex-anchors.html#A">Beginning
+			of string</A><BR>(all major engines except JS)</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=153 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">\Aabc[\d\D]*</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=109 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0.02in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">abc
+			(string...<BR>...start)</FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=84 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">\z</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=303 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt"><A HREF="http://www.rexegg.com/regex-anchors.html#z">Very
+			end of the string</A><BR>Not available in Python and JS</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=153 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">the
+			end\z</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=109 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0.02in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">this
+			is...\n...<B>the end</B></FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=84 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">\Z</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=303 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt"><A HREF="http://www.rexegg.com/regex-anchors.html#Z">End
+			of string</A> or (except Python) before final line break<BR>Not
+			available in JS</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=153 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">the
+			end\Z</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=109 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0.02in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">this
+			is...\n...<B>the end</B>\n</FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=84 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">\G</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=303 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt"><A HREF="http://www.rexegg.com/regex-anchors.html#G">Beginning
+			of String or End of Previous Match</A><BR>.NET, Java, PCRE (C,
+			PHP, R&hellip;), Perl, Ruby</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=153 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0in">
+			<P><BR>
+			</P>
+		</TD>
+		<TD WIDTH=109 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0.02in">
+			<P><BR>
+			</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=84 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">\b</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=303 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt"><A HREF="http://www.rexegg.com/regex-boundaries.html#wordboundary">Word
+			boundary</A><BR>Most engines: position where one side only is an
+			ASCII letter, digit or underscore</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=153 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">Bob.*\bcat\b</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=109 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0.02in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">Bob
+			ate the cat</FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=84 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">\b</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=303 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt"><A HREF="http://www.rexegg.com/regex-boundaries.html#wordboundary">Word
+			boundary</A><BR>.NET, Java, Python 3, Ruby: position where one
+			side only is a Unicode letter, digit or underscore</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=153 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">Bob.*\b\&#1082;&#1086;&#1096;&#1082;&#1072;\b</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=109 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0.02in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">Bob
+			ate the &#1082;&#1086;&#1096;&#1082;&#1072;</FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=84 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">\B</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=303 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0in">
+			<P><A HREF="http://www.rexegg.com/regex-boundaries.html#notb"><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">Not
+			a word boundary</FONT></FONT></A></P>
+		</TD>
+		<TD WIDTH=153 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">c.*\Bcat\B.*</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=109 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0.02in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">copycats</FONT></FONT></P>
+		</TD>
+	</TR>
+</TABLE>
+<H2 CLASS="western"><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 11pt">Inline
+Modifiers - <FONT SIZE=2 STYLE="font-size: 9pt"><SPAN STYLE="font-weight: normal">None
+of these are supported in JavaScript. In Ruby, beware of (?s) and
+(?m). </SPAN></FONT></FONT></FONT>
+</H2>
+<TABLE WIDTH=667 CELLPADDING=2 CELLSPACING=0>
+	<COL WIDTH=84>
+	<COL WIDTH=303>
+	<COL WIDTH=153>
+	<COL WIDTH=109>
+	<TR>
+		<TH WIDTH=84 STYLE="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0.02in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">Modifier</FONT></FONT></P>
+		</TH>
+		<TH WIDTH=303 STYLE="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0.02in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">Legend</FONT></FONT></P>
+		</TH>
+		<TH WIDTH=153 STYLE="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0.02in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">Example</FONT></FONT></P>
+		</TH>
+		<TH WIDTH=109 STYLE="border: 1px solid #000000; padding: 0.02in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">Sample
+			Match</FONT></FONT></P>
+		</TH>
+	</TR>
+	<TR>
+		<TD WIDTH=84 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">(?i)</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=303 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt"><A HREF="http://www.rexegg.com/regex-modifiers.html#i">Case-insensitive
+			mode</A><BR>(except JavaScript)</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=153 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">(?i)Monday</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=109 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0.02in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">monDAY</FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=84 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">(?s)</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=303 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt"><A HREF="http://www.rexegg.com/regex-modifiers.html#dotall">DOTALL
+			mode</A> (except JS and Ruby). The dot (.) matches new line
+			characters (\r\n). Also known as &quot;single-line mode&quot;
+			because the dot treats the entire input as a single line</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=153 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">(?s)From
+			A.*to Z</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=109 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0.02in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">From
+			A<BR>to Z</FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=84 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">(?m)</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=303 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt"><A HREF="http://www.rexegg.com/regex-modifiers.html#multiline">Multiline
+			mode</A><BR>(except Ruby and JS) ^ and $ match at the beginning
+			and end of every line</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=153 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">(?m)1\r\n^2$\r\n^3$</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=109 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0.02in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">1<BR>2<BR>3</FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=84 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">(?m)</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=303 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt"><A HREF="http://www.rexegg.com/regex-modifiers.html#rubym">In
+			Ruby</A>: the same as (?s) in other engines, i.e. DOTALL mode,
+			i.e. dot matches line breaks</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=153 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">(?m)From
+			A.*to Z</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=109 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0.02in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">From
+			A<BR>to Z</FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=84 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">(?x)</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=303 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt"><A HREF="http://www.rexegg.com/regex-modifiers.html#freespacing">Free-Spacing
+			Mode mode</A><BR>(except JavaScript). Also known as comment mode
+			or whitespace mode</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=153 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">(?x)
+			# this is a<BR># comment<BR>abc # write on multiple<BR># lines<BR>[
+			]d # spaces must be<BR># in brackets</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=109 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0.02in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">abc
+			d</FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=84 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">(?n)</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=303 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0in">
+			<P><A HREF="http://www.rexegg.com/regex-modifiers.html#n"><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">.NET:
+			named capture only</FONT></FONT></A></P>
+		</TD>
+		<TD WIDTH=153 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">Turns
+			all (parentheses) into non-capture groups. To capture, use <A HREF="http://www.rexegg.com/regex-capture.html#namedgroups">named
+			groups</A>.</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=109 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0.02in">
+			<P><BR>
+			</P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=84 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">(?d)</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=303 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0in">
+			<P><A HREF="http://www.rexegg.com/regex-modifiers.html#d"><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">Java:
+			Unix linebreaks only</FONT></FONT></A></P>
+		</TD>
+		<TD WIDTH=153 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">The
+			dot and the ^ and $ anchors are only affected by \n</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=109 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0.02in">
+			<P><BR>
+			</P>
+		</TD>
+	</TR>
+</TABLE>
+<H2 CLASS="western"><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 11pt">Logic</FONT></FONT></H2>
+<TABLE WIDTH=667 CELLPADDING=2 CELLSPACING=0>
+	<COL WIDTH=84>
+	<COL WIDTH=303>
+	<COL WIDTH=153>
+	<COL WIDTH=109>
+	<TR>
+		<TH WIDTH=84 STYLE="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0.02in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">Logic</FONT></FONT></P>
+		</TH>
+		<TH WIDTH=303 STYLE="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0.02in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">Legend</FONT></FONT></P>
+		</TH>
+		<TH WIDTH=153 STYLE="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0.02in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">Example</FONT></FONT></P>
+		</TH>
+		<TH WIDTH=109 STYLE="border: 1px solid #000000; padding: 0.02in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">Sample
+			Match</FONT></FONT></P>
+		</TH>
+	</TR>
+	<TR>
+		<TD WIDTH=84 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">|</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=303 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">Alternation
+			/ OR operand</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=153 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">22|33</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=109 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0.02in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">33</FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=84 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">(
+			&hellip; )</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=303 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">Capturing
+			group</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=153 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">A(nt|pple)</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=109 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0.02in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">Apple
+			(captures &quot;pple&quot;)</FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=84 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">\1</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=303 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">Contents
+			of Group 1</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=153 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">r(\w)g\1x</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=109 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0.02in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">regex</FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=84 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">\2</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=303 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">Contents
+			of Group 2</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=153 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">(\d\d)\+(\d\d)=\2\+\1</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=109 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0.02in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">12+65=65+12</FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=84 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">(?:
+			&hellip; )</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=303 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">Non-capturing
+			group</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=153 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">A(?:nt|pple)</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=109 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0.02in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">Apple</FONT></FONT></P>
+		</TD>
+	</TR>
+</TABLE>
+<H2 CLASS="western"><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 11pt">Lookarounds</FONT></FONT></H2>
+<TABLE WIDTH=667 CELLPADDING=2 CELLSPACING=0>
+	<COL WIDTH=85>
+	<COL WIDTH=302>
+	<COL WIDTH=154>
+	<COL WIDTH=108>
+	<TR>
+		<TH WIDTH=85 STYLE="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0.02in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">Lookaround</FONT></FONT></P>
+		</TH>
+		<TH WIDTH=302 STYLE="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0.02in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">Legend</FONT></FONT></P>
+		</TH>
+		<TH WIDTH=154 STYLE="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0.02in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">Example</FONT></FONT></P>
+		</TH>
+		<TH WIDTH=108 STYLE="border: 1px solid #000000; padding: 0.02in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">Sample
+			Match</FONT></FONT></P>
+		</TH>
+	</TR>
+	<TR>
+		<TD WIDTH=85 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">(?=&hellip;)</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=302 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0in">
+			<P><A HREF="http://www.rexegg.com/regex-disambiguation.html#lookahead"><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">Positive
+			lookahead</FONT></FONT></A></P>
+		</TD>
+		<TD WIDTH=154 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">(?=\d{10})\d{5}</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=108 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0.02in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">01234
+			in <B>01234</B>56789</FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=85 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">(?&lt;=&hellip;)</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=302 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0in">
+			<P><A HREF="http://www.rexegg.com/regex-disambiguation.html#lookbehind"><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">Positive
+			lookbehind</FONT></FONT></A></P>
+		</TD>
+		<TD WIDTH=154 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">(?&lt;=\d)cat</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=108 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0.02in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">cat
+			in 1<B>cat</B></FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=85 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">(?!&hellip;)</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=302 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0in">
+			<P><A HREF="http://www.rexegg.com/regex-disambiguation.html#negative-lookahead"><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">Negative
+			lookahead</FONT></FONT></A></P>
+		</TD>
+		<TD WIDTH=154 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">(?!theatre)the\w+</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=108 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0.02in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">theme</FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR>
+		<TD WIDTH=85 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">(?&lt;!&hellip;)</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=302 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0in">
+			<P><A HREF="http://www.rexegg.com/regex-disambiguation.html#negative-lookbehind"><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">Negative
+			lookbehind</FONT></FONT></A></P>
+		</TD>
+		<TD WIDTH=154 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">\w{3}(?&lt;!mon)ster</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=108 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding-top: 0in; padding-bottom: 0.02in; padding-left: 0.02in; padding-right: 0.02in">
+			<P><FONT FACE="Times New Roman, serif"><FONT SIZE=2 STYLE="font-size: 9pt">Munster</FONT></FONT></P>
+		</TD>
+	</TR>
+</TABLE>
+<P STYLE="margin-bottom: 0in"><BR>
+</P>
+</BODY>
+</HTML>
