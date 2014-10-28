@@ -5,7 +5,6 @@ import static org.junit.Assert.assertNull;
 
 import java.net.MalformedURLException;
 
-//import org.openqa.selenium.WebDriverCommandProcessor;
 import com.thoughtworks.selenium.webdriven.WebDriverCommandProcessor;
 import org.junit.Ignore;
 import org.junit.Test;
