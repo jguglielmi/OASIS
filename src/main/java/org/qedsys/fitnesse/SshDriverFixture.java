@@ -20,6 +20,7 @@ public class SshDriverFixture {
 	Session session = null;
 	String passwordPromptStr = " password";
 	int shellCommandResponseDelay = 10; // seconds
+	String lastResults = "";
 
 	public static void main(String[] args) {
 		System.out.println("starting driver...");
@@ -53,6 +54,7 @@ public class SshDriverFixture {
 	
 	public String executeCommand(String command) {
 		String output = "";
+		lastResults = "";
 		try {
 			Channel channel = session.openChannel("exec");
 			((ChannelExec)channel).setCommand(command);
@@ -83,6 +85,7 @@ public class SshDriverFixture {
 		catch (Exception ex) {
 			ex.printStackTrace();
 		}
+		lastResults = output;
 		return output;
 	}
 	
@@ -100,6 +103,7 @@ public class SshDriverFixture {
 	
 	public String executeCommandProvidePassword(String command, String password) {
 	    String output = "";
+		lastResults = "";
 	    try {
 	    	password = org.oasis.plugin.Util.processDecryptionString(password);
 	    	//System.out.println("SSH Session executing command: " + command);
@@ -147,7 +151,27 @@ public class SshDriverFixture {
 			ex.printStackTrace();
 	    }
 	    //System.out.println("SSH Session command completed");
+		lastResults = output;
 	    return output;
+	}
+	
+	public String getLastResults() {
+		return lastResults;
+	}
+	
+	public void setLastResults(String results) {
+		lastResults = results;
+	}
+
+	//clear out any unicode or weird ascii codes 
+	public String sanitizeResults() {
+		lastResults = lastResults.replaceAll("[^x09-x0bx20-x7e]", "");
+		return lastResults;
+	}
+
+	public String replaceAllWith(String pattern, String replacement) {
+		//(".*[^\\d](\\d+).*", "$1")
+		return lastResults.replaceAll(pattern, replacement);
 	}
 	
 	public boolean executeCommandEqualsResult(String command, String expectString) { 
