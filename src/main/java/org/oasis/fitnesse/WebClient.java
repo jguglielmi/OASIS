@@ -326,6 +326,60 @@ public class WebClient {
 	    return result.toString();
 	}
 	
+	public String soapMessageToWithActionAndXml(String urlStr, String soapAction, String soapXml) {
+		//logWrite("customHttp " + method + " to " + urlStr + " with params: " + urlParameters);
+	    URL url;
+	    HttpURLConnection conn = null;
+	    BufferedReader rd;
+	    String line;
+	    StringBuilder result = new StringBuilder();
+		String urlParameters = soapXml;
+		String method = "POST";
+		String contentType = "text/xml; charset=utf-8";
+	    try {
+	        url = new URL(urlStr);
+	        conn = (HttpURLConnection) url.openConnection();
+	        conn.setRequestMethod(method);
+			conn.setRequestProperty("User-Agent", this.userAgent);
+			conn.setRequestProperty("accept-charset", charset);
+	        conn.setRequestProperty("Content-Type", contentType); // "application/x-www-form-urlencoded"
+			conn.setRequestProperty("SOAPAction", soapAction);
+	        conn.setUseCaches (false);
+	        conn.setDoInput(true);
+	        conn.setDoOutput(true);
+	        conn.setReadTimeout(readTimeout);
+
+	        //Send request
+	        DataOutputStream wr = new DataOutputStream(conn.getOutputStream());
+	        wr.writeBytes (urlParameters);
+	        wr.flush ();
+	        wr.close ();
+
+			String newLine = System.getProperty("line.separator");
+	        rd = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+	        while ((line = rd.readLine()) != null) {
+	        	result.append(line + newLine);
+	        }
+	        rd.close();
+	    }
+	    catch (Exception ex) {
+	        //ex.printStackTrace();
+	        logWrite("Failed to postHtml " + ex.getMessage());
+	        Scanner s = new Scanner(conn.getErrorStream());
+	        s.useDelimiter("\\Z");
+	        logWrite(s.next());
+	        s.close();
+	        //logWrite(ex);
+	        result = new StringBuilder();;
+	    }
+	    finally {
+	        if(conn != null)
+	        	conn.disconnect(); 
+	    }
+		lastResults = result.toString();
+	    return result.toString();
+	}
+	
 	public String getIpAddress(String hostname) {
 		String result = "";
 		try {
