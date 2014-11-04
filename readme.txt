@@ -12,7 +12,8 @@ OASIS pulls from the open source tools:
 -Xebium (FitNesse + Selenium)
 -JMeter
 
-For examples of how to use OASIS, please visit the wiki page Youtube videos.
+For examples of how to use OASIS, please visit the wiki page Youtube videos.  Users must have internet access to download dependencies for use with the "ant-run.bat" file.
 
-
-To start using Oasis simply run the "run-ant.bat" or the "run-mvn.bat" file.
+Please perform the following steps on initial clones, then step 2 can be used only:
+1. To make custom updates to the testing fixtures, please use the "ant-run.bat" file to recompile the Java source classes.  
+2. To start using OASIS without compiling, use the "run.bat" file.
