@@ -124,7 +124,7 @@
        To spawn a new process add -Drun_spawn=true
    -->
   <target name="run" depends="unit_test" description="generate the distribution" >
-    <java jar="${fitnesse_jar}" fork="true" spawn="${run_spawn}" failonerror="false" maxmemory="2g">
+    <java jar="${fitnesse_jar}" fork="true" spawn="${run_spawn}" failonerror="false" maxmemory="1g">
       <arg value="-p"/>
 	  <arg value="${fitnesse_port}"/>
       <arg value="-o"/>

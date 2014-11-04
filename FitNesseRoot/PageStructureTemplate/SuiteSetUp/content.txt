@@ -5,4 +5,5 @@
 | com.xebia.sikuli | 
 | org.synthuse | 
 | org.qedsys.fitnesse |
+| org.oasis.fitnesse |
 | org.qedsys.file |
