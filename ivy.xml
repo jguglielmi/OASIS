@@ -5,6 +5,7 @@
 		<conf name="test"/>
 	</configurations>
     <dependencies xmlns:e="urn:ant.apache.org:ivy-extras">
+		<dependency org="org.apache.pdfbox" name="pdfbox" rev="1.8.5"/>
 		<dependency org="org.apache.poi" name="poi-scratchpad" rev="3.10-FINAL"/>
 		<dependency org="org.apache.poi" name="poi-ooxml-schemas" rev="3.10-FINAL"/>
 		<dependency org="org.apache.poi" name="poi-ooxml" rev="3.10-FINAL"/>
