@@ -117,7 +117,11 @@ public class SeleniumDriverFixture {
 	public void loadFirefoxProfileFromDirectory(String directory) {
 		defaultWebDriverSupplier.setProfileDirectory(new File(directory));
 	}
-
+	
+	public void loadFirefoxFromDirectory(String directory) {
+		System.setProperty(DefaultWebDriverSupplier.FIREFOX_BIN_PROPERTY, directory);
+	}
+	
 	/**
 	 * @param browser Name of the browser, as accepted by the DefaultWebDriverSupplier.
 	 */
@@ -748,7 +752,6 @@ public class SeleniumDriverFixture {
 			}
 		}
 	}
-
 
 	public void stopBrowser() {
 		commandProcessor.stop();

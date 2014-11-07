@@ -23,6 +23,8 @@ import java.io.*;
 public class DefaultWebDriverSupplier implements ConfigurableWebDriverSupplier {
 
 	private static final Logger LOG = LoggerFactory.getLogger(SeleniumDriverFixture.class);
+	
+	public static String FIREFOX_BIN_PROPERTY = "webdriver.firefox.bin";
 
 	public String browser;
 	
@@ -35,34 +37,22 @@ public class DefaultWebDriverSupplier implements ConfigurableWebDriverSupplier {
 
 	public WebDriver newWebDriver() {
 		WebDriver driver;
+		
+		String appsDir = "./apps";
+		try {
+			appsDir = new File("./apps").getCanonicalPath();
+		} catch (IOException e1) {e1.printStackTrace();}
+		
 		if ("firefox".equalsIgnoreCase(browser)) {
-			FirefoxProfile profile;
-			// Load FireFox-profile if present
-			if (profileDirectory != null) {
-				profile = new FirefoxProfile(profileDirectory);
-				LOG.info("Firefox profile successfully loaded");
-			}
-			else {
-				profile = new FirefoxProfile();
-			}
-
-			if (customProfilePreferencesFile != null) {
-				PreferencesWrapper prefs = loadFirefoxPreferences();
-
-				prefs.addTo(profile);
-				try {
-					StringWriter writer = new StringWriter(512);
-					prefs.writeTo(writer);
-					LOG.info("Added properties to firefox profile: " + writer.toString());
-				} catch (IOException e) {
-					LOG.error("Unable to log firefox profile settings", e);
-				}
-			}
-
-			// Ensure we deal with untrusted and unverified hosts.
-			profile.setAcceptUntrustedCertificates(true);
-			profile.setAssumeUntrustedCertificateIssuer(true);
-
+			FirefoxProfile profile = getFirefoxProfile();
+			driver = new FirefoxDriver(profile);
+		} else if ("firefox24".equalsIgnoreCase(browser)) {
+			System.setProperty(FIREFOX_BIN_PROPERTY, appsDir + "/Firefox24.8.1esr/firefox.exe" );
+			FirefoxProfile profile = getFirefoxProfile();
+			driver = new FirefoxDriver(profile);
+		} else if ("firefox31".equalsIgnoreCase(browser)) {
+			System.setProperty(FIREFOX_BIN_PROPERTY, appsDir + "/Firefox31.2.0esr/firefox.exe" );
+			FirefoxProfile profile = getFirefoxProfile();
 			driver = new FirefoxDriver(profile);
 		} else if ("iexplore".equalsIgnoreCase(browser)) {
 			driver = new InternetExplorerDriver();
@@ -109,6 +99,37 @@ public class DefaultWebDriverSupplier implements ConfigurableWebDriverSupplier {
 			}
 		}
 		return driver;
+	}
+	
+	private FirefoxProfile getFirefoxProfile() {
+		FirefoxProfile profile;
+		// Load FireFox-profile if present
+		if (profileDirectory != null) {
+			profile = new FirefoxProfile(profileDirectory);
+			LOG.info("Firefox profile successfully loaded");
+		}
+		else {
+			profile = new FirefoxProfile();
+		}
+
+		if (customProfilePreferencesFile != null) {
+			PreferencesWrapper prefs = loadFirefoxPreferences();
+
+			prefs.addTo(profile);
+			try {
+				StringWriter writer = new StringWriter(512);
+				prefs.writeTo(writer);
+				LOG.info("Added properties to firefox profile: " + writer.toString());
+			} catch (IOException e) {
+				LOG.error("Unable to log firefox profile settings", e);
+			}
+		}
+
+		// Ensure we deal with untrusted and unverified hosts.
+		profile.setAcceptUntrustedCertificates(true);
+		profile.setAssumeUntrustedCertificateIssuer(true);
+		return profile;
+
 	}
 
 	private PreferencesWrapper loadFirefoxPreferences() {

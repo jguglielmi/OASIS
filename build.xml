@@ -8,6 +8,7 @@
   <property name="build" location="build"/>
   <property name="lib" location="lib"/>
   <property name="dist"  location="dist"/>
+  <property name="apps"  location="apps"/>
   <property file="oasis.properties"/> <!-- load properties from the oasis.properties file -->
   
   <path id="compile.classpath"> <!-- this classpath refid includes everything needed for compiling the source -->
@@ -20,6 +21,14 @@
     <mkdir dir="${user.home}/.ant/lib"/>
     <get dest="${user.home}/.ant/lib/ivy.jar" src="http://search.maven.org/remotecontent?filepath=org/apache/ivy/ivy/2.3.0/ivy-2.3.0.jar"/>
   </target>
+  
+  <target name="unzip_apps" description="Unzips all application zip files (IE:firefoxes) inside the apps directory">
+    <unzip dest="${apps}">
+      <fileset dir="${apps}">
+        <include name="*.zip"/>
+      </fileset>
+    </unzip>
+  </target>
 
   <target name="init">
     <!-- Create the time stamp -->
@@ -29,12 +38,14 @@
     <mkdir dir="${lib}"/>
     <mkdir dir="${lib}/ivy"/>
 	
+	<antcall target="unzip_apps" />
+	
 	<!-- echo properties from the oasis.properties file -->
 	<echo>
 	oasis_version: ${oasis_version}
 	fitnesse_port: ${fitnesse_port}
 	</echo>
-	
+		
   </target>
   
   <!-- downloadable dependencies are listed in ivy.xml file and are downloaded to the lib/ivy directory. -->

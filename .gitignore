@@ -7,3 +7,5 @@ target
 FitNesseRoot/ErrorLogs/
 /FitNesseRoot/files/testResults/*
 FitNesseRoot/ErrorLogs/*
+apps/*
+!apps/*.zip

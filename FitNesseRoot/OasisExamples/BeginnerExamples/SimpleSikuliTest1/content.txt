@@ -1,0 +1,15 @@
+!contents -R2 -g -p -f -h
+
+| import | 
+| com.xebia.sikuli | 
+
+| script | sikuli driver fixture | 
+| set the matching similarity to | 0.5 |
+| open | cmd.exe /c "start calc.exe" |
+| wait | !-<img src="SimpleSikuliTest1?sik&img=startButton.png" />-! |
+| click | !-<img src="SimpleSikuliTest1?sik&img=startButton.png" />-! |
+| delay | 1000 | 
+| type | calculator |
+| keyDown | ENTER | 
+| keyUp | ENTER | 
+| open | taskkill /F /IM calc.exe |

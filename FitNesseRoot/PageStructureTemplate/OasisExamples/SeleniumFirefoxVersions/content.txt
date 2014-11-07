@@ -1,0 +1,18 @@
+'''
+Setting the browser to firefox24 will use the internally stored Firefox v24.8.1
+Setting the browser to firefox31 will use the internally stored Firefox 31.2.0
+Setting the browser to just firefox will use the system's installed copy of firefox
+The internal copies are located under Oasis\apps\
+'''
+
+| script | selenium driver fixture | 
+| start browser | firefox24  | on url | http://localhost:${FITNESSE_PORT} |
+| do | open | on | /files/testHtml/iFrameTest1.html |
+| maximize |
+| ensure | do | waitForVisible | on | //input[@id='topTxt'] |
+| ensure | do | click | on | !-//input[@value='fill city']-! |
+| ensure | do | click | on | !-//input[@value='fill phone']-! |
+| ensure | do | click | on | !-//input[@value='fill top']-! |
+| ensure | do | click | on | !-//input[@value='fill names']-! |
+| ensure | do | click | on | !-//input[@value='fill email']-! |
+| stop browser |

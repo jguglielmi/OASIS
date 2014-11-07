@@ -1,0 +1,25 @@
+!define PING_SOAP_MSG_XML {<?xml version="1.0" ?><S:Envelope xmlns:S="http://schemas.xmlsoap.org/soap/envelope/"><S:Body><ns2:pingTest xmlns:ns2="http://soap.oasis.org/"/></S:Body></S:Envelope>}
+
+!define GEN_SOAP_MSG_XML {<?xml version="1.0" ?><S:Envelope xmlns:S="http://schemas.xmlsoap.org/soap/envelope/"><S:Body><ns2:generateUuidWithName xmlns:ns2="http://soap.oasis.org/"><arg0>test</arg0></ns2:generateUuidWithName></S:Body></S:Envelope>}
+
+| import | 
+| org.oasis.soap | 
+
+'''Start up our local soap web service at http://localhost:8080/WS/Ping?wsdl '''
+!| script | web service publisher | 
+| show | get url |
+| publish ping web service |
+
+'''Send a soap request using the web client fixture, expect "pong" to be returned'''
+!| script | web client | 
+| show | soap message to | http://localhost:8080/WS/Ping | with action | "http://soap.oasis.org/PingWsInterface/pingTestRequest" | and xml | ${PING_SOAP_MSG_XML} |
+| check | evaluate xpath | //return/text() | pong |
+
+'''Send a different soap request using the web client fixture, expect a generated GUID back'''
+!| script | web client | 
+| show | soap message to | http://localhost:8080/WS/Ping | with action | "http://org.soap.test/PingWsInterface/generateUuidWithNameRequest" | and xml | ${GEN_SOAP_MSG_XML} |
+| check not | evaluate xpath | //return/text() |  |
+
+'''Stop the soap web service'''
+!| script | web service publisher | 
+| stop ping web service |
