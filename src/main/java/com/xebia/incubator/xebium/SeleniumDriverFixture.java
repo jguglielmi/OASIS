@@ -118,8 +118,8 @@ public class SeleniumDriverFixture {
 		defaultWebDriverSupplier.setProfileDirectory(new File(directory));
 	}
 	
-	public void loadFirefoxFromDirectory(String directory) {
-		System.setProperty(DefaultWebDriverSupplier.FIREFOX_BIN_PROPERTY, directory);
+	public void loadFirefoxFrom(String path) {
+		System.setProperty(DefaultWebDriverSupplier.FIREFOX_BIN_PROPERTY, path);
 	}
 	
 	/**
