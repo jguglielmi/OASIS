@@ -21,12 +21,12 @@
 		font-size: 0.8em;
 	}
 	.box {
-		width:300px;
-		height:300px;
+		width:100px;
+		height:100px;
 		background-color:#d9d9d9;
 		position:fixed;
-		margin-left:-150px; /* half of width */
-		margin-top:-150px;  /* half of height */
+		margin-left:-50px; /* half of width */
+		margin-top:-50px;  /* half of height */
 		top:50%;
 		left:50%;
 	}
@@ -53,7 +53,7 @@
   var contentDiv = document.getElementById("contentDiv");
   function randomContent() {
 	//var num = Math.round(Math.random() * (cars.length - 2) + 0);
-	var num = Math.round(Math.random() * (3 - 2) + 0);
+	var num = Math.round(Math.random() * (4) + 0);
 	//alert(num);
 	//return cars[num] + " (" + num + ")";
 	return cars[num];
@@ -83,7 +83,7 @@
     newContentBtn.onclick = function(){clickNewContentBtn();};
     newContentTxt.value = randomContent();
 	//updateTimeTxt.value = Math.round(Math.random() * (15 - 1) + 1)* 1000; //random time from 1 to 15 seconds
-	updateTimeTxt.value = "4000";
+	updateTimeTxt.value = "2000";
 	setTimeout(timedEvent, updateTimeTxt.value);
   }
   onLoad=begin();

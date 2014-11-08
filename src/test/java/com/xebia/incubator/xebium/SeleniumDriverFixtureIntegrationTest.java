@@ -1,6 +1,11 @@
 package com.xebia.incubator.xebium;
 
+import static org.hamcrest.Matchers.is;
+import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
+import static org.mockito.BDDMockito.given;
+import static org.mockito.Matchers.anyString;
+import static org.mockito.Matchers.isA;
 
 import org.junit.Ignore;
 import org.junit.Test;
@@ -51,6 +56,24 @@ public class SeleniumDriverFixtureIntegrationTest {
 		fixture.loadCustomBrowserPreferencesFromFile("firefoxexample.json");
 		fixture.startBrowserOnUrl("firefox", "http://localhost:8000");
 		fixture.stopBrowser();
+	}
+	
+	@Test
+	@Ignore
+	public void shouldFindWebElementInsideFrame(){
+		
+		final SeleniumDriverFixture fixture = new SeleniumDriverFixture();
+		//		| start browser | firefox | on url | http://localhost:${FITNESSE_PORT}/ |
+		fixture.startBrowserOnUrl("firefox", "http://localhost:8000");
+		assertTrue(fixture.doOn("open", "/files/testHtml/iFrameTest1.html"));
+
+		assertTrue(fixture.searchAllFrames("//input[@value='fill city']") != null);
+		assertTrue(fixture.searchAllFrames("//input[@value='fill email']") != null);
+		assertTrue(fixture.doOn("waitForVisible", "//input[@value='fill email']"));
+		
+		fixture.stopBrowser();
+		//WebElement elem = seleniumDriverFixture.searchAllFrames("//*[id=verwijderen]");
+		//assertTrue(elem != null);
 	}
 
 }

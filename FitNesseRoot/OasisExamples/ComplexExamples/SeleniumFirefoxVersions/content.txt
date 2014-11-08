@@ -9,7 +9,7 @@ The internal copies are located under Oasis\apps\
 '''
 
 | script | selenium driver fixture | 
-| start browser | firefox31  | on url | http://localhost:${FITNESSE_PORT} |
+| start browser | firefox24  | on url | http://localhost:${FITNESSE_PORT} |
 | do | open | on | /files/testHtml/iFrameTest1.html |
 | maximize |
 | ensure | do | waitForVisible | on | //input[@id='topTxt'] |

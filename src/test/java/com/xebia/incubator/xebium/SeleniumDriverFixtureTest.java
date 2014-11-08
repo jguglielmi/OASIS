@@ -1,6 +1,7 @@
 package com.xebia.incubator.xebium;
 
 import static org.hamcrest.Matchers.is;
+import static org.junit.Assert.*;
 import static org.junit.Assert.assertThat;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Matchers.*;
@@ -15,8 +16,14 @@ import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import com.thoughtworks.selenium.CommandProcessor;
-import org.openqa.selenium.WebDriverException;
 
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebDriverException;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxProfile;
+
+import java.io.File;
 import java.io.IOException;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -118,22 +125,52 @@ assertThat(result, is(true));
         assertThat(result, is(true));
     }
 
-@Test
-public void shouldTakeScreenshotOnError() throws IOException {
-seleniumDriverFixture.saveScreenshotAfter("FAILURE");
+	@Test
+	public void shouldTakeScreenshotOnError() throws IOException {
+		seleniumDriverFixture.saveScreenshotAfter("FAILURE");
+		
+		when(commandProcessor.getBoolean("isElementPresent", new String[] { "id=verwijderen" })).thenReturn(true);
+		when(commandProcessor.doCommand("click", new String[] {"id=verwijderen"}))
+		.thenThrow(new WebDriverException("Click failed: ReferenceError: Can't find variable: handle"));
+		when(screenCapture.requireScreenshot(any(ExtendedSeleniumCommand.class), anyBoolean()))
+		.thenReturn(true);
+		
+		try {
+		seleniumDriverFixture.doOn("clickAndWait", "id=verwijderen");
+		} catch (Throwable t) {
+		// Not sure whether we want to propagate this exception... that's the current behaviour though.
+		}
+		verify(screenCapture).setScreenshotPolicy("FAILURE");
+		//verify(screenCapture).captureScreenshot("clickAndWait", new String[] { "id=verwijderen" });
+	}
+	
+	@Test
+	public void shouldHaveAppsDirectory() throws IOException{
+		File apps = new File(DefaultWebDriverSupplier.APPS_DIR);
+		assertTrue(apps.exists());
+		//return apps.getCanonicalPath();
+	}
+	
+	@Test
+	public void shouldHaveAppsFirefox24() throws IOException{
+		File apps = new File(DefaultWebDriverSupplier.APPS_DIR, DefaultWebDriverSupplier.FIREFOX24_BIN);
+		assertTrue(apps.exists());
+		DefaultWebDriverSupplier webDriver = new DefaultWebDriverSupplier();
+		webDriver.browser = "firefox24";
+		WebDriver ff24 = webDriver.newWebDriver();
+		assertNotNull(ff24);
+		ff24.close();
+	}
 
-when(commandProcessor.getBoolean("isElementPresent", new String[] { "id=verwijderen" })).thenReturn(true);
-when(commandProcessor.doCommand("click", new String[] {"id=verwijderen"}))
-.thenThrow(new WebDriverException("Click failed: ReferenceError: Can't find variable: handle"));
-when(screenCapture.requireScreenshot(any(ExtendedSeleniumCommand.class), anyBoolean()))
-.thenReturn(true);
+	@Test
+	public void shouldHaveAppsFirefox31() throws IOException{
+		File apps = new File(DefaultWebDriverSupplier.APPS_DIR, DefaultWebDriverSupplier.FIREFOX31_BIN);
+		assertTrue(apps.exists());
+		DefaultWebDriverSupplier webDriver = new DefaultWebDriverSupplier();
+		webDriver.browser = "firefox31";
+		WebDriver ff31 = webDriver.newWebDriver();
+		assertNotNull(ff31);
+		ff31.close();
+	}
 
-try {
-seleniumDriverFixture.doOn("clickAndWait", "id=verwijderen");
-} catch (Throwable t) {
-// Not sure whether we want to propagate this exception... that's the current behaviour though.
-}
-verify(screenCapture).setScreenshotPolicy("FAILURE");
-//verify(screenCapture).captureScreenshot("clickAndWait", new String[] { "id=verwijderen" });
-}
 }

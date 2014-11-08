@@ -1,0 +1,19 @@
+| import | 
+| com.xebia.incubator.xebium |
+
+'''wait for text aston martin then stop and click fill country'''
+
+!| script | selenium driver fixture |
+| start browser | firefox31  | on url | http://localhost:${FITNESSE_PORT} |
+| do | open | on | /files/testHtml/iFrameTimed.html |
+| maximize |
+| ensure | do | pause | on | 4000 |
+| ensure | do | waitForVisible | on | //input[@id='fill city'] |
+| ensure | do | waitForVisible | on | //input[@id='fill city'] |
+| ensure | do | click | on | !-//input[@value='fill city']-! |
+| ensure | do | waitForVisible | on | //div[contains(text(),'aston martin')] |
+| ensure | do | waitForVisible | on | //div[contains(.,'aston martin')] |
+| ensure | do | click | on | !-//input[@value='Stop']-! |
+| ensure | do | waitForVisible | on | //input[@id='fill country'] |
+| ensure | do | click | on | !-//input[@value='fill country']-! |
+| note | | stop browser | |

@@ -25,6 +25,9 @@ public class DefaultWebDriverSupplier implements ConfigurableWebDriverSupplier {
 	private static final Logger LOG = LoggerFactory.getLogger(SeleniumDriverFixture.class);
 	
 	public static String FIREFOX_BIN_PROPERTY = "webdriver.firefox.bin";
+	public static String APPS_DIR = "./apps";
+	public static String FIREFOX24_BIN = "/Firefox24.8.1esr/firefox.exe";
+	public static String FIREFOX31_BIN = "/Firefox31.2.0esr/firefox.exe";
 
 	public String browser;
 	
@@ -38,20 +41,20 @@ public class DefaultWebDriverSupplier implements ConfigurableWebDriverSupplier {
 	public WebDriver newWebDriver() {
 		WebDriver driver;
 		
-		String appsDir = "./apps";
+		String appsDir = APPS_DIR;
 		try {
-			appsDir = new File("./apps").getCanonicalPath();
+			appsDir = new File(APPS_DIR).getCanonicalPath();
 		} catch (IOException e1) {e1.printStackTrace();}
 		
 		if ("firefox".equalsIgnoreCase(browser)) {
 			FirefoxProfile profile = getFirefoxProfile();
 			driver = new FirefoxDriver(profile);
 		} else if ("firefox24".equalsIgnoreCase(browser)) {
-			System.setProperty(FIREFOX_BIN_PROPERTY, appsDir + "/Firefox24.8.1esr/firefox.exe" );
+			System.setProperty(FIREFOX_BIN_PROPERTY, appsDir +  FIREFOX24_BIN);
 			FirefoxProfile profile = getFirefoxProfile();
 			driver = new FirefoxDriver(profile);
 		} else if ("firefox31".equalsIgnoreCase(browser)) {
-			System.setProperty(FIREFOX_BIN_PROPERTY, appsDir + "/Firefox31.2.0esr/firefox.exe" );
+			System.setProperty(FIREFOX_BIN_PROPERTY, appsDir +  FIREFOX31_BIN);
 			FirefoxProfile profile = getFirefoxProfile();
 			driver = new FirefoxDriver(profile);
 		} else if ("iexplore".equalsIgnoreCase(browser)) {

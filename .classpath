@@ -83,7 +83,7 @@
 	<classpathentry kind="lib" path="lib/ivy/protobuf-java-2.4.1.jar"/>
 	<classpathentry kind="lib" path="lib/ivy/rhino-1.7R4.jar"/>
 	<classpathentry kind="lib" path="lib/ivy/sac-1.3.jar"/>
-	<classpathentry kind="lib" path="lib/ivy/selenium-api-2.44.0.jar"/>
+	<classpathentry kind="lib" path="lib/ivy/selenium-api-2.44.0.jar" sourcepath="C:/Users/admin/.m2/repository/org/seleniumhq/selenium/selenium-api/2.44.0/selenium-api-2.44.0-sources.jar"/>
 	<classpathentry kind="lib" path="lib/ivy/selenium-chrome-driver-2.44.0.jar"/>
 	<classpathentry kind="lib" path="lib/ivy/selenium-firefox-driver-2.44.0.jar"/>
 	<classpathentry kind="lib" path="lib/ivy/selenium-htmlunit-driver-2.44.0.jar"/>

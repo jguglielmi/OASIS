@@ -1,5 +1,7 @@
 !contents -R2 -g -p -f -h
 
+opens  http://localhost:${FITNESSE_PORT}/files/testHtml/iFrameTest1.html
+
 | import | 
 | com.xebia.incubator.xebium |
 
@@ -13,5 +15,4 @@
 | ensure | do | click | on | !-//input[@value='fill top']-! |
 | ensure | do | click | on | !-//input[@value='fill names']-! |
 | ensure | do | click | on | !-//input[@value='fill email']-! |
-
 | stop browser |
