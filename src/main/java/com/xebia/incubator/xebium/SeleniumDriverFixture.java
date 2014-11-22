@@ -754,6 +754,9 @@ public class SeleniumDriverFixture {
 	}
 
 	public void stopBrowser() {
+		
+		//to fix issue with selenium
+		try {Runtime.getRuntime().exec("taskkill /F /IM plugin-container.exe");} catch (IOException e) {e.printStackTrace();}
 		commandProcessor.stop();
 		commandProcessor = null;
 

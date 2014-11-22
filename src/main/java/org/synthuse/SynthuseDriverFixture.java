@@ -50,4 +50,28 @@ public class SynthuseDriverFixture {
 	public String queryWindowInfo(String xpath) {
 		return WindowsEnumeratedXml.queryWindowInfoXml(xpath);
 	}
+	
+	public static String getFitnesseRootPath() {
+		String path = "";
+        try {
+			File fitRoot = new File("./FitNesseRoot");
+			path = fitRoot.getCanonicalPath();
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+		return path;
+	}
+	
+	public static String getFitnesseRootPath(String appendedPath) {
+		String path = "";
+        try {
+			File fitRoot = new File("./FitNesseRoot", appendedPath);
+			path = fitRoot.getCanonicalPath();
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+		return path;
+	}
 }

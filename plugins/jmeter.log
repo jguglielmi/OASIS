@@ -1,0 +1,75 @@
+2014/11/22 16:18:50 INFO  - jmeter.util.JMeterUtils: Setting Locale to en_US 
+2014/11/22 16:18:50 INFO  - jmeter.JMeter: Copyright (c) 1998-2014 The Apache Software Foundation 
+2014/11/22 16:18:50 INFO  - jmeter.JMeter: Version 2.12 
+2014/11/22 16:18:50 INFO  - jmeter.JMeter: java.version=1.7.0_40 
+2014/11/22 16:18:50 INFO  - jmeter.JMeter: java.vm.name=Java HotSpot(TM) 64-Bit Server VM 
+2014/11/22 16:18:50 INFO  - jmeter.JMeter: os.name=Windows 7 
+2014/11/22 16:18:50 INFO  - jmeter.JMeter: os.arch=amd64 
+2014/11/22 16:18:50 INFO  - jmeter.JMeter: os.version=6.1 
+2014/11/22 16:18:50 INFO  - jmeter.JMeter: file.encoding=Cp1252 
+2014/11/22 16:18:50 INFO  - jmeter.JMeter: Default Locale=English (United States) 
+2014/11/22 16:18:50 INFO  - jmeter.JMeter: JMeter  Locale=English (United States) 
+2014/11/22 16:18:50 INFO  - jmeter.JMeter: JMeterHome=C:\dev\workspace\OASIS 
+2014/11/22 16:18:50 INFO  - jmeter.JMeter: user.dir  =C:\dev\workspace\OASIS\plugins 
+2014/11/22 16:18:50 INFO  - jmeter.JMeter: PWD       =C:\dev\workspace\OASIS\plugins 
+2014/11/22 16:18:50 INFO  - jmeter.JMeter: IP: 192.168.56.1 Name: t500pc FullName: t500pc 
+2014/11/22 16:18:50 INFO  - jmeter.JMeter: search_paths=.;jmeter;plugins;lib/ext 
+2014/11/22 16:18:50 INFO  - jmeter.JMeter: Adding to classpath and loader: . 
+2014/11/22 16:18:50 WARN  - jmeter.JMeter: Can't read jmeter 
+2014/11/22 16:18:50 WARN  - jmeter.JMeter: Can't read plugins 
+2014/11/22 16:18:50 WARN  - jmeter.JMeter: Can't read lib/ext 
+2014/11/22 16:18:50 INFO  - jmeter.JMeter: Loaded icon properties from org/apache/jmeter/images/icon.properties 
+2014/11/22 16:18:51 INFO  - jmeter.engine.util.CompoundVariable: Note: Function class names must contain the string: '.functions.' 
+2014/11/22 16:18:51 INFO  - jmeter.engine.util.CompoundVariable: Note: Function class names must not contain the string: '.gui.' 
+2014/11/22 16:18:52 INFO  - jmeter.gui.action.LookAndFeelCommand: Using look and feel: javax.swing.plaf.metal.MetalLookAndFeel [Metal, CrossPlatform] 
+2014/11/22 16:18:52 INFO  - jmeter.util.BSFTestElement: Registering JMeter version of JavaScript engine as work-round for BSF-22 
+2014/11/22 16:18:53 INFO  - jmeter.protocol.http.sampler.HTTPSamplerBase: Cannot find .className property for htmlParser, using default 
+2014/11/22 16:18:53 INFO  - jmeter.protocol.http.sampler.HTTPSamplerBase: Parser for text/html is  
+2014/11/22 16:18:53 INFO  - jmeter.protocol.http.sampler.HTTPSamplerBase: Parser for application/xhtml+xml is  
+2014/11/22 16:18:53 INFO  - jmeter.protocol.http.sampler.HTTPSamplerBase: Parser for application/xml is  
+2014/11/22 16:18:53 INFO  - jmeter.protocol.http.sampler.HTTPSamplerBase: Parser for text/xml is  
+2014/11/22 16:18:53 INFO  - jmeter.protocol.http.sampler.HTTPSamplerBase: Parser for text/vnd.wap.wml is org.apache.jmeter.protocol.http.parser.RegexpHTMLParser 
+2014/11/22 16:18:53 INFO  - jmeter.gui.util.MenuFactory: Skipping org.apache.jmeter.protocol.http.control.gui.WebServiceSamplerGui 
+2014/11/22 16:18:53 INFO  - jmeter.gui.util.MenuFactory: Skipping org.apache.jmeter.protocol.http.modifier.gui.ParamModifierGui 
+2014/11/22 16:18:53 INFO  - jorphan.exec.KeyToolUtils: keytool found at 'keytool' 
+2014/11/22 16:18:53 INFO  - jmeter.protocol.http.proxy.ProxyControl: HTTP(S) Test Script Recorder SSL Proxy will use keys that support embedded 3rd party resources in file C:\dev\workspace\OASIS\bin\proxyserver.jks 
+2014/11/22 16:18:54 INFO  - jmeter.samplers.SampleResult: Note: Sample TimeStamps are START times 
+2014/11/22 16:18:54 INFO  - jmeter.samplers.SampleResult: sampleresult.default.encoding is set to ISO-8859-1 
+2014/11/22 16:18:54 INFO  - jmeter.samplers.SampleResult: sampleresult.useNanoTime=true 
+2014/11/22 16:18:54 INFO  - jmeter.samplers.SampleResult: sampleresult.nanoThreadSleep=5000 
+2014/11/22 16:18:59 INFO  - jmeter.services.FileServer: Default base='C:\dev\workspace\OASIS\plugins' 
+2014/11/22 16:18:59 INFO  - jmeter.gui.action.Load: Loading file: C:\dev\workspace\JmeterBundle-src\test\SimpleHttpTest1.jmx 
+2014/11/22 16:18:59 INFO  - jmeter.services.FileServer: Set new base='C:\dev\workspace\JmeterBundle-src\test' 
+2014/11/22 16:18:59 INFO  - jmeter.save.SaveService: Testplan (JMX) version: 2.2. Testlog (JTL) version: 2.2 
+2014/11/22 16:18:59 INFO  - jmeter.save.SaveService: Using SaveService properties file encoding UTF-8 
+2014/11/22 16:18:59 INFO  - jmeter.save.SaveService: Using SaveService properties version 2.7 
+2014/11/22 16:18:59 INFO  - jmeter.save.SaveService: Using SaveService properties file version 1618048 
+2014/11/22 16:18:59 INFO  - jmeter.save.SaveService: All converter versions present and correct 
+2014/11/22 16:18:59 INFO  - jmeter.services.FileServer: Set new base='C:\dev\workspace\JmeterBundle-src\test' 
+2014/11/22 16:19:03 INFO  - jmeter.engine.StandardJMeterEngine: Listeners will be started after enabling running version 
+2014/11/22 16:19:03 INFO  - jmeter.engine.StandardJMeterEngine: To revert to the earlier behaviour, define jmeterengine.startlistenerslater=false 
+2014/11/22 16:19:03 INFO  - jmeter.engine.StandardJMeterEngine: Running the test! 
+2014/11/22 16:19:03 INFO  - jmeter.samplers.SampleEvent: List of sample_variables: [] 
+2014/11/22 16:19:03 INFO  - jmeter.samplers.SampleEvent: List of sample_variables: [] 
+2014/11/22 16:19:03 INFO  - jmeter.gui.util.JMeterMenuBar: setRunning(true,*local*) 
+2014/11/22 16:19:04 INFO  - jmeter.engine.StandardJMeterEngine: Starting ThreadGroup: 1 : Thread Group 
+2014/11/22 16:19:04 INFO  - jmeter.engine.StandardJMeterEngine: Starting 2 threads for group Thread Group. 
+2014/11/22 16:19:04 INFO  - jmeter.engine.StandardJMeterEngine: Thread will continue on error 
+2014/11/22 16:19:04 INFO  - jmeter.threads.ThreadGroup: Starting thread group number 1 threads 2 ramp-up 1 perThread 500.0 delayedStart=false 
+2014/11/22 16:19:04 INFO  - jmeter.threads.JMeterThread: jmeterthread.startearlier=true (see jmeter.properties) 
+2014/11/22 16:19:04 INFO  - jmeter.threads.JMeterThread: Running PostProcessors in forward order 
+2014/11/22 16:19:04 INFO  - jmeter.threads.ThreadGroup: Started thread group number 1 
+2014/11/22 16:19:04 INFO  - jmeter.engine.StandardJMeterEngine: All thread groups have been started 
+2014/11/22 16:19:04 INFO  - jmeter.threads.JMeterThread: Thread started: Thread Group 1-1 
+2014/11/22 16:19:04 INFO  - jmeter.protocol.http.sampler.HTTPHCAbstractImpl: Local host = t500pc 
+2014/11/22 16:19:04 INFO  - jmeter.protocol.http.sampler.HTTPHC4Impl: HTTP request retry count = 0 
+2014/11/22 16:19:04 INFO  - jmeter.protocol.http.sampler.HTTPHC4Impl: Setting up HTTPS TrustAll scheme 
+2014/11/22 16:19:04 INFO  - jmeter.util.JsseSSLManager: Using default SSL protocol: TLS 
+2014/11/22 16:19:04 INFO  - jmeter.util.JsseSSLManager: SSL session context: per-thread 
+2014/11/22 16:19:04 INFO  - jmeter.threads.JMeterThread: Thread started: Thread Group 1-2 
+2014/11/22 16:19:04 INFO  - jmeter.threads.JMeterThread: Thread is done: Thread Group 1-1 
+2014/11/22 16:19:04 INFO  - jmeter.threads.JMeterThread: Thread finished: Thread Group 1-1 
+2014/11/22 16:19:05 INFO  - jmeter.threads.JMeterThread: Thread is done: Thread Group 1-2 
+2014/11/22 16:19:05 INFO  - jmeter.threads.JMeterThread: Thread finished: Thread Group 1-2 
+2014/11/22 16:19:05 INFO  - jmeter.engine.StandardJMeterEngine: Notifying test listeners of end of test 
+2014/11/22 16:19:05 INFO  - jmeter.gui.util.JMeterMenuBar: setRunning(false,*local*) 

@@ -1,0 +1,14 @@
+To open Jmeter GUI from a link use the following address:
+[[/?jmeter&dialog][/OasisExamples.BeginnerExamples.JmeterSimpleTest1?jmeter&dialog]]
+
+To run a Jmeter JMX project use the following address:
+[[/?jmeter&jmx=jmeter/SimpleHttpTest1.jmx][/?jmeter&jmx=jmeter/SimpleHttpTest1.jmx]]
+
+Also you can use the Jmeter Driver fixture to run a jmx file
+| import | 
+| org.oasis.fitnesse |
+
+| script | jmeter driver fixture |
+| run test plan | ./jmeter/SimpleHttpTest1.jmx | 
+| show | getLastLog |
+| ensure | deleteLastLog |

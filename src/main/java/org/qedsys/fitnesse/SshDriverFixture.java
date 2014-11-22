@@ -1,6 +1,6 @@
 
 // Name: SshDriverFixture
-// Author: Edward Jakubowski ejakubowski@qed-sys.com
+// Author: Edward Jakubowski ejakubowski7@gmail.com
 // Last update: 12/23/2013
 // Description: This Fixture adds support to connect to ssh servers and execute commands.
 // Requirements: jsch library
@@ -165,7 +165,7 @@ public class SshDriverFixture {
 
 	//clear out any unicode or weird ascii codes 
 	public String sanitizeResults() {
-		lastResults = lastResults.replaceAll("[^x09-x0bx20-x7e]", "");
+		lastResults = lastResults.replaceAll("[^\\x09-\\x0b\\x20-\\x7e]", "");
 		return lastResults;
 	}
 

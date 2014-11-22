@@ -8,7 +8,10 @@
 | [[Acceptance Tests][FitNesse.SuiteAcceptanceTests]]|''FitNesse's suite of Acceptance Tests''|
 | [[Release Notes][FitNesse.ReleaseNotes]]|''Find out about FitNesse's new features''|
 | [[Project Xebium][ProjectXebium]] | ''Project Xebium(Selenium/FitNesse)''|
+| [[Jmeter Gui][/?jmeter&dialog]] | ''Jmeter Gui''|
 | [[Oasis Examples][OasisExamples]] | ''Oasis Examples''|
+
+
 
 
 !contents -R2 -g -p -f -h

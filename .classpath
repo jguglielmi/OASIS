@@ -111,5 +111,6 @@
 	<classpathentry kind="lib" path="plugins/oasisplugin.jar"/>
 	<classpathentry kind="lib" path="plugins/sikuli-java.jar"/>
 	<classpathentry kind="lib" path="plugins/synthuse.jar"/>
+	<classpathentry kind="lib" path="plugins/jmeterbundle.jar"/>
 	<classpathentry kind="output" path="build"/>
 </classpath>

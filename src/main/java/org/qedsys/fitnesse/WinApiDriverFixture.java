@@ -1,6 +1,6 @@
 
 // Name: WinApiDriverFixture
-// Author: Edward Jakubowski ejakubowski@qed-sys.com
+// Author: Edward Jakubowski ejakubowski7@gmail.com
 // Last update: 12/27/2013
 // Description: This Fixture add support to run Windows Api Functions in Fitnesse
 // Requirements: Jna library

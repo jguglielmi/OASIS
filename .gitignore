@@ -2,6 +2,7 @@ bin/
 build/
 lib/mvn/*.jar
 lib/ivy/*.jar
+lib/jmeter/*.jar
 dist/
 target
 FitNesseRoot/ErrorLogs/

@@ -50,7 +50,9 @@
   
   <!-- downloadable dependencies are listed in ivy.xml file and are downloaded to the lib/ivy directory. -->
   <target name="resolve" depends="init" description="--> retreive dependencies with ivy">
-    <ivy:retrieve pattern="${lib}/ivy/[artifact]-[revision](-[classifier]).[ext]" conf="*"/>
+    <ivy:retrieve pattern="${lib}/ivy/[artifact]-[revision](-[classifier]).[ext]" conf="runtime,test"/>
+	<ivy:report todir="${build}"/>
+	<ivy:retrieve pattern="${lib}/jmeter/[artifact]-[revision](-[classifier]).[ext]" conf="jmeter"/>
     <ivy:report todir="${build}"/>
 	<!--  need to use customized fitnesse jar to load custom OasisScriptTable
     <echo message="moving ivy/${fitnesse_jar} to ${basedir}" />
@@ -61,6 +63,11 @@
       <mapper type="glob" from="*" to="${fitnesse_jar}"/>
     </move>
 	-->
+	
+	<get dest="plugins/oasisplugin.jar" src="https://github.com/jguglielmi/OasisPlugin/releases/download/v1.0.3/OasisPlugin.jar" verbose="true" usetimestamp="true"/>
+	<get dest="plugins/jmeterbundle.jar" src="https://github.com/Synthuse/JmeterBundle-src/releases/download/v1.4/jmeterbundle.jar" verbose="true" usetimestamp="true"/>
+    <get dest="plugins/synthuse.jar" src="https://github.com/Synthuse/synthuse-src/releases/download/v1.2.2/synthuse.jar" verbose="true" usetimestamp="true"/>
+
   </target>
 
   <target name="compile" depends="init" description="compile the source " >
@@ -80,7 +87,7 @@
 	</javac>
 	<!-- run junit test dump results into ${build}/unit_tests -->
     <mkdir dir="${build}/unit_tests" />
-    <junit forkmode="once" fork="yes" printsummary="yes" haltonfailure="no" haltonerror="no" dir="${basedir}">
+    <junit forkmode="once" fork="no" printsummary="yes" haltonfailure="no" haltonerror="no" dir="${basedir}">
       <classpath>
 	    <path refid="compile.classpath"/>
 	    <pathelement location="${build}"/>

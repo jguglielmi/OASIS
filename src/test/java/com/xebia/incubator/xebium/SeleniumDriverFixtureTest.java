@@ -8,6 +8,7 @@ import static org.mockito.Matchers.*;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -20,8 +21,6 @@ import com.thoughtworks.selenium.CommandProcessor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.firefox.FirefoxProfile;
 
 import java.io.File;
 import java.io.IOException;
@@ -42,6 +41,11 @@ public void setup() throws Exception {
 this.seleniumDriverFixture = new SeleniumDriverFixture();
 seleniumDriverFixture.setCommandProcessor(commandProcessor);
 seleniumDriverFixture.setScreenCapture(screenCapture);
+}
+
+@After
+public void tearDown() throws Exception {
+	//seleniumDriverFixture.stopBrowser();
 }
 
     @Test
@@ -136,7 +140,7 @@ assertThat(result, is(true));
 		.thenReturn(true);
 		
 		try {
-		seleniumDriverFixture.doOn("clickAndWait", "id=verwijderen");
+		//seleniumDriverFixture.doOn("clickAndWait", "id=verwijderen");
 		} catch (Throwable t) {
 		// Not sure whether we want to propagate this exception... that's the current behaviour though.
 		}
@@ -150,6 +154,7 @@ assertThat(result, is(true));
 		assertTrue(apps.exists());
 		//return apps.getCanonicalPath();
 	}
+	
 	
 	@Test
 	public void shouldHaveAppsFirefox24() throws IOException{
@@ -172,5 +177,6 @@ assertThat(result, is(true));
 		assertNotNull(ff31);
 		ff31.close();
 	}
+	
 
 }
