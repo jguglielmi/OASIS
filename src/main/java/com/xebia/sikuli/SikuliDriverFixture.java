@@ -952,6 +952,33 @@ public class SikuliDriverFixture extends SikuliCommandProcessor{
 		return true;
 	}
 	
+	public String openRedirected(String cmd) throws IOException {
+		LOG.debug("openRedirected " + cmd);
+	    Process p = Runtime.getRuntime().exec(cmd);
+		BufferedReader inputReader = new BufferedReader(new InputStreamReader(p.getInputStream()));
+		BufferedReader errReader = new BufferedReader(new InputStreamReader(p.getErrorStream()));
+		StringBuilder lines = new StringBuilder();
+		String line = null;
+		while ( (line = inputReader.readLine()) != null) {
+			lines.append(line);
+			lines.append(System.getProperty("line.separator"));
+		}
+		while ( (line = errReader.readLine()) != null) {
+			lines.append(line);
+			lines.append(System.getProperty("line.separator"));
+		}
+		//inputReader.close();
+		
+		checkForScreenshotAfter("openRedirected", cmd, true);
+		return lines.toString();
+	}
+	
+	public String usingStringReplaceAllWith(String source, String pattern, String replacement) {
+		//(".*[^\\d](\\d+).*", "$1")
+		//("(?m)^\s+$", "")
+		return source.replaceAll(pattern, replacement);
+	}
+	
 	public boolean executeMethod(String methodName) throws SecurityException, NoSuchMethodException, IllegalArgumentException, IllegalAccessException, InvocationTargetException, InstantiationException, ClassNotFoundException{
 		extendedSikuliCommands = new ExtendedSikuliCommands(methodName);
 		if(!extendedSikuliCommands.isSupportedBySikuliDriver()){

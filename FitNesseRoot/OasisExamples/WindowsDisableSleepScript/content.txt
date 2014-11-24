@@ -1,0 +1,26 @@
+!contents -R2 -g -p -f -h
+
+The below script will show current power configuration for Windows and then it disables the sleep/standby mode.
+This can be useful if you need to run OASIS scripts continuously on a machine without it going to sleep/standby mode.
+
+To disable sleep mode completely you can use Local Group Policy:
+ - Launch Local Group Policy Editor (gpedit.msc)
+ - Navigate to Computer Configuration > Administrative Templates > System > Power Management > Sleep Settings
+ - Open Policy called Allow Standby States (S1-S3) When Sleeping (Plugged In) and set value do Disabled
+   If necessary also do the same for Allow Standby States (S1-S3) When Sleeping (On Battery)
+
+| import | 
+| com.xebia.sikuli | 
+
+!| script | sikuli driver fixture | 
+| note | query current power settings |
+| show | open redirected | powercfg.exe -q |
+| note | change current power settings to disable sleep |
+| show | open | powercfg.exe -change -monitor-timeout-ac 0 |
+| show | open | powercfg.exe -change -monitor-timeout-dc 0 |
+| show | open | powercfg.exe -change -disk-timeout-ac 0 |
+| show | open | powercfg.exe -change -disk-timeout-dc 0 |
+| show | open | powercfg.exe -change -standby-timeout-ac 0 |
+| show | open | powercfg.exe -change -standby-timeout-dc 0 |
+| show | open | powercfg.exe -change -hibernate-timeout-ac 0 |
+| show | open | powercfg.exe -change -hibernate-timeout-dc 0 |
