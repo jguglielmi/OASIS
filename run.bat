@@ -9,6 +9,8 @@ set PATH=%JAVA_HOME%\bin;%~dp0;%PATH%
 
 REM only download libraries if they don't already exist
 if not exist lib\ivy call local-ant.bat resolve
+if not exist lib\jmeter call local-ant.bat resolve
+
 
 REM only compile fixtures if they don't already exist
 if not exist build call local-ant.bat compile unit_test
