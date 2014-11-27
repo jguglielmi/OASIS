@@ -1,5 +1,5 @@
 [[!img http://files/images/OASIS.jpg][PageStructureTemplate]]
-!3 ''Open Automation Source Integrated Suite, taking the fun out of automated scripted testing''
+!3 ''Open Automation Source Integrated Suite''
 
 | '''To Learn More...'''|
 | [[A One-Minute Description][FitNesse.UserGuide.OneMinuteDescription]]|''What is [[FitNesse][FitNesse.FitNesse]]? Start here.''|
@@ -11,13 +11,7 @@
 | [[Jmeter Gui][/?jmeter&dialog]] | ''Jmeter Gui''|
 | [[Oasis Examples][OasisExamples]] | ''Oasis Examples''|
 
-
-
-
 !contents -R2 -g -p -f -h
-
-
-
 
 
 

@@ -64,7 +64,7 @@
     </move>
 	-->
 	
-	<get dest="plugins/oasisplugin.jar" src="https://github.com/jguglielmi/OasisPlugin/releases/download/v1.0.3/OasisPlugin.jar" verbose="true" usetimestamp="true"/>
+	<get dest="plugins/oasisplugin.jar" src="https://github.com/jguglielmi/OasisPlugin/releases/download/v1.0.4/OasisPlugin.jar" verbose="true" usetimestamp="true"/>
 	<get dest="plugins/jmeterbundle.jar" src="https://github.com/Synthuse/JmeterBundle-src/releases/download/v1.4/jmeterbundle.jar" verbose="true" usetimestamp="true"/>
     <get dest="plugins/synthuse.jar" src="https://github.com/Synthuse/synthuse-src/releases/download/v1.2.2/synthuse.jar" verbose="true" usetimestamp="true"/>
 
