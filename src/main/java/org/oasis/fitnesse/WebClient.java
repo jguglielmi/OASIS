@@ -528,4 +528,9 @@ public class WebClient {
 	{
 	    System.out.println(s);
 	}
+	
+	public String generateUuid()
+	{
+	    return UUID.randomUUID().toString();
+	}
 }

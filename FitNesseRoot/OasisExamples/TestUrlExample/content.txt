@@ -1,0 +1,3 @@
+If you provide a url to the run.bat file when starting OASIS it will be set to the test.url variable
+
+The current value of test.url is '${test.url}'
