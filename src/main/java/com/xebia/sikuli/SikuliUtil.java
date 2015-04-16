@@ -3,7 +3,7 @@ package com.xebia.sikuli;
 import java.io.File;
 
 public class SikuliUtil {
-    public static final String defaultScriptDir = "FitnesseRoot/files/sikuliScripts";
+    public static final String defaultScriptDir = "FitNesseRoot/files/sikuliScripts";
     
     public static File sikuliScript(String path) {
         File script=new File(path);
